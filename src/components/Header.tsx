@@ -1,20 +1,9 @@
 "use client"
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
-    navigationMenuTriggerStyle
 
-} from "@/components/ui/navigation-menu"
 import Image from "next/image"
 import Link from "next/link"
 
-export default function Navbar() {
+export default function Header() {
     return (
         <>
             <nav className="border-b shadow-sm fixed top-0 bg-white w-full">

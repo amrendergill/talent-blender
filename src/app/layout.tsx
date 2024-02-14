@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className} >
       <Script src="/tinymce/tinymce.min.js" />
-        <Navbar />
+        <Header />
         {children}</body>
     </html>
   );
