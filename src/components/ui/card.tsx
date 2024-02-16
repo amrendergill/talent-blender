@@ -1,5 +1,5 @@
 import * as React from "react"
-
+// shadow-[0_4px_12px_rgba(0,0,0,0.15)]
 import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<
@@ -9,7 +9,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg bg-card text-card-foreground shadow-[0_4px_12px_rgba(0,0,0,0.15)] p-6",
+      "rounded-lg bg-card text-card-foreground border p-6",
       className
     )}
     {...props}
