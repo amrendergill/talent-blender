@@ -16,7 +16,7 @@ export default function LeftSidebar() {
                         <Image src={'/images/ken-cheung-0F2nvpob0_c-unsplash.jpg'} className="rounded-t-lg" alt="cover image" priority width={0} height={0} objectFit="cover" sizes="100%"
                             style={{ width: '100%', height: '60px' }} />
                     </div>
-                    <div className="border-2 rounded-full border-white w-fit absolute top-5 left-16" >
+                    <div className="border-2 rounded-full border-white w-fit absolute top-5 left-[72px]" >
                         <Avatar className="h-[72px] w-[72px]">
                             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
                             <AvatarFallback>MD</AvatarFallback>
@@ -26,7 +26,7 @@ export default function LeftSidebar() {
                 <div className="w-full divide-y">
                     <div className="mt-16 mb-4 w-full flex flex-wrap items-center justify-center">
                         <p className="font-bold ">Mark Davidson</p>
-                        <p className="text-xs w-fit text-gray-500">
+                        <p className="text-xs text-gray-500">
                             Software Engineer | Content Creator | Educator | Mentor | Freelancer
                         </p>
                     </div>

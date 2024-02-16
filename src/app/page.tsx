@@ -34,6 +34,7 @@ import { BiRepost } from "react-icons/bi";
 import { LuSend } from "react-icons/lu";
 import LeftSidebar from "@/components/LeftSidebar";
 import RightSidebar from "@/components/RightSidebar";
+import Link from "next/link";
 const AppEditor = dynamic(() => import('@/components/Editor'), {
   ssr: false
 });
@@ -113,116 +114,9 @@ export default function Home() {
           <div className="w-full">
             <div>
               <div className="flex items-center justify-between">
-                <p className="font-bold">AppSierra</p>
-                <div className="flex items-center gap-4">
-                  <div>
-                    <BsThreeDots />
-                  </div>
-                  <div>
-                    <IoClose />
-                  </div>
-                </div>
-              </div>
-              <div className="">
-                <p className="text-xs text-gray-500">428 Followers</p>
-                <div className="flex items-center">
-                  <p className="text-xs text-gray-500">5m</p>
-                  <div>
-                    <LuDot />
-                  </div>
-                  <div>
-                    <FaGlobeAmericas />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div>
-            <p className="py-5 font-bold text-[#0a66c2] text-sm">#technology #it #datascience</p>
-          </div>
-          <hr />
-          <div className="py-5">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-6" >
-                <div>
-                  <Avatar className="h-16 w-16 rounded-none">
-                    <AvatarImage src="/images/joshua-hanson-e616t35Vbeg-unsplash.jpg" alt="profile" />
-                    <AvatarFallback>MD</AvatarFallback>
-                  </Avatar>
-
-                </div>
-                <p className="font-bold">The Appsierra Weekly</p>
-              </div>
-              <div className="flex items-center gap-1">
-                <div>
-                  <HiPlus className="text-[#0a66c2] h-4 w-4" />
-                </div>
-                <div>
-                  <p className="font-bold text-[#0a66c2]">
-                    Subscribe
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="py-3">
-              <div>
-                <Image src="/images/AppsierraWeeklyPost.png" alt="post" priority width={0}
-                  height={0}
-                  sizes="100%"
-                  style={{ width: '100%', height: 'auto' }} />
-              </div>
-            </div>
-            <div className="flex items-center justify-end gap-1 mb-2">
-              <p className="text-xs text-gray-500">13 comments</p>
-              <p className="text-xs text-gray-500" >.</p>
-              <p className="text-xs text-gray-500">25 reposts</p>
-            </div>
-            <hr />
-            <div className="flex items-center justify-evenly mt-2">
-              <div className="flex items-center gap-2 ">
-                <div>
-                  <SlLike size={20} color="#6b7280" />
-                </div>
-                <p className="text-base font-medium text-gray-500">Like</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <div>
-                <AiOutlineComment size={23} color="#6b7280"/>
-                </div>
-                <p className="text-base font-medium text-gray-500">Comment</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <div>
-                <BiRepost size={27} color="#6b7280"/>
-                </div>
-                <p className="text-base font-medium text-gray-500">Repost</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <div>
-                <LuSend size={22} color="#6b7280"/>
-                </div>
-                <p className="text-base font-medium text-gray-500">Send</p>
-              </div>
-            </div>
-            <div className="py-5">
-              {/* Comment Section */}
-            </div>
-          </div>
-        </div>
-
-      </Card>
-      <Card className="">
-        <div className="flex gap-4 w-full">
-          <Avatar className="h-16 w-16">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>MD</AvatarFallback>
-          </Avatar>
-          <div className="w-full">
-            <div>
-              <div className="flex items-center justify-between">
-                <p className="font-bold">AppSierra</p>
+                <Link href={"/user?status=home"}>
+                <p className="font-bold hover:text-[#0a66c2] hover:underline hover:cursor-pointer">AppSierra</p>
+                </Link>
                 <div className="flex items-center gap-4">
                   <div>
                     <BsThreeDots />
