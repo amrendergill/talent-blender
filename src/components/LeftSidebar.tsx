@@ -7,7 +7,7 @@ import { HiPlus } from "react-icons/hi";
 import Link from "next/link";
 import RecentGroups from "./RecentGroups";
 
-export default function LeftSidebar() {
+export default function LeftSidebar({children}:any) {
   return (
     <>
       <Card className="p-0 ">
@@ -74,7 +74,8 @@ export default function LeftSidebar() {
         </div>
       </Card>
       <Card className="px-3 py-4 ">
-        <RecentGroups title={"Recent"} groupName={"JavaScript"} />
+        {children}
+        {/* <RecentGroups title={"Recent"} groupName={"JavaScript"} /> */}
       </Card>
     </>
   );

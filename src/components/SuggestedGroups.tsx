@@ -1,12 +1,12 @@
+import { title } from "process";
 import { HiPlus } from "react-icons/hi";
 import { HiMiniUserGroup } from "react-icons/hi2";
-import { Card } from "./ui/card";
 
-export default function RecentGroups ({title, groupName} : any) {
+export default function SuggestedGroups({title, groupName}:any){
     return(
         <>
-                <div>
-                    <p className="text-sm text-gray-500 font-semibold">{title}</p>
+        <div>
+                    <p className="text-sm text-[#0a66c2] font-semibold">{title}</p>
                     <div className="py-3 flex flex-col gap-2">
                         <div className="flex items-center gap-3">
                             <div>
@@ -18,8 +18,8 @@ export default function RecentGroups ({title, groupName} : any) {
 
                     </div>
                 </div>
-{/* 
-                <div className=" mt-5">
+
+                {/* <div className=" mt-5">
                     <p className="text-sm text-[#0a66c2] font-semibold">Groups</p>
                     <div className="py-3 flex flex-col gap-2">
                         <div className="flex items-center gap-3">
@@ -55,16 +55,18 @@ export default function RecentGroups ({title, groupName} : any) {
 
                     </div>
 
-                    
                     <div>
                         <div className="flex items-center justify-between mt-5 ">
 
-                        <p className="text-sm text-[#0a66c2] font-semibold">
-                            Followed Hashtags
+                        <p className="text-sm  text-[#0a66c2] font-semibold">
+                            Events
                         </p>
-                        
+                        <div>
+                            <HiPlus color="#0a66c2" />
+                        </div>
                         </div>
                     </div>
+                    
                 </div> */}
         </>
     )

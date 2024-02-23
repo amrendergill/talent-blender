@@ -139,7 +139,7 @@ export default function Company() {
                   <div className="flex items-center gap-4 my-3">
                     <Card className="w-[365px] min-w-[365px] max-w-[365px] p-0">
                       <Post
-                        logo={"/images/PNH-logo.png"}
+                        logo={"/images/PNH-logo-icon.png"}
                         companyName={"Pitch N Hire"}
                         followers={"21, 458"}
                         timeOfPost={"5m"}
@@ -182,12 +182,12 @@ export default function Company() {
                 >
                   <div className="flex items-center my-3 justify-start">
                     <JobOpeneings
-                      companyLogo={"/images/PNH-logo.png"}
+                      companyLogo={"/images/PNH-logo-icon.png"}
                       jobPost={"React Developer"}
                       jobPlace={"Delhi, Delhi, India"}
                     />
                     <JobOpeneings
-                      companyLogo={"/images/PNH-logo.png"}
+                      companyLogo={"/images/PNH-logo-icon.png"}
                       jobPost={"React Developer"}
                       jobPlace={"Delhi, Delhi, India"}
                     />

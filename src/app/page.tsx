@@ -35,6 +35,10 @@ import { LuSend } from "react-icons/lu";
 import LeftSidebar from "@/components/LeftSidebar";
 import RightSidebar from "@/components/RightSidebar";
 import Link from "next/link";
+import RecentGroups from "@/components/RecentGroups";
+import SuggestedGroups from "@/components/SuggestedGroups";
+import Events from "@/components/Events";
+import FollowedHashTags from "@/components/FollowedHashTags";
 const AppEditor = dynamic(() => import('@/components/Editor'), {
   ssr: false
 });
@@ -43,7 +47,14 @@ export default function Home() {
   return (
     <main className="container flex gap-4 px-36">
       <div className="py-24 w-[225px] max-w-[225px] min-w-[225px] flex flex-col gap-4">
-        <LeftSidebar />
+        <LeftSidebar>
+        <RecentGroups title={"Recent"} groupName={"JavaScript"} />
+        <div className="mt-5">
+        <SuggestedGroups title={"Groups"} groupName={"JavaScript"} />
+        </div>
+        <Events title={'Events'} />
+        <FollowedHashTags title={'Followed Hashtags'} />
+        </LeftSidebar>
       </div>
       <div className="flex min-h-screen flex-col items-center w-full gap-4 py-24">
 
@@ -107,8 +118,8 @@ export default function Home() {
       </Card>
       <Card className="">
         <div className="flex gap-4 w-full">
-          <Avatar className="h-16 w-16">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <Avatar className="h-16 w-16 rounded-none">
+            <AvatarImage src="/images/PNH-logo-icon.png" alt="@shadcn" />
             <AvatarFallback>MD</AvatarFallback>
           </Avatar>
           <div className="w-full">
