@@ -41,7 +41,7 @@ const AppEditor = dynamic(() => import('@/components/Editor'), {
 
 export default function Home() {
   return (
-    <main className="container flex gap-4">
+    <main className="container flex gap-4 px-36">
       <div className="py-24 w-[225px] max-w-[225px] min-w-[225px] flex flex-col gap-4">
         <LeftSidebar />
       </div>
@@ -114,8 +114,8 @@ export default function Home() {
           <div className="w-full">
             <div>
               <div className="flex items-center justify-between">
-                <Link href={"/user?status=home"}>
-                <p className="font-bold hover:text-[#0a66c2] hover:underline hover:cursor-pointer">AppSierra</p>
+                <Link href={"/company?status=home"}>
+                <p className="font-bold hover:text-[#0a66c2] hover:underline hover:cursor-pointer">Pitch N Hire</p>
                 </Link>
                 <div className="flex items-center gap-4">
                   <div>

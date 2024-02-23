@@ -83,8 +83,8 @@ export default function Profile() {
     };
 
     return (
-        <main className="container px-6">
-            <div className="px-2">
+        <main className="container my-24">
+            <div className="py-4 bg-white px-5 mx-28">
 
                 <div className="flex justify-between items-center my-5">
                     <div className="">

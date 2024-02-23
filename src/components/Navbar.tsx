@@ -22,7 +22,7 @@ export default function Navbar() {
     return (
         <>
             <nav className="border-b shadow-sm fixed top-0 bg-white w-full">
-                <div className="container py-3 flex items-center justify-between">
+                <div className="container py-3 flex items-center justify-between px-36">
                     <Link href={'/'} >
                         <div className="w-fit">
                             <Image src={"/images/PNH-logo.png"} alt="Logo" width={150} height={100} priority />
@@ -36,10 +36,12 @@ export default function Navbar() {
                                     Home
                                 </li>
                             </Link>
+                            <Link href={"/jobs"}>
                             <li className="flex items-center flex-col">
                                 <FaBriefcase size={18}/>
                                 Jobs
                             </li>
+                            </Link>
                             <li className="flex items-center flex-col">
                                 <FaBell size={18}/>
                                 Notifications
