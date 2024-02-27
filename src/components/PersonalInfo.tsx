@@ -1,8 +1,6 @@
-"use client"
-import { usePathname } from "next/navigation";
+"use server"
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import Image from "next/image";
-import Link from "next/link";
 import { LuSend } from "react-icons/lu";
 import { Button } from "./ui/button";
 import { IoCheckmarkSharp } from "react-icons/io5";
@@ -10,8 +8,8 @@ import { PiDotsThreeCircleThin } from "react-icons/pi";
 import { HiPlus } from "react-icons/hi";
 import { IoPersonAddSharp } from "react-icons/io5";
 
-export default function PersonalInfo(props: any) {
-    const pathname = usePathname()
+export default async function PersonalInfo(props: any) {
+    const pathname = ['/company']
     const avatarClasses = pathname.includes("/company") ? "rounded-none" : "rounded-full"
     return (
         <>

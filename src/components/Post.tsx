@@ -1,3 +1,4 @@
+"use server"
 import { AiOutlineComment } from "react-icons/ai";
 import { BiRepost } from "react-icons/bi";
 import { LuDot, LuSend } from "react-icons/lu";
@@ -7,14 +8,13 @@ import Link from "next/link";
 import { BsThreeDots } from "react-icons/bs";
 import { FaGlobeAmericas } from "react-icons/fa";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
-
-
-
-
-export default function Post(props:any) {
-    const pathname = usePathname()
+export default async function Post(props:any) {
+    // const pathname = usePathname()
+    const pathname = ['/company']
+    // const searchParams= useSearchParams()
+    // const status = searchParams.has('/company')
 
     return (
         <>
