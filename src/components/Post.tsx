@@ -8,35 +8,43 @@ import Link from "next/link";
 import { BsThreeDots } from "react-icons/bs";
 import { FaGlobeAmericas } from "react-icons/fa";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 
-export default function Post(props: any) {
-  const { status } = props;
-
-  return (
-    <>
-      <div>
-        <div className="flex gap-4 w-full p-4">
-          <Avatar
-            className={`h-10 w-10 ${
-              status?.includes("/company") ? "rounded-none" : "rounded-full"
-            }`}
-          >
-            <AvatarImage src={props.logo} alt="@shadcn" />
-            <AvatarFallback>MD</AvatarFallback>
-          </Avatar>
-          <div className="w-full">
+export default function Post(props:any) {
+    const {status} = props;
+    return (
+        <>
             <div>
-              <div className="flex items-center justify-between">
-                <Link href={"/user?status=home"}>
-                  <p className="font-bold hover:text-[#0a66c2] hover:underline hover:cursor-pointer">
-                    {props.companyName}
-                  </p>
-                </Link>
-                <div className="flex items-center gap-4">
-                  <div>
-                    <BsThreeDots />
-                  </div>
+                <div className="flex gap-4 w-full p-4">
+                    <Avatar className={`h-10 w-10 ${status.includes('/company') ? "rounded-none" : "rounded-full"}`}>
+                        <AvatarImage src={props.logo}alt="@shadcn" />
+                        <AvatarFallback>MD</AvatarFallback>
+                    </Avatar>
+                    <div className="w-full">
+                        <div>
+                            <div className="flex items-center justify-between">
+                                <Link href={"/user?status=home"}>
+                                    <p className="font-bold hover:text-[#0a66c2] hover:underline hover:cursor-pointer">{props.companyName}</p>
+                                </Link>
+                                <div className="flex items-center gap-4">
+                                    <div>
+                                        <BsThreeDots />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="">
+                                <p className="text-xs text-gray-500">{props.followers} followers</p>
+                                <div className="flex items-center">
+                                    <p className="text-xs text-gray-500">{props.timeOfPost}</p>
+                                    <div>
+                                        <LuDot />
+                                    </div>
+                                    <div>
+                                        <FaGlobeAmericas />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
               </div>
               <div className="">
