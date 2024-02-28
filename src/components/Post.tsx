@@ -7,20 +7,14 @@ import Link from "next/link";
 import { BsThreeDots } from "react-icons/bs";
 import { FaGlobeAmericas } from "react-icons/fa";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-
-
-
-
 
 export default function Post(props:any) {
-    const pathname = usePathname()
-
+    const {status} = props;
     return (
         <>
             <div>
                 <div className="flex gap-4 w-full p-4">
-                    <Avatar className={`h-10 w-10 ${pathname.includes('/company') ? "rounded-none" : "rounded-full"}`}>
+                    <Avatar className={`h-10 w-10 ${status.includes('/company') ? "rounded-none" : "rounded-full"}`}>
                         <AvatarImage src={props.logo}alt="@shadcn" />
                         <AvatarFallback>MD</AvatarFallback>
                     </Avatar>
