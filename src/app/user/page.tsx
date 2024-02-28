@@ -1,4 +1,3 @@
-"use server";
 import About from "@/components/About";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
@@ -9,7 +8,8 @@ import Seo from "@/components/Seo";
 import { Card } from "@/components/ui/card";
 import { FaArrowRight } from "react-icons/fa6";
 
-export default async function User() {
+export default function User({searchParams}:any) {
+  const status = searchParams.status;
 
   return (
     <>
@@ -55,6 +55,7 @@ export default async function User() {
                         content="User's content"
                         comments="13"
                         reposts="25"
+                        status={status}
                       />
                     </Card>
                   </div>
