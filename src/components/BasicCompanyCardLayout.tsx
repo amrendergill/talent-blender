@@ -1,19 +1,19 @@
 import { FaArrowRight } from "react-icons/fa";
 import { Card } from "./ui/card";
-import About from "./About";
 
 export default function BasicCompanyCardLayout({
   title,
   children,
   footer,
-  status,
 }: any) {
+  const pathname = ['/company']
+
   return (
     <>
       <Card className="p-0">
         <div
           className={` ${
-            status.includes("/company") ? "border-b" : "border-none"
+            pathname?.includes("/company") ? "border-b" : "border-none"
           }`}
         >
           <div className="px-7 py-4">
@@ -24,7 +24,7 @@ export default function BasicCompanyCardLayout({
 
         <div
           className={`w-full flex items-center justify-center text-gray-600 font-semibold gap-2 ${
-            status.includes("/company") ? "block" : "hidden"
+            pathname?.includes("/company") ? "block" : "hidden"
           }`}
         >
           <p className="py-4">Show all {footer}</p>

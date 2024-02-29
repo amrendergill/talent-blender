@@ -28,9 +28,8 @@ import CompanyDetails from "@/components/CompanyDetails";
 import RecentJobs from "@/components/RecentJobs";
 import BasicCompanyCardLayout from "@/components/BasicCompanyCardLayout";
 
-export default function Company({ searchParams }: any) {
-  const status = searchParams.status;
-
+export default function Company({searchParams}:any) {
+  const status = searchParams.status; 
   return (
     <>
       <main className="container py-24 flex gap-5 px-36">
@@ -120,7 +119,6 @@ export default function Company({ searchParams }: any) {
                 <BasicCompanyCardLayout
                   title={"About"}
                   footer={"details"}
-                  status={status}
                 >
                   <About
                     about={
@@ -132,7 +130,6 @@ export default function Company({ searchParams }: any) {
                 <BasicCompanyCardLayout
                   title={"Page posts"}
                   footer={"posts"}
-                  status={status}
                 >
                   <div className="flex items-center gap-4 my-3">
                     <Card className="w-[365px] min-w-[365px] max-w-[365px] p-0">
@@ -150,11 +147,9 @@ export default function Company({ searchParams }: any) {
                   </div>
                 </BasicCompanyCardLayout>
                 {/* past events card */}
-                status={status}
                 <BasicCompanyCardLayout
                   title={"Past events"}
                   footer={"events"}
-                  status={status}
                 >
                   <div className="flex gap-4 my-3">
                     <Card className="w-[264px] max-w-[264px]  min-w-[264px] p-0">
@@ -171,7 +166,6 @@ export default function Company({ searchParams }: any) {
                 <BasicCompanyCardLayout
                   title={"People highlights"}
                   footer={"highlights"}
-                  status={status}
                 >
                   <div className="flex items-center gap-4 my-3">
                     <Highlights />
@@ -181,7 +175,6 @@ export default function Company({ searchParams }: any) {
                 <BasicCompanyCardLayout
                   title={"Recent job Openings"}
                   footer={"jobs"}
-                  status={status}
                 >
                   <div className="flex items-center my-3 justify-start">
                     <JobOpeneings
@@ -242,7 +235,6 @@ export default function Company({ searchParams }: any) {
               <BasicCompanyCardLayout
                 title={"Trending coworker content"}
                 footer={"content"}
-                status={status}
               >
                 <div className="flex items-center gap-4 my-3">
                   <Card className="w-[365px] min-w-[365px] max-w-[365px] p-0">
@@ -382,7 +374,6 @@ export default function Company({ searchParams }: any) {
                         content="Company's content"
                         comments="100"
                         reposts="50"
-                        status={status}
                       />
                     </Card>
                   </div>
@@ -395,7 +386,6 @@ export default function Company({ searchParams }: any) {
               <BasicCompanyCardLayout
                 title={"Recently posted jobs"}
                 footer={"jobs"}
-                status={status}
               >
                 <div className="flex items-center gap-4 my-3">
                   <div className="flex items-center gap-4 my-3">

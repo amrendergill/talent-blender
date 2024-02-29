@@ -8,8 +8,7 @@ import Seo from "@/components/Seo";
 import { Card } from "@/components/ui/card";
 import { FaArrowRight } from "react-icons/fa6";
 
-export default function User({searchParams}:any) {
-  const status = searchParams.status;
+export default function User() {
 
   return (
     <>
@@ -38,7 +37,9 @@ export default function User({searchParams}:any) {
                 collegeLogo={"/images/dhiraj-chouhan-_1c5jIwOFUY-unsplash.jpg"}
               />
             </Card>
-            <Card className="p-0">
+            <Card className="px-7 py-4">
+            <h2 className="text-[24px] font-semibold">About</h2>
+
               <About about={"User's bio"} />
             </Card>
             <Card className="p-0">
@@ -55,7 +56,6 @@ export default function User({searchParams}:any) {
                         content="User's content"
                         comments="13"
                         reposts="25"
-                        status={status}
                       />
                     </Card>
                   </div>

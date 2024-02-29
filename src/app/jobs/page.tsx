@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import DefaultInitial from "@/components/DefaultInitials";
 import {
   Card,
@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { appService } from "@/utils/api";
+
 import { useEffect, useMemo, useState } from "react";
 
 const defaultFilters: any = {
@@ -438,3 +439,19 @@ export default function Jobs() {
     </>
   );
 }
+
+// export async function getProps() {
+//   const response = await appService.getJob();
+//   const data = response?.data?.job_data?.data;
+//   const filters = response?.data?.filters[0];
+//   const pagination = {
+//     hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
+//     page: response?.data?.job_data?.page_info?.page,
+//   };
+
+//   return{
+//     props:{data, filters, pagination}
+
+//   }
+  
+// }
