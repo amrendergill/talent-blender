@@ -6,10 +6,11 @@ import { IoCheckmarkSharp } from "react-icons/io5";
 import { PiDotsThreeCircleThin } from "react-icons/pi";
 import { HiPlus } from "react-icons/hi";
 import { IoPersonAddSharp } from "react-icons/io5";
+import { headers } from "next/headers";
 
 export default function PersonalInfo(props: any) {
-const pathname = ['/company']
-
+   const headersList = headers();
+   const pathname = headersList.get("referer") || "";
   return (
     <>
       <div className="relative mb-20">
