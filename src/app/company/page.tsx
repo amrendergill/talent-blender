@@ -50,6 +50,7 @@ export default function Company({searchParams}:any) {
               }
               mutualFollowerName={"Raj"}
               mutalFollowerCount={"15"}
+              status={status}
             />
             <hr />
             <div className="px-4 pt-4">
@@ -116,10 +117,7 @@ export default function Company({searchParams}:any) {
             <>
               <div className="flex flex-col gap-4">
                 {/* about card */}
-                <BasicCompanyCardLayout
-                  title={"About"}
-                  footer={"details"}
-                >
+                <BasicCompanyCardLayout title={"About"} footer={"details"}>
                   <About
                     about={
                       "Our clients are at the centre of everything we do at Appsierra. We were built on the belief that in order to be exceptional at something, you must be incredibly focused. That is why we are committed to providing our customers with the technology-enabled solutions they require to succeed in today's digital economy. Simply put, we help our customers accelerate what matters to them by leveraging our agile engineering skills to deliver human-centric products to market at lightning speed."
@@ -127,10 +125,7 @@ export default function Company({searchParams}:any) {
                   />
                 </BasicCompanyCardLayout>
                 {/* posts card */}
-                <BasicCompanyCardLayout
-                  title={"Page posts"}
-                  footer={"posts"}
-                >
+                <BasicCompanyCardLayout title={"Page posts"} footer={"posts"}>
                   <div className="flex items-center gap-4 my-3">
                     <Card className="w-[365px] min-w-[365px] max-w-[365px] p-0">
                       <Post
@@ -147,10 +142,7 @@ export default function Company({searchParams}:any) {
                   </div>
                 </BasicCompanyCardLayout>
                 {/* past events card */}
-                <BasicCompanyCardLayout
-                  title={"Past events"}
-                  footer={"events"}
-                >
+                <BasicCompanyCardLayout title={"Past events"} footer={"events"}>
                   <div className="flex gap-4 my-3">
                     <Card className="w-[264px] max-w-[264px]  min-w-[264px] p-0">
                       <PastEvent
