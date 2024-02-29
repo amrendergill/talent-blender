@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import DefaultInitial from "@/components/DefaultInitials";
 import {
   Card,
@@ -440,18 +440,37 @@ export default function Jobs() {
   );
 }
 
-// export async function getProps() {
-//   const response = await appService.getJob();
-//   const data = response?.data?.job_data?.data;
-//   const filters = response?.data?.filters[0];
-//   const pagination = {
-//     hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
-//     page: response?.data?.job_data?.page_info?.page,
-//   };
+export async function getProps() {
+  const defaultFilters: any = {};
 
-//   return{
-//     props:{data, filters, pagination}
+  const location = "";
+  const types = "";
+  const department = "";
+  const city = "";
+  const remote = false;
+  const sortBy = "";
+  const gender = "";
+  const pageSize = "6";
+  const page = 1;
 
-//   }
-  
-// }
+  const queryParams = `?page=${page}&page_size=${pageSize}&job_status=published${
+    sortBy?.length > 0 && `&days=${sortBy}`
+  }${department && `&department=${department}`}${city && `&city=${city}`}${
+    types && `&job_type==${types}`
+  }${remote ? `&is_remote=true` : ""}`;
+  const apiUrl = `https://core-dev.pitchnhire.com/careers${queryParams}`;
+
+  const response = await fetch(apiUrl);
+  const data = response?.json();
+  console.log("data", data);
+
+  // const filters = response?.data?.filters[0];
+  // const pagination = {
+  //   hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
+  //   page: response?.data?.job_data?.page_info?.page,
+  // };
+
+  return {
+    props: { data },
+  };
+}

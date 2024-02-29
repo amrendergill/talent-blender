@@ -16,19 +16,23 @@ const axiosInstanceCareer = axios.create({
 
 class AppService {
   async getJob(
-    page:any ="1",
-    pageSize:any ="12",
-    location: any="",
-    department: any="",
-    types: any ="",
-    city: any ="",
-    remote:boolean= false,
-    sortBy:any
-) {
+    page: any = "1",
+    pageSize: any = "12",
+    location: any = "",
+    department: any = "",
+    types: any = "",
+    city: any = "",
+    remote: boolean = false,
+    sortBy: any
+  ) {
     const res = await axiosInstanceCareer.get(
-      `/careers?page=${page}&page_size=${pageSize}&job_status=published${sortBy?.length>0 && `&days=${sortBy}`}${department && `&department=${department}`}${city && `&city=${city}`}${types && `&job_type==${types}`}${remote ? `&is_remote=true` : ''}`,
+      `/careers?page=${page}&page_size=${pageSize}&job_status=published${
+        sortBy?.length > 0 && `&days=${sortBy}`
+      }${department && `&department=${department}`}${city && `&city=${city}`}${
+        types && `&job_type==${types}`
+      }${remote ? `&is_remote=true` : ""}`
     );
-    return res
+    return res;
   }
 }
 
