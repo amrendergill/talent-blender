@@ -21,6 +21,9 @@ import { appService } from "@/utils/api";
 
 import { useEffect, useMemo, useState } from "react";
 
+
+
+
 const defaultFilters: any = {
   gender: "",
   remote: false,
@@ -34,6 +37,10 @@ const initialValue: any = {
   sortBy: "",
 };
 export default function Jobs() {
+  // const [data]:any = await getProps()
+  // console.log(data, "data");
+  
+
   const [data, setData]: any = useState();
   const [filters, setFilters] = useState(defaultFilters);
   const [pagination, setPagination] = useState({
@@ -441,8 +448,26 @@ export default function Jobs() {
 }
 
 // export async function getProps() {
-//   const response = await appService.getJob();
-//   const data = response?.data?.job_data?.data;
+//   const page = 1
+//   const pageSize = 6
+//   const location = ''
+//   const city = ''
+//   const department = ''
+//   const remote = false
+//   const sortBy = ''
+//   const response = await appService.getJob(
+//      page ,
+//    pageSize,
+//      location,
+//      location,
+//      department,
+//      city,
+//      remote,
+//      sortBy
+//   );
+//   const jobs = response?.data?.job_data?.data;
+//   console.log(jobs, "jobs");
+  
 //   const filters = response?.data?.filters[0];
 //   const pagination = {
 //     hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
@@ -450,7 +475,7 @@ export default function Jobs() {
 //   };
 
 //   return{
-//     props:{data, filters, pagination}
+//     props:{jobs}
 
 //   }
   
