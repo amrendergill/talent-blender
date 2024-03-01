@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import DefaultInitial from "@/components/DefaultInitials";
 import {
   Card,
@@ -21,6 +21,9 @@ import { appService } from "@/utils/api";
 
 import { useEffect, useMemo, useState } from "react";
 
+
+
+
 const defaultFilters: any = {
   gender: "",
   remote: false,
@@ -34,6 +37,10 @@ const initialValue: any = {
   sortBy: "",
 };
 export default function Jobs() {
+  // const [data]:any = await getProps()
+  // console.log(data, "data");
+  
+
   const [data, setData]: any = useState();
   const [filters, setFilters] = useState(defaultFilters);
   const [pagination, setPagination] = useState({
@@ -440,37 +447,36 @@ export default function Jobs() {
   );
 }
 
-export async function getProps() {
-  const defaultFilters: any = {};
+// export async function getProps() {
+//   const page = 1
+//   const pageSize = 6
+//   const location = ''
+//   const city = ''
+//   const department = ''
+//   const remote = false
+//   const sortBy = ''
+//   const response = await appService.getJob(
+//      page ,
+//    pageSize,
+//      location,
+//      location,
+//      department,
+//      city,
+//      remote,
+//      sortBy
+//   );
+//   const jobs = response?.data?.job_data?.data;
+//   console.log(jobs, "jobs");
+  
+//   const filters = response?.data?.filters[0];
+//   const pagination = {
+//     hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
+//     page: response?.data?.job_data?.page_info?.page,
+//   };
 
-  const location = "";
-  const types = "";
-  const department = "";
-  const city = "";
-  const remote = false;
-  const sortBy = "";
-  const gender = "";
-  const pageSize = "6";
-  const page = 1;
+//   return{
+//     props:{jobs}
 
-  const queryParams = `?page=${page}&page_size=${pageSize}&job_status=published${
-    sortBy?.length > 0 && `&days=${sortBy}`
-  }${department && `&department=${department}`}${city && `&city=${city}`}${
-    types && `&job_type==${types}`
-  }${remote ? `&is_remote=true` : ""}`;
-  const apiUrl = `https://core-dev.pitchnhire.com/careers${queryParams}`;
-
-  const response = await fetch(apiUrl);
-  const data = response?.json();
-  console.log("data", data);
-
-  // const filters = response?.data?.filters[0];
-  // const pagination = {
-  //   hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
-  //   page: response?.data?.job_data?.page_info?.page,
-  // };
-
-  return {
-    props: { data },
-  };
-}
+//   }
+  
+// }
