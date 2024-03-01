@@ -1,3 +1,4 @@
+"use client"
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import Image from "next/image";
 import { LuSend } from "react-icons/lu";
@@ -6,11 +7,11 @@ import { IoCheckmarkSharp } from "react-icons/io5";
 import { PiDotsThreeCircleThin } from "react-icons/pi";
 import { HiPlus } from "react-icons/hi";
 import { IoPersonAddSharp } from "react-icons/io5";
-import { headers } from "next/headers";
+// import { headers } from "next/headers";
+import { usePathname } from "next/navigation";
 
 export default function PersonalInfo(props: any) {
-   const headersList = headers();
-   const pathname = headersList.get("referer") || "";
+  const pathname = usePathname()
   return (
     <>
       <div className="relative mb-20">
