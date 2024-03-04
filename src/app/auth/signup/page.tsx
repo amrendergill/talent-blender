@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { validationSchema } from "@/validations/userSchema";
+import Link from "next/link";
 
 export default function Signup() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -20,7 +21,7 @@ export default function Signup() {
   const router = useRouter();
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log("formData", formData)
+    console.log("formData", formData);
     try {
       await validationSchema.validate(formData, { abortEarly: false });
       router.push("/");
@@ -44,32 +45,39 @@ export default function Signup() {
         <CardContent>
           <div className="flex flex-col gap-3">
             <div>
-              <Label htmlFor="email">Email or phone number</Label>
+              <div className="flex items-center gap-1">
+                <Label htmlFor="email">Email or phone number</Label>
+                <p className="text-red-600 font-bold">*</p>
+              </div>
               <Input
                 type="email"
                 placeholder="Email"
                 value={formData.email}
-                onChange={(e: any) => 
-                  setFormData((prevData:any) => ({
-                    ...prevData, 
-                    email:e.target.value
+                onChange={(e: any) =>
+                  setFormData((prevData: any) => ({
+                    ...prevData,
+                    email: e.target.value,
                   }))
                 }
               />
               <p className="text-red-500 text-sm">{errors.email}</p>
             </div>
             <div>
+            <div className="flex items-center gap-1">
+
               <Label htmlFor="password">Password (6+ characters)</Label>
+              <p className="text-red-600 font-bold">*</p>
+              </div>
               <Input
                 type="password"
                 placeholder="Password"
                 value={formData.password}
-                onChange={(e: any) => 
-                    setFormData((prevData:any) => ({
-                      ...prevData, 
-                      password:e.target.value
-                    }))
-                  }
+                onChange={(e: any) =>
+                  setFormData((prevData: any) => ({
+                    ...prevData,
+                    password: e.target.value,
+                  }))
+                }
               />
               <p className="text-red-500 text-sm">{errors.password}</p>
             </div>
@@ -126,9 +134,9 @@ export default function Signup() {
           </div>
           <div className="flex text-base items-center justify-center gap-2 my-5 pt-6">
             <p className="">Already on CandidateHub? </p>
-            <a href="#" className="text-[#0a66c2]">
+            <Link href="/auth/signin" className="text-[#0a66c2]">
               Sign in
-            </a>
+            </Link>
           </div>
         </CardContent>
       </Card>
