@@ -50,3 +50,19 @@ export const profileValidationSchema = Yup.object().shape({
   ),
   address: Yup.string().required("Address is required"),
 });
+
+export const jobValidationSchema = Yup.object().shape({
+  companyName: Yup.string().required("Company name is required"),
+  website: Yup.string().url('Invalid URL').required("Website is required"),
+  jobTitle: Yup.string().required("Job title is required"),
+  jobDescription: Yup.string().required("Job description is required"),
+  // jobType: ,
+  // jobCategory: ,
+  email: Yup.string()
+  .email("Invalid email address")
+  .required("Email is required"),
+  // salaryCurreny: ,
+  // maxSalary: ,
+  // minSalary: ,
+
+})
