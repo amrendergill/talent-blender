@@ -1,131 +1,149 @@
-"use client"
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
-    navigationMenuTriggerStyle
+"use client";
 
-} from "@/components/ui/navigation-menu"
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 import { IoHome } from "react-icons/io5";
 import { FaBriefcase } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
+import {
+  Cloud,
+  CreditCard,
+  Github,
+  Keyboard,
+  LifeBuoy,
+  LogOut,
+  Mail,
+  MessageSquare,
+  Plus,
+  PlusCircle,
+  Settings,
+  User,
+  UserPlus,
+  Users,
+} from "lucide-react";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Navbar() {
-    return (
-        <>
-            <nav className="border-b shadow-sm fixed top-0 bg-white w-full">
-                <div className="container py-3 flex items-center justify-between px-36">
-                    <Link href={'/'} >
-                        <div className="w-fit">
-                            <Image src={"/images/PNH-logo.png"} alt="Logo" width={150} height={100} priority />
-                        </div>
+  return (
+    <>
+      <nav className="border-b shadow-sm fixed top-0 bg-white w-full">
+        <div className="container py-3 flex items-center justify-between px-36">
+          <Link href={"/"}>
+            <div className="w-fit">
+              <Image
+                src={"/images/PNH-logo.png"}
+                alt="Logo"
+                width={150}
+                height={100}
+                priority
+              />
+            </div>
+          </Link>
+          <div>
+            <ul className="flex items-center gap-10">
+              <Link href={"/"}>
+                <li className="flex items-center flex-col">
+                  <IoHome size={18} />
+                  Home
+                </li>
+              </Link>
+              <Link href={"/jobs"}>
+                <li className="flex items-center flex-col">
+                  <FaBriefcase size={18} />
+                  Jobs
+                </li>
+              </Link>
+              <li className="flex items-center flex-col">
+                <FaBell size={18} />
+                Notifications
+              </li>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <li className="flex items-center flex-col">
+                    <CgProfile size={20} />
+                    Profile
+                  </li>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <Link href={"/profile?status=basic-details"}>
+                      <DropdownMenuItem>
+                        <User className="mr-2 h-4 w-4" />
+                        <span>Profile</span>
+                        <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                      </DropdownMenuItem>
                     </Link>
-                    <div>
-                        <ul className="flex items-center gap-10">
-                            <Link href={'/'} >
-                                <li className="flex items-center flex-col">
-                                    <IoHome size={18} />
-                                    Home
-                                </li>
-                            </Link>
-                            <Link href={"/jobs"}>
-                            <li className="flex items-center flex-col">
-                                <FaBriefcase size={18}/>
-                                Jobs
-                            </li>
-                            </Link>
-                            <li className="flex items-center flex-col">
-                                <FaBell size={18}/>
-                                Notifications
-                            </li>
-                            <Link href={'/profile?status=basic-details'}>
-                                <li className="flex items-center flex-col">
-                                    <CgProfile size={20}/>
-                                    Profile
-                                </li>
-                            </Link>
-                        </ul>
-                    </div>
-                </div>
-
-            </nav>
-
-        </>
-        // <NavigationMenu className="">
-        //     <NavigationMenuList className="flex items-center">
-        //         <NavigationMenuItem className="flex items-center justify-start">
-        //             <Link href="/docs" legacyBehavior passHref className="p-0">
-        //                 <NavigationMenuLink  >
-        //                     <div className="flex items-center gap-3">
-        //                         <Image src={'/images/PNH-logo.png'} alt="pnhLogo" width={200} height={200} priority />
-        //                     </div>
-        //                 </NavigationMenuLink>
-        //             </Link>
-        //         </NavigationMenuItem>
-        //         <NavigationMenuItem>
-        //             <Link href="/docs" legacyBehavior passHref className="p-0">
-        //                 <NavigationMenuLink  >
-        //                     <div className="flex items-center gap-3">
-        //                         <Image src={'../../svg/home.svg'} alt="home" width={16} height={16} priority />
-        //                         <p className="p-0">
-        //                             Home
-        //                         </p>
-
-        //                     </div>
-        //                 </NavigationMenuLink>
-        //             </Link>
-        //         </NavigationMenuItem>
-        //         <NavigationMenuItem>
-        //             <Link href="/docs" legacyBehavior passHref className="p-0">
-        //                 <NavigationMenuLink  >
-        //                     <div className="flex items-center gap-3">
-        //                         <Image src={'../../svg/home.svg'} alt="home" width={16} height={16} priority />
-        //                         <p className="p-0">
-        //                             About
-
-        //                         </p>
-
-        //                     </div>
-        //                 </NavigationMenuLink>
-        //             </Link>
-        //         </NavigationMenuItem>
-        //         <NavigationMenuItem>
-        //             <Link href="/docs" legacyBehavior passHref className="p-0">
-        //                 <NavigationMenuLink  >
-        //                     <div className="flex items-center gap-3">
-        //                         <Image src={'../../svg/home.svg'} alt="home" width={16} height={16} priority />
-        //                         <p className="p-0">
-        //                             Notifications
-
-        //                         </p>
-
-        //                     </div>
-        //                 </NavigationMenuLink>
-        //             </Link>
-        //         </NavigationMenuItem>
-        //         <NavigationMenuItem>
-        //             <Link href="/docs" legacyBehavior passHref className="p-0">
-        //                 <NavigationMenuLink  >
-        //                     <div className="flex items-center gap-3">
-        //                         <Image src={'../../svg/home.svg'} alt="home" width={16} height={16} priority />
-        //                         <p className="p-0">
-        //                             Profile
-
-        //                         </p>
-
-        //                     </div>
-        //                 </NavigationMenuLink>
-        //             </Link>
-        //         </NavigationMenuItem>
-        //     </NavigationMenuList>
-        // </NavigationMenu>
-    )
+                    <DropdownMenuItem>
+                      <CreditCard className="mr-2 h-4 w-4" />
+                      <span>Billing</span>
+                      <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Settings className="mr-2 h-4 w-4" />
+                      <span>Settings</span>
+                      <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuSub>
+                      <DropdownMenuSubTrigger>
+                        <UserPlus className="mr-2 h-4 w-4" />
+                        <span>Invite users</span>
+                      </DropdownMenuSubTrigger>
+                      <DropdownMenuPortal>
+                        <DropdownMenuSubContent>
+                          <DropdownMenuItem>
+                            <Mail className="mr-2 h-4 w-4" />
+                            <span>Email</span>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem>
+                            <MessageSquare className="mr-2 h-4 w-4" />
+                            <span>Message</span>
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem>
+                            <PlusCircle className="mr-2 h-4 w-4" />
+                            <span>More...</span>
+                          </DropdownMenuItem>
+                        </DropdownMenuSubContent>
+                      </DropdownMenuPortal>
+                    </DropdownMenuSub>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <LifeBuoy className="mr-2 h-4 w-4" />
+                    <span>Support</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
 }
