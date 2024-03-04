@@ -87,18 +87,18 @@ export default function Navbar() {
                       <DropdownMenuItem>
                         <User className="mr-2 h-4 w-4" />
                         <span>Profile</span>
-                        <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                        
                       </DropdownMenuItem>
                     </Link>
                     <DropdownMenuItem>
                       <CreditCard className="mr-2 h-4 w-4" />
                       <span>Billing</span>
-                      <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                      
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                       <Settings className="mr-2 h-4 w-4" />
                       <span>Settings</span>
-                      <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                    
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
@@ -136,7 +136,7 @@ export default function Navbar() {
                   <DropdownMenuItem>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Log out</span>
-                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                   
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
