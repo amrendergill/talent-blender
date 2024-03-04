@@ -218,7 +218,10 @@ export default function Profile() {
                   </div>
                   <div className="flex items-center w-full gap-5">
                     <div className="grid w-full max-w-sm items-center gap-1.5 ">
-                      <Label htmlFor="fullName">Full Name</Label>
+                      <div className="flex items-center gap-1">
+                        <Label htmlFor="fullName">Full Name</Label>
+                        <p className="text-red-600 font-bold">*</p>
+                      </div>
                       <Input
                         type="text"
                         id="fullName"
@@ -234,7 +237,10 @@ export default function Profile() {
                       <p className="text-red-500 text-sm">{errors.fullName}</p>
                     </div>
                     <div className="grid w-full max-w-sm items-center gap-1.5">
-                      <Label htmlFor="email">Email</Label>
+                      <div className="flex items-center gap-1">
+                        <Label htmlFor="email">Email</Label>
+                        <p className="text-red-600 font-bold">*</p>
+                      </div>
                       <Input
                         type="email"
                         id="email"
@@ -252,7 +258,10 @@ export default function Profile() {
                 </div>
                 <div className="my-6 flex items-center justify-between">
                   <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="mobile">Mobile</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="mobile">Mobile</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Input
                       type="tel"
                       id="mobile"
@@ -267,7 +276,10 @@ export default function Profile() {
                     <p className="text-red-500 text-sm">{errors.mobile}</p>
                   </div>
                   <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="mobile">Date of Birth</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="mobile">Date of Birth</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Input
                       type="date"
                       id="mobile"
@@ -282,7 +294,10 @@ export default function Profile() {
                     <p className="text-red-500 text-sm">{errors.dateOfBirth}</p>
                   </div>
                   <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="gender">Gender</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="gender">Gender</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Input
                       type="text"
                       id="gender"
@@ -300,7 +315,10 @@ export default function Profile() {
                 </div>
                 <div className="flex flex-col gap-6 w-full">
                   <div className="grid w-full gap-1.5">
-                    <Label htmlFor="message">Profile Summary</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="message">Profile Summary</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Textarea
                       id="message"
                       value={formData?.profileSummary}
@@ -316,7 +334,10 @@ export default function Profile() {
                     </p>
                   </div>
                   <div className="grid w-full max-w-full items-center gap-1.5">
-                    <Label htmlFor="skills">Skills</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="skills">Skills</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Input
                       type="text"
                       id="skills"
@@ -329,6 +350,7 @@ export default function Profile() {
                         }))
                       }
                     />
+                    <p className="text-red-500 text-sm">{errors.skills}</p>
                   </div>
                   <div className="grid w-full max-w-full items-center gap-1.5">
                     <Label htmlFor="workLink">Work link/Portfolio</Label>
@@ -346,7 +368,10 @@ export default function Profile() {
                     />
                   </div>
                   <div className="grid w-full max-w-full items-center gap-1.5">
-                    <Label htmlFor="profileURL">Social Profile URL</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="profileURL">Social Profile URL</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Input
                       type="text"
                       id="profileURL"
@@ -362,9 +387,12 @@ export default function Profile() {
                     <p className="text-red-500 text-sm">{errors.socialUrl}</p>
                   </div>
                 </div>
-                <div className="my-6 flex items-center justify-between">
+                <div className="my-6 flex items-center gap-4">
                   <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="currentSalary">Current Salary</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="currentSalary">Current Salary</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Input
                       type="number"
                       id="currentSalary"
@@ -382,7 +410,10 @@ export default function Profile() {
                     </p>
                   </div>
                   <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="currency">Salary Currency</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="currency">Salary Currency</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Select>
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Select" />
@@ -399,7 +430,10 @@ export default function Profile() {
                     </Select>
                   </div>
                   <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="expectedSalary">Expected Salary</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="expectedSalary">Expected Salary</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Input
                       type="number"
                       id="expectedSalary"
@@ -417,9 +451,14 @@ export default function Profile() {
                     </p>
                   </div>
                 </div>
-                <div className="my-6 flex items-center justify-between gap-3">
+                <div className="my-6 flex items-center gap-4">
                   <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="currentSalary">Notice Period (Days)</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="currentSalary">
+                        Notice Period (Days)
+                      </Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Input
                       type="number"
                       id="currentSalary"
@@ -437,7 +476,10 @@ export default function Profile() {
                     </p>
                   </div>
                   <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="currency">Current Company</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="currency">Current Company</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Input
                       type="text"
                       id="currency"
@@ -455,9 +497,12 @@ export default function Profile() {
                     </p>
                   </div>
                   <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="expectedSalary">
-                      Total Experience(Years)
-                    </Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="expectedSalary">
+                        Total Experience(Years)
+                      </Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Input
                       type="number"
                       id="expectedSalary"
@@ -482,7 +527,10 @@ export default function Profile() {
                   </div>
                   <div className="my-6 flex items-center justify-between">
                     <div className="grid w-[210px] max-w-[210px] items-center gap-1.5">
-                      <Label htmlFor="currentSalary">Country</Label>
+                      <div className="flex items-center gap-1">
+                        <Label htmlFor="currentSalary">Country</Label>
+                        <p className="text-red-600 font-bold">*</p>
+                      </div>
                       <Select>
                         <SelectTrigger className="w-100">
                           <SelectValue placeholder="Select" />
@@ -499,7 +547,10 @@ export default function Profile() {
                       </Select>
                     </div>
                     <div className="grid w-[210px] max-w-[210px] items-center gap-1.5">
-                      <Label htmlFor="currency">State</Label>
+                      <div className="flex items-center gap-1">
+                        <Label htmlFor="currency">State</Label>
+                        <p className="text-red-600 font-bold">*</p>
+                      </div>
                       <Select>
                         <SelectTrigger className="w-100">
                           <SelectValue placeholder="Select" />
@@ -516,7 +567,10 @@ export default function Profile() {
                       </Select>
                     </div>
                     <div className="grid w-[210px] max-w-[210px]  items-center gap-1.5">
-                      <Label htmlFor="city">City</Label>
+                      <div className="flex items-center gap-1">
+                        <Label htmlFor="city">City</Label>
+                        <p className="text-red-600 font-bold">*</p>
+                      </div>
                       <Input
                         type="text"
                         id="city"
@@ -532,7 +586,10 @@ export default function Profile() {
                       <p className="text-red-500 text-sm">{errors.city}</p>
                     </div>
                     <div className="grid w-[210px] max-w-[210px]  items-center gap-1.5">
-                      <Label htmlFor="pinCode">Pincode</Label>
+                      <div className="flex items-center gap-1">
+                        <Label htmlFor="pinCode">Pincode</Label>
+                        <p className="text-red-600 font-bold">*</p>
+                      </div>
                       <Input
                         type="number"
                         id="pinCode"
@@ -549,7 +606,10 @@ export default function Profile() {
                     </div>
                   </div>
                   <div className="grid w-full gap-1.5">
-                    <Label htmlFor="address">Address</Label>
+                    <div className="flex items-center gap-1">
+                      <Label htmlFor="address">Address</Label>
+                      <p className="text-red-600 font-bold">*</p>
+                    </div>
                     <Textarea
                       id="address"
                       value={formData?.address}
@@ -570,7 +630,10 @@ export default function Profile() {
                   </div>
                   <div className="my-6 flex items-center justify-between">
                     <div className="grid w-[210px] max-w-[210px] items-center gap-1.5">
-                      <Label htmlFor="currentSalary">Country</Label>
+                      <div className="flex items-center gap-1">
+                        <Label htmlFor="currentSalary">Country</Label>
+                        <p className="text-red-600 font-bold">*</p>
+                      </div>
                       <Select>
                         <SelectTrigger className="w-100">
                           <SelectValue placeholder="Select" />
@@ -587,7 +650,10 @@ export default function Profile() {
                       </Select>
                     </div>
                     <div className="grid w-[210px] max-w-[210px] items-center gap-1.5">
-                      <Label htmlFor="currency">State</Label>
+                      <div className="flex items-center gap-1">
+                        <Label htmlFor="currency">State</Label>
+                        <p className="text-red-600 font-bold">*</p>
+                      </div>
                       <Select>
                         <SelectTrigger className="w-100">
                           <SelectValue placeholder="Select" />
@@ -604,7 +670,10 @@ export default function Profile() {
                       </Select>
                     </div>
                     <div className="grid w-[210px] max-w-[210px]  items-center gap-1.5">
-                      <Label htmlFor="city">City</Label>
+                      <div className="flex items-center gap-1">
+                        <Label htmlFor="city">City</Label>
+                        <p className="text-red-600 font-bold">*</p>
+                      </div>
                       <Input
                         type="text"
                         id="city"
@@ -619,8 +688,11 @@ export default function Profile() {
                       />
                       <p className="text-red-500 text-sm">{errors.city}</p>
                     </div>
-                    <div className="grid w-[210px] max-w-[210px]  items-center gap-1.5">
-                      <Label htmlFor="pinCode">Pincode</Label>
+                    <div className="grid w-[210px] max-w-[210px] items-center gap-1.5">
+                      <div className="flex items-center gap-1">
+                        <Label htmlFor="pinCode">Pincode</Label>
+                        <p className="text-red-600 font-bold">*</p>
+                      </div>
                       <Input
                         type="number"
                         id="pinCode"
@@ -637,7 +709,11 @@ export default function Profile() {
                     </div>
                   </div>
                   <div className="grid w-full gap-1.5">
+                  <div className="flex items-center gap-1">
+
                     <Label htmlFor="address">Address</Label>
+                    <p className="text-red-600 font-bold">*</p>
+                      </div>
                     <Textarea
                       id="address"
                       value={formData?.address}
