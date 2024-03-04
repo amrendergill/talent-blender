@@ -14,7 +14,7 @@ import { Label } from "@/components/ui/label";
 import { validationSchema } from "@/validations/userSchema";
 import { useRouter } from "next/navigation";
 
-export default function Signin() {
+export default function RecruiterSignin() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
   const router = useRouter();
@@ -38,7 +38,7 @@ export default function Signin() {
         <Card className="w-[352px]">
           <CardHeader>
             <CardTitle className="text-[32px] font-semibold text-[rgba(0,0,0,0.9)]">
-              Sign in
+              Recruiter's Sign in
             </CardTitle>
             <CardDescription>
               Stay updated on your professional world
