@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { validationSchema } from "@/validations/userSchema";
+import Link from "next/link";
 
 export default function Signup() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -133,9 +134,9 @@ export default function Signup() {
           </div>
           <div className="flex text-base items-center justify-center gap-2 my-5 pt-6">
             <p className="">Already on CandidateHub? </p>
-            <a href="#" className="text-[#0a66c2]">
+            <Link href="/auth/signin" className="text-[#0a66c2]">
               Sign in
-            </a>
+            </Link>
           </div>
         </CardContent>
       </Card>
