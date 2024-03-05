@@ -231,7 +231,7 @@ export default function RecruiterDashBoard() {
             </div>
             <div>
               <ResponsiveContainer width="100%" height="100%">
-                <div className="h-[300px] w-full mt-4">
+                <div className="flex justify-center items-center mt-4">
                   <BarChart
                     width={1050}
                     height={300}
