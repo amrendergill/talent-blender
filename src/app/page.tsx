@@ -45,7 +45,7 @@ const AppEditor = dynamic(() => import('@/components/Editor'), {
 
 export default function Home() {
   return (
-    <main className="container flex gap-4 px-36">
+    <main className=" flex gap-4">
       <div className="py-24 w-[225px] max-w-[225px] min-w-[225px] flex flex-col gap-4">
         <LeftSidebar>
         <RecentGroups title={"Recent"} groupName={"JavaScript"} />
