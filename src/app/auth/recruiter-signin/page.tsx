@@ -23,7 +23,7 @@ export default function RecruiterSignin() {
     console.log("formData", formData);
     try {
       await validationSchema.validate(formData, { abortEarly: false });
-      router.push("/");
+      router.push("/recruiter");
     } catch (ValidationError: any) {
       const newErrors: any = {};
       ValidationError.inner.forEach((error: any) => {
@@ -33,7 +33,7 @@ export default function RecruiterSignin() {
     }
   };
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex items-center justify-center py-24 px-96">
       <div>
         <Card className="w-[352px]">
           <CardHeader>

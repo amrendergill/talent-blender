@@ -15,6 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { jobValidationSchema } from "@/validations/userSchema";
 import { useState } from "react";
 
+
 export default function CreateJob() {
   const [formData, setFormData] = useState({
     companyName: "",
@@ -47,14 +48,14 @@ export default function CreateJob() {
   };
   return (
     <>
-      <main className="p-24 bg-white">
-        <div className="mx-[308px] ">
-          <h2 className="font-medium text-xl">Company Details</h2>
+      <main className="">
+        <div className="p-5">
+          {/* <h2 className="font-medium text-xl">Company Details</h2>
           <p className="text-sm font-regular text-gray-600 mt-2">
             Tell us more about your company.{" "}
-          </p>
+          </p> */}
 
-          <div className="flex items-center w-full gap-5 my-5">
+          {/* <div className="flex items-center w-full gap-5 my-5">
             <div className="grid w-full max-w-sm items-center gap-1.5 ">
               <div className="flex items-center gap-1">
                 <Label htmlFor="companyName">Company Name</Label>
@@ -93,8 +94,8 @@ export default function CreateJob() {
               />
               <p className="text-red-500 text-sm">{errors.website}</p>
             </div>
-          </div>
-          <div className="mt-10">
+          </div> */}
+          <div className="">
             <div>
               <h2 className="font-medium text-xl">Job Details</h2>
               <p className="text-sm font-regular text-gray-600 mt-2">
@@ -140,7 +141,7 @@ export default function CreateJob() {
                 <p className="text-red-500 text-sm">{errors.jobDescription}</p>
               </div>
               <div className="flex items-center gap-4">
-                <div className="grid w-full max-w-sm items-center gap-1.5">
+                <div className="grid w-full max-w-full items-center gap-1.5">
                   <div className="flex items-center gap-1">
                     <Label htmlFor="jobType">Job Type</Label>
                     <p className="text-red-600 font-bold">*</p>
@@ -158,7 +159,7 @@ export default function CreateJob() {
                   </Select>
                   <p className="text-red-500 text-sm">{errors.jobType}</p>
                 </div>
-                <div className="grid w-full max-w-sm items-center gap-1.5">
+                <div className="grid w-full max-w-full items-center gap-1.5">
                   <div className="flex items-center gap-1">
                     <Label htmlFor="jobCategory">Job Category</Label>
                     <p className="text-red-600 font-bold">*</p>
@@ -187,7 +188,7 @@ export default function CreateJob() {
                   </Select>
                   <p className="text-red-500 text-sm">{errors.jobType}</p>
                 </div>
-                <div className="grid w-full max-w-sm items-center gap-1.5">
+                {/* <div className="grid w-full max-w-sm items-center gap-1.5">
                   <div className="flex items-center gap-1">
                     <Label htmlFor="email">Email</Label>
                     <p className="text-red-600 font-bold">*</p>
@@ -205,7 +206,7 @@ export default function CreateJob() {
                     }
                   />
                   <p className="text-red-500 text-sm">{errors.email}</p>
-                </div>
+                </div> */}
               </div>
               <div className="flex items-center gap-4">
                 <div className="grid w-full max-w-sm items-center gap-1.5">

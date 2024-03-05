@@ -21,9 +21,6 @@ import { appService } from "@/utils/api";
 
 import { useEffect, useMemo, useState } from "react";
 
-
-
-
 const defaultFilters: any = {
   gender: "",
   remote: false,
@@ -82,8 +79,8 @@ export default function Jobs() {
 
   return (
     <>
-      <main className="container my-24 px-36 ">
-        <div className="bg-white py-4 px-5">
+      <main className="">
+        <div className="bg-white p-5">
           <div className="font_medium text-[18px] mb-4 lg:mb-[50]  text-nblack ">
             Explore the <span className="text-blue">Unlimited Jobs with</span>{" "}
             the Best Remote Work Job Sites!

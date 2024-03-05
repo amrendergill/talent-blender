@@ -158,8 +158,8 @@ export default function RecruiterDashBoard() {
         setActiveIndex(index);
      }
   return (
-    <main className="container py-24  space-y-5 px-36">
-      <div className="w-full flex  gap-4">
+    <main className="p-5 space-y-5">
+      <div className="flex gap-4">
         <Card className="w-[352px]">
           <CardHeader>
             <CardTitle className="text-[20px] font-semibold text-[rgba(0,0,0,0.9)]">
