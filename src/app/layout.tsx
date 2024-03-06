@@ -34,7 +34,7 @@ export default function RootLayout({
             <SideNavbar />
           </div>
 
-          <div className="w-[1000px] max-w-[1000px] min-w-[1000px] my-24 bg-white">
+          <div className="w-[1000px] max-w-[1000px] min-w-[1000px] my-24">
             {children}
           </div>
         </div>

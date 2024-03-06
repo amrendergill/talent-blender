@@ -48,7 +48,7 @@ export default function CreateJob() {
   };
   return (
     <>
-      <main className="">
+      <main className="bg-white">
         <div className="p-5">
           {/* <h2 className="font-medium text-xl">Company Details</h2>
           <p className="text-sm font-regular text-gray-600 mt-2">

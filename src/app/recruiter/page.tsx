@@ -158,7 +158,7 @@ export default function RecruiterDashBoard() {
         setActiveIndex(index);
      }
   return (
-    <main className="p-5 space-y-5">
+    <main className=" space-y-5">
       <div className="flex gap-4">
         <Card className="w-[352px]">
           <CardHeader>

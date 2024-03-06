@@ -45,8 +45,8 @@ const AppEditor = dynamic(() => import('@/components/Editor'), {
 
 export default function Home() {
   return (
-    <main className=" flex gap-4">
-      <div className="py-24 w-[225px] max-w-[225px] min-w-[225px] flex flex-col gap-4">
+    <main className="flex gap-4 bg-transparent">
+      <div className="w-[225px] max-w-[225px] min-w-[225px] flex flex-col gap-4">
         <LeftSidebar>
         <RecentGroups title={"Recent"} groupName={"JavaScript"} />
         <div className="mt-5">
@@ -56,7 +56,7 @@ export default function Home() {
         <FollowedHashTags title={'Followed Hashtags'} />
         </LeftSidebar>
       </div>
-      <div className="flex min-h-screen flex-col items-center w-full gap-4 py-24">
+      <div className="flex min-h-screen flex-col items-center w-full gap-4">
 
       <Card className="w-full">
         <div className="flex items-center gap-4 w-full">
@@ -105,7 +105,7 @@ export default function Home() {
 
           </div>
         </div>
-        <CardFooter className="mt-6 p-0">
+        <CardFooter className="p-0">
           <div className="w-full">
             <ul className="flex items-center justify-between">
               <li className="text-sm font-semibold text-gray-500">Event</li>
@@ -229,7 +229,7 @@ export default function Home() {
       </Card>
       </div>
 
-<div className="py-24 w-[300px] max-w-[300px] min-w-[300px] flex flex-col gap-4">
+<div className="w-[300px] max-w-[300px] min-w-[300px] flex flex-col gap-4">
  <RightSidebar/>
 </div>
     </main>
