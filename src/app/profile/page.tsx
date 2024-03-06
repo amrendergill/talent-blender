@@ -122,8 +122,8 @@ export default function Profile() {
     }
   };
   return (
-    <main className="bg-white ">
-      <div className="py-4 px-5">
+    <main className="">
+      <div className="py-4 bg-white px-5 ">
         <div className="flex justify-between items-center my-5">
           <div className="">Update Profile</div>
           <Button className="" variant={"outline"}>

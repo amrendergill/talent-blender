@@ -13,7 +13,7 @@ export default function User() {
   return (
     <>
       
-        <main className="flex gap-5">
+        <main className=" flex gap-5 ">
           <div className="w-full flex flex-col gap-4">
             <Card className="p-0">
               <PersonalInfo

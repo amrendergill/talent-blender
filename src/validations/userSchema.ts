@@ -18,7 +18,9 @@ export const profileValidationSchema = Yup.object().shape({
     .email("Invalid email address")
     .required("Email is required"),
   mobile: Yup.string().matches(phoneRegExp, "Phone number is not valid"),
-  dateOfBirth: Yup.date().typeError('Date of birth must be valid date').required("Date of birth is required"),
+  dateOfBirth: Yup.date()
+    .typeError("Date of birth must be valid date")
+    .required("Date of birth is required"),
   gender: Yup.string().required("Gender is required"),
   profileSummary: Yup.string().required("Profile summary is required"),
   skills: Yup.string().required("Skills are required"),
@@ -38,8 +40,10 @@ export const profileValidationSchema = Yup.object().shape({
     .positive("Must be greater than 0")
     .required("Notice period is required"),
   currentCompany: Yup.string().required("Current company is required"),
-  yearsOfExperience: Yup.number().typeError('Years of experience must be a number')
-  .positive("Must be greater than 0").required("Years of experience is required"),
+  yearsOfExperience: Yup.number()
+    .typeError("Years of experience must be a number")
+    .positive("Must be greater than 0")
+    .required("Years of experience is required"),
   country: Yup.array().required("Country is required"),
   state: Yup.array().required("State is required"),
   city: Yup.string().required("City is required"),
@@ -51,18 +55,35 @@ export const profileValidationSchema = Yup.object().shape({
   address: Yup.string().required("Address is required"),
 });
 
+export const jobTypes: any = ["Full-time", "Part-time"];
 export const jobValidationSchema = Yup.object().shape({
-  companyName: Yup.string().required("Company name is required"),
-  website: Yup.string().url('Invalid URL').required("Website is required"),
+  // companyName: Yup.string().required("Company name is required"),
+  // website: Yup.string().url('Invalid URL').required("Website is required"),
   jobTitle: Yup.string().required("Job title is required"),
   jobDescription: Yup.string().required("Job description is required"),
-  // jobType: ,
-  // jobCategory: ,
-  email: Yup.string()
-  .email("Invalid email address")
-  .required("Email is required"),
+  jobType: Yup.string()
+    .required("Please select a job type")
+    .oneOf(jobTypes, "Invalid option selected"),
+  jobCategory: Yup.string().required("Please select a job category"),
+  // email: Yup.string()
+  // .email("Invalid email address")
+  // .required("Email is required"),
   // salaryCurreny: ,
   // maxSalary: ,
   // minSalary: ,
+});
 
-})
+export const companyProfileValidationSchema = Yup.object().shape({
+  companyName: Yup.string().required("Company name is required"),
+  website: Yup.string().url("Invalid URL").required("Website is required"),
+  tagline: Yup.string().required("Tagline is required"),
+  about: Yup.string().required("About is required"),
+  industry: Yup.string().required("Industry is required"),
+  headquarter: Yup.string().required("Headquarter is required"),
+  companySize: Yup.number()
+    .typeError("Company size must be a number")
+    .required("Company size is required"),
+  specialities: Yup.string().required("Specialities is required"),
+  logo: Yup.mixed().required("Logo is required"),
+  coverImage: Yup.mixed().required("Cover image is required"),
+});

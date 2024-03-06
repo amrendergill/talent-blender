@@ -79,7 +79,7 @@ export default function JobApplication() {
   return (
     <>
       <main className="bg-white">
-        <div className="">
+        <div className="p-5">
           <Table>
             <TableCaption>A list of your recent jobData.</TableCaption>
             <TableHeader>
