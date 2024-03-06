@@ -13,7 +13,7 @@ export default function User() {
   return (
     <>
       
-        <main className="container py-24 flex gap-5 px-36">
+        <main className=" flex gap-5 ">
           <div className="w-full flex flex-col gap-4">
             <Card className="p-0">
               <PersonalInfo

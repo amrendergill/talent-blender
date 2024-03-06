@@ -40,8 +40,8 @@ import {
 
 export default function Navbar() {
   return (
-    <>
-      <nav className="border-b shadow-sm fixed top-0 bg-white w-full">
+    <header className="border-b shadow-sm h-[70px] sticky top-0 bg-white w-full z-[100]">
+      <nav>
         <div className="container py-3 flex items-center justify-between px-36">
           <Link href={"/"}>
             <div className="w-fit">
@@ -51,6 +51,7 @@ export default function Navbar() {
                 width={150}
                 height={100}
                 priority
+                className="z-50 object-fit"
               />
             </div>
           </Link>
@@ -87,18 +88,15 @@ export default function Navbar() {
                       <DropdownMenuItem>
                         <User className="mr-2 h-4 w-4" />
                         <span>Profile</span>
-                        
                       </DropdownMenuItem>
                     </Link>
                     <DropdownMenuItem>
                       <CreditCard className="mr-2 h-4 w-4" />
                       <span>Billing</span>
-                      
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                       <Settings className="mr-2 h-4 w-4" />
                       <span>Settings</span>
-                    
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
@@ -136,7 +134,6 @@ export default function Navbar() {
                   <DropdownMenuItem>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Log out</span>
-                   
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -144,6 +141,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-    </>
+    </header>
   );
 }

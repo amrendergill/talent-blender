@@ -23,6 +23,16 @@ import { format } from "date-fns";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
  const data = [
    { month: "Jan",Viewed:20 , Applied: 10 },
@@ -158,9 +168,9 @@ export default function RecruiterDashBoard() {
         setActiveIndex(index);
      }
   return (
-    <main className="p-5 space-y-5">
+    <main className=" space-y-5">
       <div className="flex gap-4">
-        <Card className="w-[352px]">
+        <Card className="w-full">
           <CardHeader>
             <CardTitle className="text-[20px] font-semibold text-[rgba(0,0,0,0.9)]">
               Total Employees
@@ -169,16 +179,16 @@ export default function RecruiterDashBoard() {
             <p className="text-sm text-[#949494]">Employee</p>
           </CardHeader>
         </Card>
-        <Card className="w-[352px]">
+        <Card className="w-full">
           <CardHeader>
             <CardTitle className="text-[20px] font-semibold text-[rgba(0,0,0,0.9)]">
               Job Viewed
             </CardTitle>
             <CardContent className="text-[32px] font-bold">3,342</CardContent>
-            <p className="text-sm text-[#949494]">Vieweders</p>
+            <p className="text-sm text-[#949494]">Viewers</p>
           </CardHeader>
         </Card>
-        <Card className="w-[352px]">
+        <Card className="w-full">
           <CardHeader>
             <CardTitle className="text-[20px] font-semibold text-[rgba(0,0,0,0.9)]">
               Job Applied
@@ -187,7 +197,7 @@ export default function RecruiterDashBoard() {
             <p className="text-sm text-[#949494]">Applicants</p>
           </CardHeader>
         </Card>
-        <Card className="w-[352px]">
+        <Card className="w-full">
           <CardHeader>
             <CardTitle className="text-[20px] font-semibold text-[rgba(0,0,0,0.9)]">
               Resigned Employees
@@ -233,7 +243,7 @@ export default function RecruiterDashBoard() {
               <ResponsiveContainer width="100%" height="100%">
                 <div className="flex justify-center items-center mt-4">
                   <BarChart
-                    width={1050}
+                    width={800}
                     height={300}
                     data={data}
                     margin={{
@@ -266,66 +276,40 @@ export default function RecruiterDashBoard() {
                   Employee Status
                 </CardTitle>
               </div>
-              <table className="w-full   ">
-                <thead className="border-b ">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="text-xs whitespace-nowrap font-medium text-[#6B6B6B] pl-4  py-4 text-left"
-                    >
-                      Employee Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-xs whitespace-nowrap font-medium text-[#6B6B6B] px-14 py-4 text-left"
-                    >
-                      Department
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-xs whitespace-nowrap font-medium text-[#6B6B6B] px-10 py-4 text-left"
-                    >
-                      Age
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-xs whitespace-nowrap font-medium text-[#6B6B6B] px-10 py-4 text-left"
-                    >
-                      Discipline
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-xs whitespace-nowrap font-medium text-[#6B6B6B] px-10 py-4 text-left"
-                    >
-                      Status
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody className="border-t-[0.1px]  rounded-[5px]">
-                  {userData?.map((item: any, index: number) => {
-                    return (
-                      <tr key={index} className=" px-5 ml-10  ">
-                        <td className=" py-4 px-4  max-w-[150px] break-all text-xs font-semibold whitespace-nowrap text-left text-[#0C0C0F] capitalize ">
-                          {item?.name}{" "}
-                        </td>
-                        <td className="text-xs font-semibold whitespace-nowrap text-[#0C0C0F] text-left  px-14 py-4 max-w-[450px] break-all">
-                          {item?.department}
-                        </td>
-                        <td className="text-xs font-semibold whitespace-nowrap text-[#0C0C0F] capitalize text-left  max-w-[150px] break-all  px-10 py-4 ">
-                          {item?.age}
-                        </td>
-                        <td className="text-xs font-semibold whitespace-nowrap text-[#0C0C0F] capitalize text-left  max-w-[150px] break-all  px-10 py-4 ">
+            
+              <Table>
+                <TableCaption>A list of your emloyee data.</TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[100px]">Employee Name</TableHead>
+                    <TableHead> Department</TableHead>
+                    <TableHead>Age</TableHead>
+                    <TableHead className="text-center">Discipline</TableHead>
+                    <TableHead className="text-center">Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {userData.map((item) => (
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        {item?.name}
+                      </TableCell>
+                      <TableCell>{item?.department}</TableCell>
+                      <TableCell className="text-left">{item?.age}</TableCell>
+                      <TableCell>
+                        <div className="flex items-center justify-center gap-5">
                           {item?.discipline}
-                        </td>
-                        <td className="text-xs font-semibold whitespace-nowrap text-[#0C0C0F] capitalize text-left  max-w-[150px] break-all  px-10 py-4 ">
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center justify-center gap-5">
                           {item?.status}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
             </CardHeader>
           </Card>
         </div>
