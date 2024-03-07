@@ -12,11 +12,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { jobValidationSchema } from "@/validations/userSchema";
+import { jobValidationSchema, jobTypes } from "@/validations/userSchema";
 import { useState } from "react";
 
 
 export default function CreateJob() {
+  // const jobTypes = [
+  //   {
+  //     jobType: 'Full-time',
+  //     value: 'fullTime'
+  //   },
+  //   {
+  //     jobType: 'Part-time',
+  //     value: 'partTime'
+
+  //   },
+  // ]
   const [formData, setFormData] = useState({
     companyName: "",
     website: "",
@@ -124,7 +135,7 @@ export default function CreateJob() {
               </div>
               <div className="grid w-full max-w-full items-center gap-1.5 ">
                 <div className="flex items-center gap-1">
-                  <Label htmlFor="jobTitle">Job Description</Label>
+                  <Label htmlFor="jobDescription">Job Description</Label>
                   <p className="text-red-600 font-bold">*</p>
                 </div>
                 <Textarea
@@ -134,7 +145,7 @@ export default function CreateJob() {
                   onChange={(e: any) =>
                     setFormData((prevData: any) => ({
                       ...prevData,
-                      fullName: e.target.value,
+                      jobDescription: e.target.value,
                     }))
                   }
                 />
@@ -146,14 +157,35 @@ export default function CreateJob() {
                     <Label htmlFor="jobType">Job Type</Label>
                     <p className="text-red-600 font-bold">*</p>
                   </div>
-                  <Select>
+                  <Select
+                  // name={'jobType'}
+                  // onValueChange={(e:any)=>{
+
+                  //   if(e.target.value !== undefined){
+
+                  //     setFormData((prevData:any)=>({
+                  //       ...prevData,
+                  //       jobType: e.target.value
+                  //     }))
+                  //   }
+                  // }}
+                  value={formData?.jobType}
+                  >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select" />
+                      <SelectValue placeholder='Select'>{formData?.jobType}</SelectValue>
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
-                        <SelectItem value="fullTime">Full-time</SelectItem>
-                        <SelectItem value="partTime">Part-time</SelectItem>
+                        {
+                          jobTypes?.map((el:any, index:any)=>{
+                            return(
+                              <>
+                        <SelectItem value={el} key={`index of ${index}`}>{el}</SelectItem>
+
+                              </>
+                            )
+                          })
+                        }
                       </SelectGroup>
                     </SelectContent>
                   </Select>
@@ -186,7 +218,7 @@ export default function CreateJob() {
                       </SelectGroup>
                     </SelectContent>
                   </Select>
-                  <p className="text-red-500 text-sm">{errors.jobType}</p>
+                  <p className="text-red-500 text-sm">{errors.jobCategory}</p>
                 </div>
                 {/* <div className="grid w-full max-w-sm items-center gap-1.5">
                   <div className="flex items-center gap-1">

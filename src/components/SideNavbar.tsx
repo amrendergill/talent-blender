@@ -18,21 +18,8 @@ export default function SideNavbar() {
     const pathname = usePathname()
   return (
     <NavigationMenu className="h-full  w-[120px] bg-white py-5">
-      <NavigationMenuList className="flex flex-col   gap-y-5  ">
-        <NavigationMenuItem>
-          <Link href="/createJob" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={`flex flex-col items-center justify-center text-center text-xs gap-2 ${
-                pathname.includes("/createJob")
-                  ? "text-blue-500 "
-                  : "text-black"
-              }`}
-            >
-              <FiPlusCircle size={18} />
-              Create Job
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+      <NavigationMenuList className="flex flex-col gap-y-5 ">
+        
         <NavigationMenuItem>
           <Link href="/recruiter" legacyBehavior passHref>
             <NavigationMenuLink
@@ -62,14 +49,14 @@ export default function SideNavbar() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/jobs" legacyBehavior passHref>
+          <Link href="/jobs-list" legacyBehavior passHref>
             <NavigationMenuLink
               className={`flex flex-col items-center justify-center text-center text-xs gap-2 ${
-                pathname.includes("/jobs") ? "text-blue-500 " : "text-black"
+                pathname.includes("/jobs-list") ? "text-blue-500 " : "text-black"
               }`}
             >
               <RiContactsLine size={18} />
-              Jobs
+              Jobs List
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

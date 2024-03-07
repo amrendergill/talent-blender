@@ -105,7 +105,7 @@ export default function Home() {
 
           </div>
         </div>
-        <CardFooter className="mt-6 p-0">
+        <CardFooter className="p-0">
           <div className="w-full">
             <ul className="flex items-center justify-between">
               <li className="text-sm font-semibold text-gray-500">Event</li>

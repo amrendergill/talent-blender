@@ -1,5 +1,6 @@
 'use client'
 import DefaultInitial from "@/components/DefaultInitials";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -79,8 +80,8 @@ export default function Jobs() {
 
   return (
     <>
-      <main className="">
-        <div className="bg-white p-5">
+      <main className="bg-white">
+        <div className="p-5">
           <div className="font_medium text-[18px] mb-4 lg:mb-[50]  text-nblack ">
             Explore the <span className="text-blue">Unlimited Jobs with</span>{" "}
             the Best Remote Work Job Sites!
@@ -366,7 +367,7 @@ export default function Jobs() {
             <div className="w-CenterJob pl-[15px] pb-[15px] border_left">
               {data?.length > 0 &&
                 data?.map((item: any) => (
-                  <Card className="mb-[20px] w-[100%]">
+                  <Card className="mb-[20px] w-full">
                     <CardHeader className="flex flex-row justify-start">
                       <div className="pt-1">
                         <DefaultInitial
@@ -375,7 +376,7 @@ export default function Jobs() {
                         />
                       </div>
                       <div className="">
-                        <CardTitle>{item?.job_title}</CardTitle>
+                        <CardTitle className="text-lg">{item?.job_title}</CardTitle>
                         <CardDescription>{item?.company_name}</CardDescription>
                       </div>
                     </CardHeader>
@@ -409,17 +410,17 @@ export default function Jobs() {
                         </div>
                       </div>
                     </CardContent>
-                    <CardFooter className="px-0 pb-0">
+                    <CardFooter className="px-0 pb-0 flex items-center w-full justify-center">
                       <a
                         className="w-[100%]"
                         href={item?.job_link}
                         target="_blank"
                       >
-                        <button
+                        <Button
                           className={`text-white bg-blue rounded w-full border-0 py-1 text-[12px]`}
                         >
                           Apply
-                        </button>
+                        </Button>
                       </a>
                     </CardFooter>
                   </Card>
