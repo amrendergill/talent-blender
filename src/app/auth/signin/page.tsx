@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Cookies from "js-cookie";
 import {
   Card,
   CardContent,
@@ -13,17 +14,22 @@ import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { validationSchema } from "@/validations/userSchema";
 import { useRouter } from "next/navigation";
+import useAuth from "@/store/store";
 
 export default function Signin() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
   const router = useRouter();
+  const login = useAuth((state: any) => state.login);
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log("formData", formData);
     try {
       await validationSchema.validate(formData, { abortEarly: false });
+      Cookies.set("token", "kjhkjhjkhkjhkjhkjkjh");
       router.push("/");
+        login(formData);
+
     } catch (ValidationError: any) {
       const newErrors: any = {};
       ValidationError.inner.forEach((error: any) => {

@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Cookies from "js-cookie";
 import {
   Card,
   CardContent,
@@ -14,16 +15,21 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { validationSchema } from "@/validations/userSchema";
 import Link from "next/link";
+import useAuth from "@/store/store";
 
 export default function Signup() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
   const router = useRouter();
+  const signup = useAuth((state: any) => state.signup);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log("formData", formData);
     try {
       await validationSchema.validate(formData, { abortEarly: false });
+       Cookies.set("token", "kjhkjhjkhkjhkjhkjkjh");
+       signup(formData);  
       router.push("/");
     } catch (ValidationError: any) {
       const newErrors: any = {};

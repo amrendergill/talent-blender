@@ -276,7 +276,7 @@ export default function RecruiterDashBoard() {
                   Employee Status
                 </CardTitle>
               </div>
-            
+
               <Table>
                 <TableCaption>A list of your emloyee data.</TableCaption>
                 <TableHeader>
@@ -294,15 +294,19 @@ export default function RecruiterDashBoard() {
                       <TableCell className="font-medium">
                         {item?.name}
                       </TableCell>
-                      <TableCell>{item?.department}</TableCell>
-                      <TableCell className="text-left">{item?.age}</TableCell>
+                      <TableCell className="font-medium">
+                        {item?.department}
+                      </TableCell>
+                      <TableCell className="text-left font-medium">
+                        {item?.age}
+                      </TableCell>
                       <TableCell>
-                        <div className="flex items-center justify-center gap-5">
+                        <div className="flex items-center justify-center gap-5 font-medium">
                           {item?.discipline}
                         </div>
                       </TableCell>
                       <TableCell>
-                        <div className="flex items-center justify-center gap-5">
+                        <div className="flex items-center justify-center gap-5 font-medium">
                           {item?.status}
                         </div>
                       </TableCell>
