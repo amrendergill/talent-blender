@@ -73,14 +73,14 @@ export default function Navbar() {
                 <FaBell size={18} />
                 Notifications
               </li>
-              <DropdownMenu>
+              <DropdownMenu >
                 <DropdownMenuTrigger asChild>
                   <li className="flex items-center flex-col">
                     <CgProfile size={20} />
                     Profile
                   </li>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56">
+                <DropdownMenuContent className="w-56 z-[120]">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
