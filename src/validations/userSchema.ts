@@ -55,20 +55,31 @@ export const profileValidationSchema = Yup.object().shape({
   address: Yup.string().required("Address is required"),
 });
 
+
+
 export const jobTypes: any = ["Full-time", "Part-time"];
+export const jobCategories: any = [
+  " Frontend Engineer",
+  " Backend Engineer",
+  "Customer Success Manager",
+  "Project Manager",
+  "HR"
+];
+
+export const salaryCurrencies: any = ['INR','USD', 'EUR', 'GBP', 'JYP']
+
 export const jobValidationSchema = Yup.object().shape({
-  // companyName: Yup.string().required("Company name is required"),
-  // website: Yup.string().url('Invalid URL').required("Website is required"),
   jobTitle: Yup.string().required("Job title is required"),
   jobDescription: Yup.string().required("Job description is required"),
   jobType: Yup.string()
     .required("Please select a job type")
-    .oneOf(jobTypes, "Invalid option selected"),
-  jobCategory: Yup.string().required("Please select a job category"),
-  // email: Yup.string()
-  // .email("Invalid email address")
-  // .required("Email is required"),
-  // salaryCurreny: ,
+    .oneOf(jobTypes, "Please select a job type"),
+  jobCategory: Yup.string()
+    .required("Please select a job category")
+    .oneOf(jobCategories, 'Please select a job category'),
+  salaryCurreny: Yup.string()
+  .required("Please select a currency")
+  .oneOf(salaryCurrencies, 'Please select a currency'),
   // maxSalary: ,
   // minSalary: ,
 });

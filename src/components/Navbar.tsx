@@ -40,9 +40,9 @@ import {
 
 export default function Navbar() {
   return (
-    <header className="border-b shadow-sm h-[70px] sticky top-0 bg-white w-full z-[100]">
+    <header className="border-b shadow-sm h-[70px] sticky top-0 bg-white w-full z-[100] ">
       <nav>
-        <div className="container py-3 flex items-center justify-between px-36">
+        <div className="container py-3 flex items-center justify-between">
           <Link href={"/"}>
             <div className="w-fit">
               <Image

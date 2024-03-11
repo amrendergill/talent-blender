@@ -376,12 +376,12 @@ export default function Jobs() {
                         />
                       </div>
                       <div className="">
-                        <CardTitle className="text-lg">{item?.job_title}</CardTitle>
+                        <CardTitle className="text-lg flex flex-wrap">{item?.job_title}</CardTitle>
                         <CardDescription>{item?.company_name}</CardDescription>
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <div className={` mt-3`}>
+                      <div className={`mt-3`}>
                         <div className={"flex flex-wrap"}>
                           {item?.skills?.slice(0, 4)?.map((item: any) => (
                             <span className={`skillcard py-1 me-2 mb-1 px-3`}>

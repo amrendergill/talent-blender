@@ -12,22 +12,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { jobValidationSchema, jobTypes } from "@/validations/userSchema";
+import {
+  jobValidationSchema,
+  jobTypes,
+  jobCategories,
+  salaryCurrencies,
+} from "@/validations/userSchema";
 import { useState } from "react";
 
-
 export default function CreateJob() {
-  // const jobTypes = [
-  //   {
-  //     jobType: 'Full-time',
-  //     value: 'fullTime'
-  //   },
-  //   {
-  //     jobType: 'Part-time',
-  //     value: 'partTime'
-
-  //   },
-  // ]
   const [formData, setFormData] = useState({
     companyName: "",
     website: "",
@@ -61,51 +54,6 @@ export default function CreateJob() {
     <>
       <main className="bg-white">
         <div className="p-5">
-          {/* <h2 className="font-medium text-xl">Company Details</h2>
-          <p className="text-sm font-regular text-gray-600 mt-2">
-            Tell us more about your company.{" "}
-          </p> */}
-
-          {/* <div className="flex items-center w-full gap-5 my-5">
-            <div className="grid w-full max-w-sm items-center gap-1.5 ">
-              <div className="flex items-center gap-1">
-                <Label htmlFor="companyName">Company Name</Label>
-                <p className="text-red-600 font-bold">*</p>
-              </div>
-              <Input
-                type="text"
-                id="companyName"
-                placeholder="Company Name"
-                value={formData?.companyName}
-                onChange={(e: any) =>
-                  setFormData((prevData: any) => ({
-                    ...prevData,
-                    fullName: e.target.value,
-                  }))
-                }
-              />
-              <p className="text-red-500 text-sm">{errors.companyName}</p>
-            </div>
-            <div className="grid w-full max-w-sm items-center gap-1.5 ">
-              <div className="flex items-center gap-1">
-                <Label htmlFor="website">Website</Label>
-                <p className="text-red-600 font-bold">*</p>
-              </div>
-              <Input
-                type="text"
-                id="website"
-                placeholder="Website"
-                value={formData?.website}
-                onChange={(e: any) =>
-                  setFormData((prevData: any) => ({
-                    ...prevData,
-                    fullName: e.target.value,
-                  }))
-                }
-              />
-              <p className="text-red-500 text-sm">{errors.website}</p>
-            </div>
-          </div> */}
           <div className="">
             <div>
               <h2 className="font-medium text-xl">Job Details</h2>
@@ -158,34 +106,35 @@ export default function CreateJob() {
                     <p className="text-red-600 font-bold">*</p>
                   </div>
                   <Select
-                  // name={'jobType'}
-                  // onValueChange={(e:any)=>{
-
-                  //   if(e.target.value !== undefined){
-
-                  //     setFormData((prevData:any)=>({
-                  //       ...prevData,
-                  //       jobType: e.target.value
-                  //     }))
-                  //   }
-                  // }}
-                  value={formData?.jobType}
+                    name={"jobType"}
+                    onValueChange={(e: any) => {
+                      setFormData((prevData: any) => ({
+                        ...prevData,
+                        jobType: e,
+                      }));
+                    }}
+                    value={formData?.jobType}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder='Select'>{formData?.jobType}</SelectValue>
+                      <SelectValue placeholder="Select">
+                        {formData?.jobType}
+                      </SelectValue>
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
-                        {
-                          jobTypes?.map((el:any, index:any)=>{
-                            return(
+                        {jobTypes?.length > 0 &&
+                          jobTypes?.map((el: any, index: any) => {
+                            return (
                               <>
-                        <SelectItem value={el} key={`index of ${index}`}>{el}</SelectItem>
-
+                                <SelectItem
+                                  value={el}
+                                  key={`index of ${index}`}
+                                >
+                                  {el}
+                                </SelectItem>
                               </>
-                            )
-                          })
-                        }
+                            );
+                          })}
                       </SelectGroup>
                     </SelectContent>
                   </Select>
@@ -196,49 +145,39 @@ export default function CreateJob() {
                     <Label htmlFor="jobCategory">Job Category</Label>
                     <p className="text-red-600 font-bold">*</p>
                   </div>
-                  <Select>
+                  <Select
+                    name={"jobCategory"}
+                    onValueChange={(e: any) => {
+                      setFormData((prevData: any) => ({
+                        ...prevData,
+                        jobCategory: e,
+                      }));
+                    }}
+                    value={formData?.jobCategory}
+                  >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select" />
+                      <SelectValue  placeholder="Select">{formData?.jobCategory}</SelectValue>
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
-                        <SelectItem value="hr">HR</SelectItem>
-                        <SelectItem value="frontendEngineer">
-                          Frontend Engineer
-                        </SelectItem>
-                        <SelectItem value="backendEngineer">
-                          Backend Engineer
-                        </SelectItem>
-                        <SelectItem value="customerSuccessManager">
-                          Customer Success Manager
-                        </SelectItem>
-                        <SelectItem value="projectManager">
-                          Project Manager
-                        </SelectItem>
+                        {jobCategories?.length > 0 &&
+                          jobCategories?.map((el: any, index: any) => {
+                            return (
+                              <>
+                                <SelectItem
+                                  value={el}
+                                  key={`index of ${index}`}
+                                >
+                                  {el}
+                                </SelectItem>
+                              </>
+                            );
+                          })}
                       </SelectGroup>
                     </SelectContent>
                   </Select>
                   <p className="text-red-500 text-sm">{errors.jobCategory}</p>
                 </div>
-                {/* <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <div className="flex items-center gap-1">
-                    <Label htmlFor="email">Email</Label>
-                    <p className="text-red-600 font-bold">*</p>
-                  </div>
-                  <Input
-                    type="email"
-                    id="email"
-                    placeholder="Email"
-                    value={formData?.email}
-                    onChange={(e: any) =>
-                      setFormData((prevData: any) => ({
-                        ...prevData,
-                        fullName: e.target.value,
-                      }))
-                    }
-                  />
-                  <p className="text-red-500 text-sm">{errors.email}</p>
-                </div> */}
               </div>
               <div className="flex items-center gap-4">
                 <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -246,22 +185,34 @@ export default function CreateJob() {
                     <Label htmlFor="currency">Salary Currency</Label>
                     <p className="text-red-600 font-bold">*</p>
                   </div>
-                  <Select>
+                  <Select
+                  name={"salaryCurrency"}
+                  onValueChange={(e: any) => {
+                    setFormData((prevData: any) => ({
+                      ...prevData,
+                      salaryCurrency: e,
+                    }));
+                  }}
+                  value={formData?.salaryCurrency}
+                  >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select" />
+                      <SelectValue  placeholder="Select">{formData?.salaryCurrency}</SelectValue>
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
-                        <SelectItem value="inr">INR</SelectItem>
-                        <SelectItem value="usd">USD</SelectItem>
-                        <SelectItem value="eur">EUR</SelectItem>
-                        <SelectItem value="jyp">JYP</SelectItem>
-                        <SelectItem value="gbp">GBP</SelectItem>
+                        {salaryCurrencies?.length > 0 &&
+                          salaryCurrencies?.map((el: any, index: any) => {
+                            return (
+                              <>
+                                <SelectItem value={el} key={`index of ${index}`}>{el}</SelectItem>
+                              </>
+                            );
+                          })}
                       </SelectGroup>
                     </SelectContent>
                   </Select>
                   <p className="text-red-500 text-sm">
-                    {errors.salaryCurrency}
+                    {errors?.salaryCurrency}
                   </p>
                 </div>
                 <div className="grid w-full max-w-full items-center gap-1.5 ">
@@ -331,14 +282,14 @@ export default function CreateJob() {
             </div>
           </div>
           <div className="w-full flex items-center justify-end">
-                  <Button
-                    onClick={handleSubmit}
-                    className={` text-xs rounded-[3px] bg-white border-[#0a66c2]`}
-                    variant={"outline"}
-                  >
-                    Submit
-                  </Button>
-                </div>
+            <Button
+              onClick={handleSubmit}
+              className={` text-xs rounded-[3px] bg-white border-[#0a66c2]`}
+              variant={"outline"}
+            >
+              Submit
+            </Button>
+          </div>
         </div>
       </main>
     </>
