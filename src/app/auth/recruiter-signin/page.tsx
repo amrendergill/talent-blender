@@ -28,7 +28,7 @@ export default function RecruiterSignin() {
       await validationSchema.validate(formData, { abortEarly: false });
        Cookies.set("token", "kjhkjhjkhkjhkjhkjkjh");
        recruiterLogin(formData)
-      router.push("/recruiter");
+      router.push("/");
     } catch (ValidationError: any) {
       const newErrors: any = {};
       ValidationError.inner.forEach((error: any) => {

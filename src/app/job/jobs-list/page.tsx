@@ -61,7 +61,7 @@ export default function JobsList() {
         <div className="bg-white p-5 flex-col flex gap-5">
           <div className="flex items-end justify-between">
             <h1 className="text-xl font-semibold">Jobs</h1>
-            <Link href={'/createJob'}>
+            <Link href={'/job/create-job'}>
             <Button className="flex items-center gap-2 border-blue-500 text-blue-500" variant={"outline"}>
               <FiPlusCircle size={14} />
               Create Job

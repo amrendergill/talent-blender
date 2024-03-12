@@ -25,7 +25,7 @@ export default function SideNavbar() {
             <NavigationMenuLink
               className={`flex flex-col items-center justify-center text-center text-xs gap-2 ${
                 pathname.includes("/recruiter")
-                  ? "text-blue-500 "
+                  ? "text-blue-500"
                   : "text-black"
               }`}
             >
@@ -35,10 +35,10 @@ export default function SideNavbar() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/job-application" legacyBehavior passHref>
+          <Link href="/job/job-application" legacyBehavior passHref>
             <NavigationMenuLink
               className={`flex flex-col items-center text-center justify-center text-xs gap-2 ${
-                pathname.includes("/job-application")
+                pathname.includes("/job/job-application")
                   ? "text-blue-500 "
                   : "text-black"
               }`}
@@ -49,10 +49,10 @@ export default function SideNavbar() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/jobs-list" legacyBehavior passHref>
+          <Link href="/job/jobs-list" legacyBehavior passHref>
             <NavigationMenuLink
               className={`flex flex-col items-center justify-center text-center text-xs gap-2 ${
-                pathname.includes("/jobs-list") ? "text-blue-500 " : "text-black"
+                pathname.includes("/job/jobs-list") ? "text-blue-500 " : "text-black"
               }`}
             >
               <RiContactsLine size={18} />

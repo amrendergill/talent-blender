@@ -2,25 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { IoHome } from "react-icons/io5";
-import { FaBriefcase } from "react-icons/fa";
-import { FaBell } from "react-icons/fa";
+import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import { IoMdNotificationsOutline } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import {
-  Cloud,
   CreditCard,
-  Github,
-  Keyboard,
   LifeBuoy,
   LogOut,
   Mail,
   MessageSquare,
-  Plus,
   PlusCircle,
   Settings,
   User,
   UserPlus,
-  Users,
 } from "lucide-react";
 
 import {
@@ -31,14 +25,54 @@ import {
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { usePathname } from "next/navigation";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const notifications = [
+    {
+      logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
+      notificationTitle: "Joseph Mcfall appied to your job",
+      time: "10 minutes ago"
+    },
+    {
+      logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
+      notificationTitle: "Joseph Mcfall appied to your job",
+      time: "10 minutes ago"
+    },
+    {
+      logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
+      notificationTitle: "Joseph Mcfall appied to your job",
+      time: "10 minutes ago"
+    },
+    {
+      logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
+      notificationTitle: "Joseph Mcfall appied to your job",
+      time: "10 minutes ago"
+    },
+    {
+      logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
+      notificationTitle: "Joseph Mcfall appied to your job",
+      time: "10 minutes ago"
+    },
+    {
+      logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
+      notificationTitle: "Joseph Mcfall appied to your job",
+      time: "10 minutes ago"
+    },
+    {
+      logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
+      notificationTitle: "Joseph Mcfall appied to your job",
+      time: "10 minutes ago"
+    },
+  ];
+
   return (
     <header className="border-b shadow-sm h-[70px] sticky top-0 bg-white w-full z-[100] ">
       <nav>
@@ -57,30 +91,76 @@ export default function Navbar() {
           </Link>
           <div>
             <ul className="flex items-center gap-10">
-              <Link href={"/"}>
-                <li className="flex items-center flex-col">
-                  <IoHome size={18} />
-                  Home
+              <Link href={"/chat"}>
+                <li
+                  className={`flex items-center text-sm flex-col ${
+                    pathname.includes("/chat") ? "text-blue-500" : "text-black"
+                  }`}
+                >
+                  <IoChatbubbleEllipsesOutline size={18} />
+                  Chat
                 </li>
               </Link>
-              <Link href={"/jobs"}>
-                <li className="flex items-center flex-col">
-                  <FaBriefcase size={18} />
-                  Jobs
-                </li>
-              </Link>
-              <li className="flex items-center flex-col">
-                <FaBell size={18} />
-                Notifications
-              </li>
-              <DropdownMenu >
+              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <li className="flex items-center flex-col">
-                    <CgProfile size={20} />
+                  <li
+                    className={`flex items-center text-sm flex-col cursor-pointer ${
+                      pathname.includes("/notification")
+                        ? "text-blue-500"
+                        : "text-black"
+                    }`}
+                  >
+                    <IoMdNotificationsOutline size={18} />
+                    Notifications
+                  </li>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-80 z-[100]">
+                  <DropdownMenuLabel>My Notifications</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <div className="flex flex-col gap-5 px-3 py-3">
+                      {notifications?.map((el: any, index: any) => {
+                        return (
+                          <>
+                            <div className="flex items-center gap-3">
+                              <div>
+                                <Avatar className="h-10 w-10">
+                                  <AvatarImage src={el?.logo} alt="logo" />
+                                  <AvatarFallback>MD</AvatarFallback>
+                                </Avatar>
+                              </div>
+                              <div className="flex flex-col gap-1">
+                                <p className="text-sm font-semibold flex flex-wrap">
+                                  {el?.notificationTitle}
+                                </p>
+                                <p className="text-xs text-blue-500">
+                                  {el?.time}
+                                </p>
+                              </div>
+                            </div>
+                          </>
+                        );
+                      })}
+                    </div>
+                  </DropdownMenuGroup>
+
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="text-center flex items-center justify-center">
+                    <Link href={"/notification"}>
+                      <span className=" text-blue-500">See All</span>
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <li className="flex text-sm items-center flex-col cursor-pointer">
+                    <CgProfile size={18} />
                     Profile
                   </li>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56 z-[120]">
+                <DropdownMenuContent className="w-56 z-[100]">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>

@@ -189,7 +189,7 @@ export default function ChatBottombar({
           </div>
         </motion.div>
 
-        {message.trim() ? (
+        {/* {message.trim() ? (
           <Link
             href="#"
             className={cn(
@@ -213,7 +213,7 @@ export default function ChatBottombar({
           >
             <ThumbsUp size={20} className="text-muted-foreground" />
           </Link>
-        )}
+        )} */}
       </AnimatePresence>
     </div>
   );

@@ -10,7 +10,9 @@ interface ChatTopbarProps {
   selectedUser: UserData;
 }
 
-export const TopbarIcons = [{ icon: Phone }, { icon: Video }, { icon: Info }];
+export const TopbarIcons = [
+  // { icon: Phone }, { icon: Video },
+   { icon: Info }];
 
 export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
   return (
