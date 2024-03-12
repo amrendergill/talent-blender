@@ -17,8 +17,8 @@ import { usePathname } from "next/navigation";
 export default function SideNavbar() {
     const pathname = usePathname()
   return (
-    <NavigationMenu className="h-full  w-[120px] bg-white py-5">
-      <NavigationMenuList className="flex flex-col gap-y-5 ">
+    <NavigationMenu className="h-full w-[120px] bg-white py-5">
+      <NavigationMenuList className="flex flex-col justify-start gap-y-5 ">
         
         <NavigationMenuItem>
           <Link href="/recruiter" legacyBehavior passHref>
