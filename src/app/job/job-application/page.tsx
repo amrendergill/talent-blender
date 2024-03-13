@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Link from "next/link";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { MdDeleteOutline } from "react-icons/md";
 export default function JobApplication() {
@@ -100,7 +101,9 @@ export default function JobApplication() {
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center justify-center gap-5">
+                    <Link href={'/job/job-application/view-job'}>
                     {jobId.action.view}
+                    </Link>
                     {jobId.action.delete}
                     </div>
                     </TableCell>

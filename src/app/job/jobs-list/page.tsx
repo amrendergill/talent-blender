@@ -2,59 +2,83 @@ import JobCard from "@/components/JobCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FiPlusCircle } from "react-icons/fi";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export default function JobsList() {
-  const jobLists = [
+  const jobData = [
     {
-      logo: "/images/PNH-logo-icon.png",
-      companyName: "Talent Blendr",
-      jobTitle: "Senior B2B sales consultant",
-      salary: "$75k - $85k yearly",
-      workType: "Full-time / Remote",
-      location: "UK",
+      jobId: "INV001",
+      jobTitle: "Marketing Coordinator",
+      status: 'active',
+      location: 'Russia',
+      jobType: 'remote'
+
+      
     },
     {
-      logo: "/images/PNH-logo-icon.png",
-      companyName: "Talent Blendr",
-      jobTitle: "Senior B2B sales consultant",
-      salary: "$75k - $85k yearly",
-      workType: "Full-time / Remote",
-      location: "UK",
+      jobId: "INV002",
+      jobTitle: "Medical Assistant",
+      status: 'active',
+      location: 'United Kingdom',
+      jobType: 'full-time'
+
+      
     },
     {
-      logo: "/images/PNH-logo-icon.png",
-      companyName: "Talent Blendr",
-      jobTitle: "Senior B2B sales consultant",
-      salary: "$75k - $85k yearly",
-      workType: "Full-time / Remote",
-      location: "UK",
+      jobId: "INV003",
+      jobTitle: "Web Designer",
+      status: 'expired',
+      location: 'United States',
+      jobType: 'full-time'
+
+      
     },
     {
-      logo: "/images/PNH-logo-icon.png",
-      companyName: "Talent Blendr",
-      jobTitle: "Senior B2B sales consultant",
-      salary: "$75k - $85k yearly",
-      workType: "Full-time / Remote",
-      location: "UK",
+      jobId: "INV004",
+      jobTitle: "Dog Trainer",
+      status: 'active',
+      location: 'India',
+      jobType: 'full-time'
+
+      
     },
     {
-      logo: "/images/PNH-logo-icon.png",
-      companyName: "Talent Blendr",
-      jobTitle: "Senior B2B sales consultant",
-      salary: "$75k - $85k yearly",
-      workType: "Full-time / Remote",
-      location: "UK",
+      jobId: "INV005",
+      jobTitle: "President of Sales",
+      status: 'expired',
+      location: 'India',
+      jobType: 'remote'
+
+      
     },
     {
-      logo: "/images/PNH-logo-icon.png",
-      companyName: "Talent Blendr",
-      jobTitle: "Senior B2B sales consultant",
-      salary: "$75k - $85k yearly",
-      workType: "Full-time / Remote",
-      location: "UK",
+      jobId: "INV006",
+      jobTitle: "Nursing Assistant",
+      status: 'active',
+      location: 'Ireland',
+      jobType: 'remote'
+
+      
+    },
+    {
+      jobId: "INV007",
+      jobTitle: "Project Manager",
+      status: 'active',
+      location: 'United Kingdom',
+      jobType: 'remote'
+
+      
     },
   ];
-
+ 
   return (
     <>
       <main>
@@ -68,20 +92,37 @@ export default function JobsList() {
             </Button>
             </Link>
           </div>
-          {jobLists?.map((el: any, index: any) => {
-            return (
-              <>
-                <JobCard
-                  logo={el?.logo}
-                  companyName={el?.companyName}
-                  jobTitle={el?.jobTitle}
-                  salary={el?.salary}
-                  workType={el?.workType}
-                  location={el?.location}
-                />
-              </>
-            );
-          })}
+          <Table>
+            <TableCaption>A list of your recent jobs.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">Job Id</TableHead>
+                <TableHead>Job Title</TableHead>
+                <TableHead className="">Status</TableHead>
+                <TableHead className="">Location</TableHead>
+                <TableHead className="">Job Type</TableHead>
+                
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {jobData.map((jobId) => (
+                <TableRow key={jobId.jobId}>
+                  <TableCell className="font-medium">{jobId.jobId}</TableCell>
+                  <TableCell>{jobId.jobTitle}</TableCell>
+                  <TableCell className="">
+                    {jobId.status}
+                  </TableCell>
+                  <TableCell className="">
+                    {jobId.location}
+                  </TableCell>
+                  <TableCell className="">
+                    {jobId.jobType}
+                  </TableCell>
+                  
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
       </main>
     </>

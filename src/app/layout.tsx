@@ -32,7 +32,6 @@ export default function RootLayout({
           >
             <SideNavbar />
           </aside>
-
           <main className="w-full mb-24">{children}</main>
         </div>
       </body>
