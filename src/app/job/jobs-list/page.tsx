@@ -118,7 +118,6 @@ export default function JobsList() {
                   <TableCell className="">
                     {jobId.jobType}
                   </TableCell>
-                  
                 </TableRow>
               ))}
             </TableBody>
