@@ -15,6 +15,8 @@ export default function ViewJob() {
     <>
       <main className="bg-white">
         <div className="p-5">
+          <div className="divide-y-[0.5px] divide-y-[#fafafa]">
+
           <div className="flex w-full gap-7 items-center">
             <div>
               <Avatar className={`h-20 w-20`}>
@@ -71,6 +73,8 @@ export default function ViewJob() {
               <Button variant={"outline"}>Edit Candidate Details</Button>
             </div>
           </div>
+          </div>
+
           <div className="py-6 flex justify-between">
             <div>
               <p className="text-sm text-gray-500 font-semibold">Mobile</p>
