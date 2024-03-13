@@ -103,9 +103,13 @@ export default function Navbar() {
               </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <li className={`flex items-center text-sm flex-col ${
-                    pathname.includes("/notification") ? "text-blue-500" : "text-black"
-                  }`}>
+                  <li
+                    className={`flex items-center text-sm flex-col cursor-pointer ${
+                      pathname.includes("/notification")
+                        ? "text-blue-500"
+                        : "text-black"
+                    }`}
+                  >
                     <IoMdNotificationsOutline size={18} />
                     Notifications
                   </li>
@@ -126,8 +130,12 @@ export default function Navbar() {
                                 </Avatar>
                               </div>
                               <div className="flex flex-col gap-1">
-                                <p className="text-sm font-semibold flex flex-wrap">{el?.notificationTitle}</p>
-                                <p className="text-xs text-blue-500">{el?.time}</p>
+                                <p className="text-sm font-semibold flex flex-wrap">
+                                  {el?.notificationTitle}
+                                </p>
+                                <p className="text-xs text-blue-500">
+                                  {el?.time}
+                                </p>
                               </div>
                             </div>
                           </>
@@ -138,8 +146,8 @@ export default function Navbar() {
 
                   <DropdownMenuSeparator />
                   <DropdownMenuItem className="text-center flex items-center justify-center">
-                    <Link href={'/notification'}>
-                    <span className=" text-blue-500">See All</span>
+                    <Link href={"/notification"}>
+                      <span className=" text-blue-500">See All</span>
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -147,7 +155,7 @@ export default function Navbar() {
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <li className="flex text-sm items-center flex-col">
+                  <li className="flex text-sm items-center flex-col cursor-pointer">
                     <CgProfile size={18} />
                     Profile
                   </li>

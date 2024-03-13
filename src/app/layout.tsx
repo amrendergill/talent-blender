@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={`${inter.className} h-screen min-h-screen max-h-screen`}>
         <Script src="/tinymce/tinymce.min.js" />
         <Navbar />
-        <div className="flex h-full mt-6 gap-4 container">
+        <div className="flex  mt-6 gap-4 container">
           <aside
             className={`sticky top-[94px] flex-1 shrink-0 h-full  ${
               pathname.includes("/auth") ? "hidden" : "block"

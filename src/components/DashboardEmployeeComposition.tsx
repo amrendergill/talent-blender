@@ -98,7 +98,7 @@ export default function DashboardEmployeeComposition() {
         <div>
           <ResponsiveContainer width="100%" height="100%">
             <div className="flex justify-center items-center">
-              <PieChart width={320} height={230}>
+              <PieChart width={320} height={300}>
                 <Pie
                   activeIndex={activeIndex}
                   activeShape={renderActiveShape}
