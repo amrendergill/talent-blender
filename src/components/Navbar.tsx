@@ -207,7 +207,7 @@ console.log("path",pathname)
                       {notifications?.map((el: any, index: any) => {
                         return (
                           <>
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-3" key={index}>
                               <div>
                                 <Avatar className="h-10 w-10">
                                   <AvatarImage src={el?.logo} alt="logo" />
