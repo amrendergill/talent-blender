@@ -79,10 +79,11 @@ export default function JobApplication() {
   ];
   return (
     <>
-      <main className="bg-white">
-        <div className="p-5">
-          <Table>
-            <TableCaption>A list of your recent jobData.</TableCaption>
+      <main className="bg-white flex-col flex gap-5">
+        <div className="p-5 mt-2">
+          <h1 className="text-xl font-semibold">Jobs Applications</h1>
+          <Table className="mt-4">
+            <TableCaption>A list of your recent job data.</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Job Id</TableHead>
@@ -101,12 +102,12 @@ export default function JobApplication() {
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center justify-center gap-5">
-                    <Link href={'/job/job-application/view-job'}>
-                    {jobId.action.view}
-                    </Link>
-                    {jobId.action.delete}
+                      <Link href={"/job/job-application/view-job"}>
+                        {jobId.action.view}
+                      </Link>
+                      {jobId.action.delete}
                     </div>
-                    </TableCell>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
