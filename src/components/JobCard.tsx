@@ -1,30 +1,44 @@
-import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
-import { Card } from "./ui/card";
+import { Button } from "./ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
-export default function JobCard({logo, companyName, jobTitle, salary, workType, location}:any) {
+export default function JobCard({
+  companyName,
+  jobTitle,
+  workType,
+  location,
+  time,
+}: any) {
   return (
     <>
-      <Card>
-        <div className="flex gap-5 w-full">
-          <div>
-            <Avatar className="h-10 w-10">
-              <AvatarImage src={logo} alt="logo" />
-              <AvatarFallback>MD</AvatarFallback>
-            </Avatar>
+      <Card className="p-5">
+        <CardTitle className="text-base font-semibold">{jobTitle}</CardTitle>
+        <CardContent className="flex items-center justify-between">
+          <div className="flex items-center gap-1">
+            <p className="text-xs text-[#0472F4]">{companyName}</p>
+            <p className="text-xs text-[#868686]">.</p>
+            <p className="text-xs text-[#868686]">{location}</p>
+            <p className="text-xs text-[#868686]">.</p>
+
+            <p className="text-xs text-[#868686]">{workType}</p>
+            <p className="text-xs text-[#868686]">.</p>
+
+            <p className="text-xs text-[#868686]">{time}</p>
           </div>
-          <div className="w-full">
-            <div className="flex flex-col gap-2">
-              <p className="text-sm font-medium">{companyName}</p>
-              <p className="text-sm font-semibold">
-                {jobTitle}
-              </p>
-              <div className="flex items-center justify-between">
-                <p className="text-xs text-gray-600">{salary}</p>
-                <p className="text-xs text-gray-600">{workType}, {location}</p>
-              </div>
-            </div>
+          <div className="flex gap-[10px]">
+            <Button
+              className="px-5 py-[7px] text-xs bg-[#F9F9F9] border-none rounded-none hover:shadow-sm hover:bg-white hover:border"
+              variant={"outline"}
+            >
+              Save
+            </Button>
+            <Button
+              className="px-5 py-[7px] text-xs bg-[#F9F9F9] border-none rounded-none hover:shadow-sm hover:bg-white hover:border"
+              variant={"outline"}
+            >
+              View Job
+            </Button>
           </div>
-        </div>
+        </CardContent>
       </Card>
     </>
   );
