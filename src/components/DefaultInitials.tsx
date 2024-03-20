@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
  
 interface IProps {
   firstName: any;
@@ -9,7 +9,8 @@ interface IProps {
 }
  
 const DefaultInitial = (props: IProps) => {
-  const [show, setShow] = useState(false);
+  let show = false
+  // const [show, setShow] = useState(false);
   const name = props?.firstName?.split(" ");
   return (
     <>
@@ -28,7 +29,7 @@ const DefaultInitial = (props: IProps) => {
           src={props?.url}
           alt={props?.fileName ?? ""}
           onError={(err) => {
-            setShow(true);
+            show =true;
           }}
         />
       ) : (

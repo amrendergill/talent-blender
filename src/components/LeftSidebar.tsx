@@ -6,76 +6,56 @@ import { HiMiniUserGroup } from "react-icons/hi2";
 import { HiPlus } from "react-icons/hi";
 import Link from "next/link";
 import RecentGroups from "./RecentGroups";
+import { Button } from "./ui/button";
 
-export default function LeftSidebar() {
+const data = [
+  { initials: "IW", name: "Interview", members: 1231 },
+  { initials: "GD", name: "Graphic Designing", members: 343 },
+  { initials: "WD", name: "Web Designing", members: 2342 },
+  { initials: "BD", name: "Business Development", members: 5464 },
+];
+
+export default function LeftSidebar({ children }: any) {
   return (
-    <>
-      <Card className="p-0 ">
-        <div className="mb-10 relative z-0">
-          <div className="">
-            <Image
-              src={"/images/ken-cheung-0F2nvpob0_c-unsplash.jpg"}
-              className="rounded-t-lg"
-              alt="cover image"
-              priority
-              width={0}
-              height={0}
-              objectFit="cover"
-              sizes="100%"
-              style={{ width: "100%", height: "60px" }}
-            />
-          </div>
-          <div className="border-2 rounded-full border-white w-fit absolute top-5 left-[72px]">
-            <Avatar className="h-[72px] w-[72px]">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-              <AvatarFallback>MD</AvatarFallback>
+    <div className="divide-y space-y-4">
+      <Card className="p-3 bg-[#F9F9F9] rounded-[5px] !border-none ">
+        <div className=" relative z-0  flex flex-col items-center justify-between">
+          <span className="text-xl font-medium">
+            <p className="whitespace-nowrap">Speed up employer</p>
+            <p>discovery.</p>
+          </span>
+          <p className="text-xs text-[#868686] mt-3">
+            Efficiently expedite the process of being found and recognized by
+            potential employers.
+          </p>
+          <Button className="text-xs w-full mt-4 h-[31px] rounded-[3px]">
+            Join Community
+          </Button>
+        </div>
+      </Card>
+      <div className="pt-4 space-y-4">
+        <div className="flex justify-between items-center ">
+          <p className="text-xs ">My Communities</p>
+          <Button className="text-[10px] rounded-[10px] bg-[#EDE8FF] text-black h-[20px] hover:bg-blue-200">
+            See All
+          </Button>
+        </div>
+        {data.map((item, index) => (
+          <div className="flex gap-x-2 items-center">
+            <Avatar className=" h-[34px]  w-[34px] !rounded-[5px] !bg-[#E6FFDE]">
+              <AvatarFallback className="text-sm  !bg-[#E6FFDE]">
+                {item.initials}
+              </AvatarFallback>
             </Avatar>
-          </div>
-        </div>
-        <div className="w-full divide-y">
-          <div className="mt-16 mb-4 w-full flex flex-wrap items-center justify-center">
-            <Link href={"/user"}>
-              <p className="font-bold hover:text-[#0a66c2] hover:underline hover:cursor-pointer">
-                Mark Davidson
+            <div className="space-y-[0.5px]">
+              <p className="font-medium text-sm">{item.name}</p>
+              <p className="text-[10px] text-[#868686]">
+                {item.members} members
               </p>
-            </Link>
-            <p className="text-xs text-gray-500">
-              Software Engineer | Content Creator | Educator | Mentor |
-              Freelancer
-            </p>
-          </div>
-          <div className="py-4 px-3 flex flex-col gap-3">
-            <div className="flex items-center justify-between">
-              <p className="text-xs text-gray-500 font-medium">
-                Profile viewers
-              </p>
-              <p className="text-xs text-[#0a66c2] font-medium">300</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="text-xs text-gray-500 font-medium">
-                Post impressions
-              </p>
-              <p className="text-xs text-[#0a66c2] font-medium">10</p>
             </div>
           </div>
-          <div className="py-4 px-3">
-            <p className="text-xs text-gray-500 font-normal">
-              Strengthen your profile with an AI writing assisstant
-            </p>
-          </div>
-          <div className="py-4 px-3">
-            <div className="flex items-center gap-3">
-              <div>
-                <IoBookmarkSharp color="#6b7280" />
-              </div>
-              <p className="text-xs text-gray-500 font-semibold">My Items</p>
-            </div>
-          </div>
-        </div>
-      </Card>
-      <Card className="px-3 py-4 ">
-        <RecentGroups title={"Recent"} groupName={"JavaScript"} />
-      </Card>
-    </>
+        ))}
+      </div>
+    </div>
   );
 }

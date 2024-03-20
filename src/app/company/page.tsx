@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import RightSidebar from "@/components/RightSidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -7,8 +7,8 @@ import Image from "next/image";
 import { LuDot, LuSend } from "react-icons/lu";
 import { PiDotsThreeCircleThin } from "react-icons/pi";
 import { IoCheckmarkSharp, IoClose } from "react-icons/io5";
-import { useEffect, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+// import { useEffect, useState } from "react";
+// import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa6";
 import Link from "next/link";
 import { BsThreeDots } from "react-icons/bs";
@@ -28,26 +28,11 @@ import CompanyDetails from "@/components/CompanyDetails";
 import RecentJobs from "@/components/RecentJobs";
 import BasicCompanyCardLayout from "@/components/BasicCompanyCardLayout";
 
-export default function Company() {
-  const [activeTab, setActiveTab] = useState("home");
-  const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
-  const status = params.get("status");
-  const router = useRouter();
-  const pathname = usePathname();
-
-  useEffect(() => {
-    handleTab(status);
-  }, [status]);
-
-  const handleTab = (tabName: any) => {
-    setActiveTab(tabName);
-    router.push(`/company?status=${tabName}`);
-  };
-
+export default function Company({searchParams}:any) {
+  const status = searchParams.status; 
   return (
     <>
-      <main className="container py-24 flex gap-5 px-36">
+      <main className="  flex gap-5 ">
         <div className="w-full flex flex-col gap-4">
           <Card className="p-0">
             <PersonalInfo
@@ -65,64 +50,70 @@ export default function Company() {
               }
               mutualFollowerName={"Raj"}
               mutalFollowerCount={"15"}
+              status={status}
             />
             <hr />
             <div className="px-4 pt-4">
               <div className="flex items-center gap-5">
-                <p
-                  onClick={() => handleTab("home")}
-                  className={`font-bold  px-3 py-4 cursor-pointer ${
-                    activeTab === "home"
-                      ? "text-[#0a66c2] border-b-2 border-[#0a66c2]"
-                      : "text-gray-600 border-none"
-                  }`}
-                >
-                  Home
-                </p>
-                <p
-                  onClick={() => handleTab("my-company")}
-                  className={`font-bold  px-3 py-4 cursor-pointer ${
-                    activeTab === "my-company"
-                      ? "text-[#0a66c2] border-b-2 border-[#0a66c2]"
-                      : "text-gray-600 border-none"
-                  }`}
-                >
-                  My Company
-                </p>
-                <p
-                  onClick={() => handleTab("about")}
-                  className={`font-bold  px-3 py-4 cursor-pointer ${
-                    activeTab === "about"
-                      ? "text-[#0a66c2] border-b-2 border-[#0a66c2]"
-                      : "text-gray-600 border-none"
-                  }`}
-                >
-                  About
-                </p>
-                <p
-                  onClick={() => handleTab("posts")}
-                  className={`font-bold  px-3 py-4 cursor-pointer ${
-                    activeTab === "posts"
-                      ? "text-[#0a66c2] border-b-2 border-[#0a66c2]"
-                      : "text-gray-600 border-none"
-                  }`}
-                >
-                  Posts
-                </p>
-                <p
-                  onClick={() => handleTab("jobs")}
-                  className={`font-bold  px-3 py-4 cursor-pointer ${
-                    activeTab === "jobs"
-                      ? "text-[#0a66c2] border-b-2 border-[#0a66c2]"
-                      : "text-gray-600 border-none"
-                  }`}
-                >
-                  Jobs
-                </p>
+                <Link href="/company?status=home">
+                  <p
+                    className={`font-bold  px-3 py-4 cursor-pointer ${
+                      status === "home"
+                        ? "text-[#0a66c2] border-b-2 border-[#0a66c2]"
+                        : "text-gray-600 border-none"
+                    }`}
+                  >
+                    Home
+                  </p>
+                </Link>
+                <Link href="/company?status=my-company">
+                  <p
+                    className={`font-bold  px-3 py-4 cursor-pointer ${
+                      status === "my-company"
+                        ? "text-[#0a66c2] border-b-2 border-[#0a66c2]"
+                        : "text-gray-600 border-none"
+                    }`}
+                  >
+                    My Company
+                  </p>
+                </Link>
+                <Link href="/company?status=about">
+                  <p
+                    className={`font-bold  px-3 py-4 cursor-pointer ${
+                      status === "about"
+                        ? "text-[#0a66c2] border-b-2 border-[#0a66c2]"
+                        : "text-gray-600 border-none"
+                    }`}
+                  >
+                    About
+                  </p>
+                </Link>
+                <Link href="/company?status=posts">
+                  <p
+                    className={`font-bold  px-3 py-4 cursor-pointer ${
+                      status === "posts"
+                        ? "text-[#0a66c2] border-b-2 border-[#0a66c2]"
+                        : "text-gray-600 border-none"
+                    }`}
+                  >
+                    Posts
+                  </p>
+                </Link>
+                <Link href="/company?status=jobs">
+                  <p
+                    className={`font-bold  px-3 py-4 cursor-pointer ${
+                      status === "jobs"
+                        ? "text-[#0a66c2] border-b-2 border-[#0a66c2]"
+                        : "text-gray-600 border-none"
+                    }`}
+                  >
+                    Jobs
+                  </p>
+                </Link>
               </div>
             </div>
           </Card>
-          {activeTab === "home" && (
+          {status === "home" && (
             <>
               <div className="flex flex-col gap-4">
                 {/* about card */}
@@ -133,24 +124,23 @@ export default function Company() {
                     }
                   />
                 </BasicCompanyCardLayout>
-
                 {/* posts card */}
                 <BasicCompanyCardLayout title={"Page posts"} footer={"posts"}>
                   <div className="flex items-center gap-4 my-3">
                     <Card className="w-[365px] min-w-[365px] max-w-[365px] p-0">
                       <Post
-                        logo={"/images/PNH-logo.png"}
+                        logo={"/images/PNH-logo-icon.png"}
                         companyName={"Pitch N Hire"}
                         followers={"21, 458"}
                         timeOfPost={"5m"}
                         content="Company's content"
                         comments="100"
                         reposts="50"
+                        status={status}
                       />
                     </Card>
                   </div>
                 </BasicCompanyCardLayout>
-
                 {/* past events card */}
                 <BasicCompanyCardLayout title={"Past events"} footer={"events"}>
                   <div className="flex gap-4 my-3">
@@ -164,7 +154,6 @@ export default function Company() {
                     </Card>
                   </div>
                 </BasicCompanyCardLayout>
-
                 {/* people highlights card */}
                 <BasicCompanyCardLayout
                   title={"People highlights"}
@@ -174,7 +163,6 @@ export default function Company() {
                     <Highlights />
                   </div>
                 </BasicCompanyCardLayout>
-
                 {/* Recent jobs Card */}
                 <BasicCompanyCardLayout
                   title={"Recent job Openings"}
@@ -182,12 +170,12 @@ export default function Company() {
                 >
                   <div className="flex items-center my-3 justify-start">
                     <JobOpeneings
-                      companyLogo={"/images/PNH-logo.png"}
+                      companyLogo={"/images/PNH-logo-icon.png"}
                       jobPost={"React Developer"}
                       jobPlace={"Delhi, Delhi, India"}
                     />
                     <JobOpeneings
-                      companyLogo={"/images/PNH-logo.png"}
+                      companyLogo={"/images/PNH-logo-icon.png"}
                       jobPost={"React Developer"}
                       jobPlace={"Delhi, Delhi, India"}
                     />
@@ -196,7 +184,7 @@ export default function Company() {
               </div>
             </>
           )}
-          {activeTab === "my-company" && (
+          {status === "my-company" && (
             <>
               <Card className="p-0">
                 <div className="px-7 py-6">
@@ -250,13 +238,14 @@ export default function Company() {
                       content="Coworker's content"
                       comments="100"
                       reposts="50"
+                      status={status}
                     />
                   </Card>
                 </div>
               </BasicCompanyCardLayout>
             </>
           )}
-          {activeTab === "about" && (
+          {status === "about" && (
             <>
               <Card className="p-0">
                 <div className="px-7 py-6">
@@ -295,7 +284,7 @@ export default function Company() {
               </Card>
             </>
           )}
-          {activeTab === "posts" && (
+          {status === "posts" && (
             <>
               <div className="flex gap-4 ">
                 <div className="w-[222px] min-w-[222px] max-w-[222px]">
@@ -384,7 +373,7 @@ export default function Company() {
               </div>
             </>
           )}
-          {activeTab === "jobs" && (
+          {status === "jobs" && (
             <>
               <BasicCompanyCardLayout
                 title={"Recently posted jobs"}

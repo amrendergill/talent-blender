@@ -18,7 +18,7 @@ export default function RecentGroups ({title, groupName} : any) {
 
                     </div>
                 </div>
-
+{/* 
                 <div className=" mt-5">
                     <p className="text-sm text-[#0a66c2] font-semibold">Groups</p>
                     <div className="py-3 flex flex-col gap-2">
@@ -55,17 +55,7 @@ export default function RecentGroups ({title, groupName} : any) {
 
                     </div>
 
-                    <div>
-                        <div className="flex items-center justify-between mt-5 ">
-
-                        <p className="text-sm  text-[#0a66c2] font-semibold">
-                            Events
-                        </p>
-                        <div>
-                            <HiPlus color="#0a66c2" />
-                        </div>
-                        </div>
-                    </div>
+                    
                     <div>
                         <div className="flex items-center justify-between mt-5 ">
 
@@ -75,7 +65,7 @@ export default function RecentGroups ({title, groupName} : any) {
                         
                         </div>
                     </div>
-                </div>
+                </div> */}
         </>
     )
 }
