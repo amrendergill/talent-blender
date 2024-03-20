@@ -32,6 +32,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { usePathname } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Input } from "./ui/input";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -39,56 +40,128 @@ export default function Navbar() {
     {
       logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
       notificationTitle: "Joseph Mcfall appied to your job",
-      time: "10 minutes ago"
+      time: "10 minutes ago",
     },
     {
       logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
       notificationTitle: "Joseph Mcfall appied to your job",
-      time: "10 minutes ago"
+      time: "10 minutes ago",
     },
     {
       logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
       notificationTitle: "Joseph Mcfall appied to your job",
-      time: "10 minutes ago"
+      time: "10 minutes ago",
     },
     {
       logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
       notificationTitle: "Joseph Mcfall appied to your job",
-      time: "10 minutes ago"
+      time: "10 minutes ago",
     },
     {
       logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
       notificationTitle: "Joseph Mcfall appied to your job",
-      time: "10 minutes ago"
+      time: "10 minutes ago",
     },
     {
       logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
       notificationTitle: "Joseph Mcfall appied to your job",
-      time: "10 minutes ago"
+      time: "10 minutes ago",
     },
     {
       logo: "/images/olu-famule-kYx_g4YBfLI-unsplash.jpg",
       notificationTitle: "Joseph Mcfall appied to your job",
-      time: "10 minutes ago"
+      time: "10 minutes ago",
     },
   ];
-
+console.log("path",pathname)
   return (
-    <header className="border-b shadow-sm h-[70px] sticky top-0 bg-white w-full z-[100] ">
-      <nav>
-        <div className="container py-3 flex items-center justify-between">
-          <Link href={"/"}>
+    <header className="  sticky top-0  w-full z-[100] ">
+      <nav className="bg-white border-b-[0.5px] border-gray-200">
+        <div className="container py-3 flex items-center justify-between  bg-white">
+          <div className="flex gap-x-4 items-center ">
             <div className="w-fit">
               <Image
-                src={"/images/PNH-logo.png"}
+                src={"/images/menu.svg"}
                 alt="Logo"
-                width={150}
-                height={100}
+                width={24}
+                height={24}
                 priority
                 className="z-50 object-fit"
               />
             </div>
-          </Link>
+            <Link href={"/"}>
+              <div className="text-xl font-semibold">
+                <span>Talent </span>
+                <span className="text-[#0472F4]">Blender</span>
+              </div>
+            </Link>
+          </div>
+          <div className="flex gap-x-10 items-center">
+            <div className="w-fit flex flex-col justify-center items-center gap-y-[2px] ">
+              {pathname === "/" ? (
+                <>
+                  <Image
+                    src={"/images/home-blue.png"}
+                    alt="Logo"
+                    width={15}
+                    height={15}
+                    priority
+                    className="z-50 object-fit"
+                  />
+                  <p className="text-[#0472F4] text-[10px] ">Home</p>
+                </>
+              ) : (
+                <>
+                  <Image
+                    src={"/images/home.svg"}
+                    alt="Logo"
+                    width={15}
+                    height={15}
+                    priority
+                    className="z-50 object-fit"
+                  />
+                  <p className="text-[#B7B7B7] text-[10px]">Home</p>
+                </>
+              )}
+            </div>
+            <div className="w-fit flex flex-col justify-center items-center gap-y-[2px]">
+              <Image
+                src={"/images/briefcase.svg"}
+                alt="Logo"
+                width={15}
+                height={15}
+                priority
+                className="z-50 object-fit"
+              />
+              <p className="text-[#B7B7B7] text-[10px]">Jobs</p>
+            </div>
+            <div className="w-fit flex flex-col justify-center items-center gap-y-[2px]">
+              <Image
+                src={"/images/navigation.svg"}
+                alt="Logo"
+                width={15}
+                height={15}
+                priority
+                className="z-50 object-fit"
+              />
+              <p className="text-[#B7B7B7] text-[8px]">Explore</p>
+            </div>
+          </div>
+          <div className="relative ">
+            <Input
+              type="text"
+              placeholder="Search"
+              className=" pl-10 text-sm !outline-none !ring-0 bg-[#F9F9F9] "
+            />
+            <Image
+              src={"/images/search.svg"}
+              alt="Logo"
+              width={15}
+              height={15}
+              priority
+              className="z-50 object-fit absolute bottom-[11px] left-4"
+            />
+          </div>
           <div>
             <ul className="flex items-center gap-10">
               <Link href={"/chat"}>
@@ -97,8 +170,14 @@ export default function Navbar() {
                     pathname.includes("/chat") ? "text-blue-500" : "text-black"
                   }`}
                 >
-                  <IoChatbubbleEllipsesOutline size={18} />
-                  Chat
+                  <Image
+                    src={"/images/comment.svg"}
+                    alt="Logo"
+                    width={15}
+                    height={15}
+                    priority
+                    className="z-50 object-fit  "
+                  />
                 </li>
               </Link>
               <DropdownMenu>
@@ -110,8 +189,14 @@ export default function Navbar() {
                         : "text-black"
                     }`}
                   >
-                    <IoMdNotificationsOutline size={18} />
-                    Notifications
+                    <Image
+                      src={"/images/bell.svg"}
+                      alt="Logo"
+                      width={15}
+                      height={15}
+                      priority
+                      className="z-50 object-fit  "
+                    />
                   </li>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-80 z-[100]">
@@ -156,8 +241,14 @@ export default function Navbar() {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <li className="flex text-sm items-center flex-col cursor-pointer">
-                    <CgProfile size={18} />
-                    Profile
+                    <Image
+                      src={"/images/ellipse.png"}
+                      alt="Logo"
+                      width={24}
+                      height={24}
+                      priority
+                      className="z-50 object-fit  "
+                    />
                   </li>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 z-[100]">

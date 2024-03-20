@@ -7,6 +7,7 @@ import Script from "next/script";
 import SideNavbar from "@/components/SideNavbar";
 import { usePathname } from "next/navigation";
 import useAuth from "@/store/store";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,19 +22,22 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className} h-screen min-h-screen max-h-screen`}>
+      <body
+        className={`${inter.className} h-screen min-h-screen max-h-screen bg-white`}
+      >
         <Script src="/tinymce/tinymce.min.js" />
         <Navbar />
-        <div className="flex  mt-6 gap-4 container">
-          <aside
+        <div className="flex gap-4 container">
+          {/* <aside
             className={`sticky top-[94px] flex-1 shrink-0 h-full  ${
               pathname.includes("/auth") ? "hidden" : "block"
             }`}
           >
             <SideNavbar />
-          </aside>
-          <main className="w-full mb-24">{children}</main>
+          </aside> */}
+          <main className="w-full">{children}</main>
         </div>
+        <Footer/>
       </body>
     </html>
   );
