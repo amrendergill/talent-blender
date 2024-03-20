@@ -47,6 +47,7 @@ export default function CreateJob() {
     salaryCurrency: "",
     maxSalary: "",
     minSalary: "",
+    fullName: ""
   });
 
   const list: any = [
