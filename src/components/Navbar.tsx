@@ -73,7 +73,7 @@ export default function Navbar() {
       time: "10 minutes ago",
     },
   ];
-console.log("path",pathname)
+  console.log("path", pathname);
   return (
     <header className="  sticky top-0  w-full z-[100] ">
       <nav className="bg-white border-b-[0.5px] border-gray-200">
@@ -125,15 +125,33 @@ console.log("path",pathname)
               )}
             </div>
             <div className="w-fit flex flex-col justify-center items-center gap-y-[2px]">
-              <Image
-                src={"/images/briefcase.svg"}
-                alt="Logo"
-                width={15}
-                height={15}
-                priority
-                className="z-50 object-fit"
-              />
-              <p className="text-[#B7B7B7] text-[10px]">Jobs</p>
+              <Link href={"/jobs"}>
+                {pathname === "/jobs" ? (
+                  <>
+                    <Image
+                      src={"/images/briefcase-blue.svg"}
+                      alt="Logo"
+                      width={15}
+                      height={15}
+                      priority
+                      className="z-50 object-fit"
+                    />
+                    <p className="text-[#0472F4] text-center text-[10px]">Jobs</p>
+                  </>
+                ) : (
+                  <>
+                    <Image
+                      src={"/images/briefcase.svg"}
+                      alt="Logo"
+                      width={15}
+                      height={15}
+                      priority
+                      className="z-50 object-fit"
+                    />
+                    <p className="text-[#B7B7B7] text-[10px]">Jobs</p>
+                  </>
+                )}
+              </Link>
             </div>
             <div className="w-fit flex flex-col justify-center items-center gap-y-[2px]">
               <Image
@@ -207,7 +225,10 @@ console.log("path",pathname)
                       {notifications?.map((el: any, index: any) => {
                         return (
                           <>
-                            <div className="flex items-center gap-3">
+                            <div
+                              className="flex items-center gap-3"
+                              key={index}
+                            >
                               <div>
                                 <Avatar className="h-10 w-10">
                                   <AvatarImage src={el?.logo} alt="logo" />
