@@ -42,7 +42,7 @@ export default function CreateJob() {
     jobTitle: "",
     jobDescription: "",
     jobType: "",
-    email: "",
+    position: "",
     jobCategory: "",
     salaryCurrency: "",
     maxSalary: "",
@@ -82,9 +82,7 @@ export default function CreateJob() {
       <main className="bg-white">
         <div className="p-5">
           <div className="flex gap-x-6 ">
-            <div className="w-[60%]">
-
-
+            <div className="w-[65%]">
               <h2 className="font-semibold text-2xl text-[#000000]">Post a Job</h2>
               <p className="text-sm font-regular text-[#212529] mt-2">
                 Enhance the caliber of your recruitment.
@@ -127,24 +125,24 @@ export default function CreateJob() {
                             <Label htmlFor="fullName">Job Title *</Label>
                             <Input
                               type="text"
-                              id="fullName"
+                              id="fullName text-xs font-regular text-[#868686]"
                               placeholder="e.g. UI/UX Designer, Web developer, etc."
-                              value={formData?.fullName}
+                              value={formData?.jobTitle}
                               onChange={(e: any) =>
                                 setFormData((prevData: any) => ({
                                   ...prevData,
-                                  fullName: e.target.value,
+                                  jobTitle: e.target.value,
                                 }))
                               }
                             />
-                            <p className="text-red-500 text-sm">{errors.fullName}</p>
+                            <p className="text-red-500 text-sm">{errors.jobTitle}</p>
                           </div>
                           <div className="grid w-[48%] max-w-sm gap-1.5">
 
                             <Label htmlFor="email">Type of position *</Label>
 
                             <Select>
-                              <SelectTrigger className="w-full">
+                              <SelectTrigger className="w-full  text-xs font-regular">
                                 <SelectValue placeholder="Full time Employees" />
                               </SelectTrigger>
                               <SelectContent>
@@ -158,7 +156,7 @@ export default function CreateJob() {
                               </SelectContent>
                             </Select>
 
-                            <p className="text-red-500 text-sm">{errors.email}</p>
+                            <p className="text-red-500 text-sm">{errors.position}</p>
                           </div>
                           <div className="grid w-[48%] max-w-sm gap-1.5 ">
                             <div className="flex items-center gap-1">
@@ -166,7 +164,7 @@ export default function CreateJob() {
 
                             </div>
                             <Select>
-                              <SelectTrigger className="w-full">
+                              <SelectTrigger className="w-full  text-xs font-regular text-[#868686]">
                                 <SelectValue placeholder="Select Role" />
                               </SelectTrigger>
                               <SelectContent>
@@ -187,7 +185,7 @@ export default function CreateJob() {
 
                             </div>
                             <Select>
-                              <SelectTrigger className="w-full">
+                              <SelectTrigger className="w-full  text-xs font-regular text-[#868686]">
                                 <SelectValue placeholder="Select years of Experience" />
                               </SelectTrigger>
                               <SelectContent>
@@ -210,6 +208,7 @@ export default function CreateJob() {
                             <Input
                               type="email"
                               id="email"
+                              className=" text-xs font-regular text-[#868686]"
                               placeholder="e.g. Python, react, etc."
                               onChange={(e: any) =>
                                 setFormData((prevData: any) => ({
@@ -220,10 +219,21 @@ export default function CreateJob() {
                             />
                             <p className="text-red-500 text-sm">{errors.email}</p>
                           </div>
-                          <div className="flex items-center gap-1">
-                            <Label htmlFor="about">Description</Label>
-                            <p className="text-red-600 font-bold">*</p>
-                          </div>
+                          
+                            <div className='flex w-full items-center justify-between'>
+                              <Label htmlFor="about">Description</Label>
+                              <Button
+                                onClick={handleSubmit}
+                                className={`createJobStyle text-xs rounded-[5px]`}
+                                variant={"outline"}
+                              >
+                               
+                                <img src='/images/sparkles.svg' alt='Generate with AI'/> Generate with AI
+                             
+                              </Button>
+                            </div>
+                           
+                         
                           {/* <Textarea
                             id="about"
                             placeholder="About"
@@ -298,9 +308,9 @@ export default function CreateJob() {
                         <div className="pt-[30px]">
                           <h2 className="text-base font-medium text-[#000000]">Remote Work Specifications</h2>
                           <p className="mt-[10px] text-xs font-regular text-[#868686]">
-                          Pitch N Hire stands out as the premier platform for sourcing remote talent. This section assures you’ll be matched with candidates who perfectly match your criteria.                     
-                         </p>
-                      
+                            Pitch N Hire stands out as the premier platform for sourcing remote talent. This section assures you’ll be matched with candidates who perfectly match your criteria.
+                          </p>
+
                           <p className="mt-[50px] text-[#212529] text-sm font-medium">What is the policy regarding remote work for this role?</p>
                           <div className="mt-4">
                             <RadioGroup
@@ -339,6 +349,353 @@ export default function CreateJob() {
                               Automatically disregard applicants unable to relocate for this position.
                             </label>
                           </div>
+                          <div className="mt-[40px]">
+                            <h2 className="text-sm font-medium opacity-50">Geographical regions for hiring remote workers.</h2>
+                            <p className="mt-[10px] text-xs font-regular text-[#868686] opacity-50">From which locations are you open to hiring?</p>
+                            <div className="flex items-center mt-[20px] space-x-2">
+                              <Checkbox id="terms" className="border-[#c6c3c3]" />
+                              <label
+                                htmlFor="terms"
+                                className="text-xs font-regular opacity-50 leading-none text-[#868686] peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                              >
+                                We are open to hiring remote workers from any location worldwide.
+                              </label>
+                            </div>
+                            <div className="mt-[20px] grid w-full  gap-1.5 ">
+                              <Input
+                                type="text"
+                                id="fullName"
+                                className=" text-xs font-regular text-[#868686]"
+                                placeholder="e.g. New York"
+                                value={formData?.fullName}
+                                onChange={(e: any) =>
+                                  setFormData((prevData: any) => ({
+                                    ...prevData,
+                                    fullName: e.target.value,
+                                  }))
+                                }
+                              />
+                              <p className="text-red-500 text-sm">{errors.fullName}</p>
+                            </div>
+                            <div className="mt-[40px]">
+                              <h2 className="text-sm font-medium text-[#868686] opacity-50">How would you describe your remote work environment?</h2>
+                              <div className="mt-4">
+                                <RadioGroup
+                                  defaultValue="option-one"
+                                  className="flex items-center gap-5"
+                                >
+                                  <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="option-one" id="option-one" />
+                                    <Label htmlFor="option-one" className="text-xs font-regular opacity-50">Primarily, we operate with an in-person arrangement.</Label>
+                                  </div>
+                                  <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="option-two" id="option-two" />
+                                    <Label className="text-xs font-regular opacity-50" htmlFor="option-two">We’re predominantly remote or decentralized.</Label>
+                                  </div>
+                                </RadioGroup>
+                              </div>
+                              <div className="mt-[40px]">
+                                <p className="font-medium text-sm text-[#212529] opacity-50">Geographical regions for hiring remote workers.</p>
+                                <div className="mt-[20px]">
+                                  <Input
+                                    type="text"
+                                    id="fullName"
+                                    className="text-sm font-regular opacity-50"
+                                    placeholder="Select time zones"
+                                    value={formData?.fullName}
+                                    onChange={(e: any) =>
+                                      setFormData((prevData: any) => ({
+                                        ...prevData,
+                                        fullName: e.target.value,
+                                      }))
+                                    }
+                                  />
+                                </div>
+                                <div className="mt-[40px]">
+                                  <h2 className="text-base font-medium text-[#000000] opacity-50">Hours of Collaboration</h2>
+                                  <p className="text-xs mt-[10px] font-regular opacity-50 text-[#868686]">The designated hours during which we anticipate employees to be accessible for synchronous communications. This information is provided solely for informational purposes.</p>
+                                  <div className="flex flex-wrap items-center mt-[20px] gap-5">
+                                    <div className="grid w-[13%] max-w-sm gap-1.5 ">
+                                      <Input
+                                        type="text"
+                                        id="fullName"
+                                        placeholder="-- : --"
+                                        value={formData?.fullName}
+                                        onChange={(e: any) =>
+                                          setFormData((prevData: any) => ({
+                                            ...prevData,
+                                            fullName: e.target.value,
+                                          }))
+                                        }
+                                      />
+                                      <p className="text-red-500 text-sm">{errors.fullName}</p>
+                                    </div>
+                                    <div className="text-[#868686] opacity-50"> - </div>
+                                    <div className="grid w-[13%] max-w-sm gap-1.5">
+                                      <Input
+                                        type="text"
+                                        id="fullName"
+                                        placeholder="-- : --"
+                                        value={formData?.fullName}
+                                        onChange={(e: any) =>
+                                          setFormData((prevData: any) => ({
+                                            ...prevData,
+                                            fullName: e.target.value,
+                                          }))
+                                        }
+                                      />
+                                      <p className="text-red-500 text-sm">{errors.email}</p>
+                                    </div>
+                                    <div className="grid  w-[60%] gap-1.5 ">
+
+                                      <Select>
+                                        <SelectTrigger className="w-full font-xs font-regular text-[#868686] opacity-50">
+                                          <SelectValue placeholder="Select time zones" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                          <SelectGroup>
+                                            <SelectItem value="inr">INR</SelectItem>
+                                            <SelectItem value="usd">USD</SelectItem>
+                                            <SelectItem value="eur">EUR</SelectItem>
+                                            <SelectItem value="jyp">JYP</SelectItem>
+                                            <SelectItem value="gbp">GBP</SelectItem>
+                                          </SelectGroup>
+                                        </SelectContent>
+                                      </Select>
+                                      <p className="text-red-500 text-sm">{errors.fullName}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {/* <div className="border-[20px] border-[#FFFFFF]"></div> */}
+                        <div className="pt-[60px]">
+                          <h2 className="text-base font-medium text-[#000000]">Compensation & Equity</h2>
+                          <p className="mt-[10px] text-xs font-regular text-[#868686]">
+                            Jobs lacking salary information are excluded from candidate search results. If you prefer not to disclose these details initially, you can choose to promote your job after it’s published. Job postings that provide detailed information attract an average of 30% more applicants.
+                          </p>
+                          <div className="mt-[30px]">
+                            <div className="grid mt-[10px] gap-1.5">
+
+                              <Label htmlFor="email">Currency</Label>
+
+                              <Select>
+                                <SelectTrigger className="w-full text-xs font-regular">
+                                  <SelectValue placeholder="United States Dollars ($)" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectGroup>
+                                    <SelectItem value="inr">INR</SelectItem>
+                                    <SelectItem value="usd">USD</SelectItem>
+                                    <SelectItem value="eur">EUR</SelectItem>
+                                    <SelectItem value="jyp">JYP</SelectItem>
+                                    <SelectItem value="gbp">GBP</SelectItem>
+                                  </SelectGroup>
+                                </SelectContent>
+                              </Select>
+
+                              <p className="text-red-500 text-sm">{errors.email}</p>
+                            </div>
+                            <div className="mt-[40px]">
+                              <h2 className="text-base font-medium text-[#000000]">Currency</h2>
+                              <p className="mt-[10px] w-[48%] text-xs font-regular text-[#868686]">
+                                The values supplied will be rounded down to the nearest thousand. The gap between these values should not exceed $80,000 USD.
+                              </p>
+                              <div className="flex flex-wrap items-center mt-[20px] gap-5">
+                                <div className="grid w-[46%] max-w-sm gap-1.5 ">
+                                  <Input
+                                    type="text"
+                                    id="fullName"
+                                    placeholder="$ 60, 000"
+                                    value={formData?.fullName}
+                                    onChange={(e: any) =>
+                                      setFormData((prevData: any) => ({
+                                        ...prevData,
+                                        fullName: e.target.value,
+                                      }))
+                                    }
+                                  />
+                                  <p className="text-red-500 text-sm">{errors.fullName}</p>
+                                </div>
+                                <div className='text-[#868686]'> - </div>
+                                <div className="grid w-[46%] max-w-sm gap-1.5 ">
+                                  <Input
+                                    type="text"
+                                    id="fullName"
+                                    placeholder="& 70,000"
+                                    value={formData?.fullName}
+                                    onChange={(e: any) =>
+                                      setFormData((prevData: any) => ({
+                                        ...prevData,
+                                        fullName: e.target.value,
+                                      }))
+                                    }
+                                  />
+                                  <p className="text-red-500 text-sm">{errors.fullName}</p>
+                                </div>
+                              </div>
+
+                            </div>
+                            <div className="mt-[40px]">
+                              <h2 className="text-sm font-medium text-[#212529]">Equity Range</h2>
+                              <div className="flex flex-wrap items-center mt-[20px] gap-5">
+                                <div className="grid w-[46%] max-w-sm gap-1.5 ">
+                                  <Input
+                                    type="text"
+                                    id="fullName"
+                                    placeholder="0.0%"
+                                    value={formData?.fullName}
+                                    onChange={(e: any) =>
+                                      setFormData((prevData: any) => ({
+                                        ...prevData,
+                                        fullName: e.target.value,
+                                      }))
+                                    }
+                                  />
+                                  <p className="text-red-500 text-sm">{errors.fullName}</p>
+                                </div>
+                                <div className='text-[#868686]'> - </div>
+                                <div className="grid w-[46%] max-w-sm gap-1.5 ">
+                                  <Input
+                                    type="text"
+                                    id="fullName"
+                                    placeholder="1.0%"
+                                    value={formData?.fullName}
+                                    onChange={(e: any) =>
+                                      setFormData((prevData: any) => ({
+                                        ...prevData,
+                                        fullName: e.target.value,
+                                      }))
+                                    }
+                                  />
+                                  <p className="text-red-500 text-sm">{errors.fullName}</p>
+                                </div>
+                              </div>
+                              <div className="flex items-center mt-[30px] space-x-2">
+                                <Checkbox id="terms" className="border-[#c6c3c3]" />
+                                <label
+                                  htmlFor="terms"
+                                  className="text-xs font-regular leading-none text-[#868686] peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                >
+                                  No Equity
+                                </label>
+                              </div>
+                              <div className="mt-[10px]">
+                                <p className="text-xs font-medium text-[#212529]">Uncertain about compensation?<span className="underline"> Explore startup salaries and equity.</span></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {/* <div className="border-[20px] border-[#FFFFFF]"></div> */}
+                        <div className="pt-[60px]">
+                          <h2 className="text-base font-medium text-[#000000]">Recruitment Point of Contact</h2>
+
+                          <div className="mt-[30px]">
+                            <div className="grid  gap-1.5">
+
+                              <Label htmlFor="email">Main point of contact for recruitment</Label>
+
+                              <Select>
+                                <SelectTrigger className="w-full mt-[10px] text-xs font-regular">
+                                  <SelectValue placeholder="Umang Sharma" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectGroup>
+                                    <SelectItem value="inr">INR</SelectItem>
+                                    <SelectItem value="usd">USD</SelectItem>
+                                    <SelectItem value="eur">EUR</SelectItem>
+                                    <SelectItem value="jyp">JYP</SelectItem>
+                                    <SelectItem value="gbp">GBP</SelectItem>
+                                  </SelectGroup>
+                                </SelectContent>
+                              </Select>
+
+                              <p className="text-red-500 text-sm">{errors.email}</p>
+                            </div>
+
+                          </div>
+                          <div className="mt-[40px]">
+                            <div className="grid  gap-1.5">
+
+                              <Label htmlFor="email" className="text-sm font-medium">Subscribers</Label>
+                              <p className="text-[#868686] text-xs font-regular">Who should be the recipient of applicants for this role? The recruiting contact will always be subscribed.</p>
+                              <Select>
+                                <SelectTrigger className="w-full mt-[15px] text-xs font-regular">
+                                  <SelectValue placeholder="Select Subscribers" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectGroup>
+                                    <SelectItem value="inr">INR</SelectItem>
+                                    <SelectItem value="usd">USD</SelectItem>
+                                    <SelectItem value="eur">EUR</SelectItem>
+                                    <SelectItem value="jyp">JYP</SelectItem>
+                                    <SelectItem value="gbp">GBP</SelectItem>
+                                  </SelectGroup>
+                                </SelectContent>
+                              </Select>
+
+                              <p className="text-red-500 text-sm">{errors.email}</p>
+                            </div>
+
+                          </div>
+                        </div>
+                        {/* <div className="border-[20px] border-[#FFFFFF]"></div> */}
+                        <div className="pt-[60px]">
+                          <h2 className="text-base font-medium text-[#000000]">Tag Coworkers</h2>
+                          <div className="mt-[30px]">
+                            <div className="grid  gap-1.5">
+
+                              <Label htmlFor="email" className="text-sm font-medium">Coworkers</Label>
+                              <p className="text-[#868686] w-[80%] text-xs font-regular">Individuals with whom the new hire will closely collaborate. We’ll display these individuals on the job page. Job seekers often rank this as one of their top criteria. If you don’t see someone listed here, please add them to your company profile.</p>
+                              <Select>
+                                <SelectTrigger className="w-full mt-[15px] text-xs font-regular">
+                                  <SelectValue placeholder="Select coworkers" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectGroup>
+                                    <SelectItem value="inr">INR</SelectItem>
+                                    <SelectItem value="usd">USD</SelectItem>
+                                    <SelectItem value="eur">EUR</SelectItem>
+                                    <SelectItem value="jyp">JYP</SelectItem>
+                                    <SelectItem value="gbp">GBP</SelectItem>
+                                  </SelectGroup>
+                                </SelectContent>
+                              </Select>
+
+                              <p className="text-red-500 text-sm">{errors.email}</p>
+                            </div>
+
+                          </div>
+                        </div>
+                        {/* <div className="border-[20px] border-[#FFFFFF]"></div> */}
+                        <div className="pt-[60px]">
+                          <h2 className="text-base font-medium text-[#000000]">Company Details</h2>
+                          <div className="mt-[30px]">
+                            <div className="grid  gap-1.5">
+
+                              <Label htmlFor="email" className="text-sm font-medium">Company Size</Label>
+
+                              <Select>
+                                <SelectTrigger className="w-full mt-[15px] text-xs font-regular">
+                                  <SelectValue placeholder="Select coworkers" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectGroup>
+                                    <SelectItem value="inr">INR</SelectItem>
+                                    <SelectItem value="usd">USD</SelectItem>
+                                    <SelectItem value="eur">EUR</SelectItem>
+                                    <SelectItem value="jyp">JYP</SelectItem>
+                                    <SelectItem value="gbp">GBP</SelectItem>
+                                  </SelectGroup>
+                                </SelectContent>
+                              </Select>
+
+                              <p className="text-red-500 text-sm">{errors.email}</p>
+                            </div>
+
+                          </div>
                         </div>
                       </CardContent>
                     </Card>
@@ -371,246 +728,18 @@ export default function CreateJob() {
 
 
             </div>
-            <div className=" w-[40%] ">
-
+            <div className="w-[35%]">
+            <h2 className="font-medium text-base text-[#000000]">Your recent Jobs</h2>
+              <Tabs defaultValue="details" className="w-[700px]">
+                 
+                    <TabsList className="">
+                      <TabsTrigger value="details">Active</TabsTrigger>
+                      <TabsTrigger value="questions">Draft</TabsTrigger>
+                    </TabsList>
+                    
+              </Tabs>
             </div>
           </div>
-          {/* <div className="">
-            <div>
-              <h2 className="font-medium text-xl">Job Details</h2>
-              <p className="text-sm font-regular text-gray-600 mt-2">
-                Describe the roles and responsibilities of the position.{" "}
-              </p>
-            </div>
-            <div className="flex flex-col gap-5 my-5">
-              <div className="grid w-full max-w-full items-center gap-1.5 ">
-                <div className="flex items-center gap-1">
-                  <Label htmlFor="jobTitle">Job Title</Label>
-                  <p className="text-red-600 font-bold">*</p>
-                </div>
-                <Input
-                  type="text"
-                  id="jobTitle"
-                  placeholder="Job Title"
-                  value={formData?.jobTitle}
-                  onChange={(e: any) =>
-                    setFormData((prevData: any) => ({
-                      ...prevData,
-                      jobTitle: e.target.value,
-                    }))
-                  }
-                />
-                <p className="text-red-500 text-sm">{errors.jobTitle}</p>
-              </div>
-              <div className="grid w-full max-w-full items-center gap-1.5 ">
-                <div className="flex items-center gap-1">
-                  <Label htmlFor="jobDescription">Job Description</Label>
-                  <p className="text-red-600 font-bold">*</p>
-                </div>
-                <Textarea
-                  id="jobDescription"
-                  placeholder="Job Description"
-                  value={formData?.jobDescription}
-                  onChange={(e: any) =>
-                    setFormData((prevData: any) => ({
-                      ...prevData,
-                      jobDescription: e.target.value,
-                    }))
-                  }
-                />
-                <p className="text-red-500 text-sm">{errors.jobDescription}</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="grid w-full max-w-full items-center gap-1.5">
-                  <div className="flex items-center gap-1">
-                    <Label htmlFor="jobType">Job Type</Label>
-                    <p className="text-red-600 font-bold">*</p>
-                  </div>
-                  <Select
-                    name={"jobType"}
-                    onValueChange={(e: any) => {
-                      setFormData((prevData: any) => ({
-                        ...prevData,
-                        jobType: e,
-                      }));
-                    }}
-                    value={formData?.jobType}
-                  >
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select">
-                        {formData?.jobType}
-                      </SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        {jobTypes?.length > 0 &&
-                          jobTypes?.map((el: any, index: any) => {
-                            return (
-                              <>
-                                <SelectItem
-                                  value={el}
-                                  key={`index of ${index}`}
-                                >
-                                  {el}
-                                </SelectItem>
-                              </>
-                            );
-                          })}
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                  <p className="text-red-500 text-sm">{errors.jobType}</p>
-                </div>
-                <div className="grid w-full max-w-full items-center gap-1.5">
-                  <div className="flex items-center gap-1">
-                    <Label htmlFor="jobCategory">Job Category</Label>
-                    <p className="text-red-600 font-bold">*</p>
-                  </div>
-                  <Select
-                    name={"jobCategory"}
-                    onValueChange={(e: any) => {
-                      setFormData((prevData: any) => ({
-                        ...prevData,
-                        jobCategory: e,
-                      }));
-                    }}
-                    value={formData?.jobCategory}
-                  >
-                    <SelectTrigger className="w-full">
-                      <SelectValue  placeholder="Select">{formData?.jobCategory}</SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        {jobCategories?.length > 0 &&
-                          jobCategories?.map((el: any, index: any) => {
-                            return (
-                              <>
-                                <SelectItem
-                                  value={el}
-                                  key={`index of ${index}`}
-                                >
-                                  {el}
-                                </SelectItem>
-                              </>
-                            );
-                          })}
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                  <p className="text-red-500 text-sm">{errors.jobCategory}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <div className="flex items-center gap-1">
-                    <Label htmlFor="currency">Salary Currency</Label>
-                    <p className="text-red-600 font-bold">*</p>
-                  </div>
-                  <Select
-                  name={"salaryCurrency"}
-                  onValueChange={(e: any) => {
-                    setFormData((prevData: any) => ({
-                      ...prevData,
-                      salaryCurrency: e,
-                    }));
-                  }}
-                  value={formData?.salaryCurrency}
-                  >
-                    <SelectTrigger className="w-full">
-                      <SelectValue  placeholder="Select">{formData?.salaryCurrency}</SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        {salaryCurrencies?.length > 0 &&
-                          salaryCurrencies?.map((el: any, index: any) => {
-                            return (
-                              <>
-                                <SelectItem value={el} key={`index of ${index}`}>{el}</SelectItem>
-                              </>
-                            );
-                          })}
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                  <p className="text-red-500 text-sm">
-                    {errors?.salaryCurrency}
-                  </p>
-                </div>
-                <div className="grid w-full max-w-full items-center gap-1.5 ">
-                  <div className="flex items-center gap-1">
-                    <Label htmlFor="jobTitle">Maximum Salary / year</Label>
-                    <p className="text-red-600 font-bold">*</p>
-                  </div>
-                  <Input
-                    type="text"
-                    id="maxSalary"
-                    placeholder="Max Salary"
-                    value={formData?.maxSalary}
-                    onChange={(e: any) =>
-                      setFormData((prevData: any) => ({
-                        ...prevData,
-                        maxSalary: e.target.value,
-                      }))
-                    }
-                  />
-                  <p className="text-red-500 text-sm">{errors.maxSalary}</p>
-                </div>
-                <div className="grid w-full max-w-full items-center gap-1.5 ">
-                  <div className="flex items-center gap-1">
-                    <Label htmlFor="minSalary">Minimum Salary / year</Label>
-                    <p className="text-red-600 font-bold">*</p>
-                  </div>
-                  <Input
-                    type="text"
-                    id="minSalary"
-                    placeholder="Min Salary"
-                    value={formData?.minSalary}
-                    onChange={(e: any) =>
-                      setFormData((prevData: any) => ({
-                        ...prevData,
-                        minSalary: e.target.value,
-                      }))
-                    }
-                  />
-                  <p className="text-red-500 text-sm">{errors.minSalary}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div className="mt-10">
-              <h2 className="font-medium text-xl">How to Apply</h2>
-              <p className="text-sm font-regular text-gray-600 mt-2">
-                Describe the roles and responsibilities of the position.{" "}
-              </p>
-
-              <div className="my-5">
-                <RadioGroup
-                  defaultValue="applyByWebsite"
-                  className=" flex items-center gap-10"
-                >
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="applyByWebsite" id="r1" />
-                    <Label htmlFor="r1">Apply by website</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="applyByPortfolio" id="r2" />
-                    <Label htmlFor="r2">Apply by portfolio</Label>
-                  </div>
-                </RadioGroup>
-              </div>
-            </div>
-          </div>
-          <div className="w-full flex items-center justify-end">
-            <Button
-              onClick={handleSubmit}
-              className={` text-xs rounded-[3px] bg-white border-[#0a66c2]`}
-              variant={"outline"}
-            >
-              Submit
-            </Button>
-          </div> */}
         </div>
       </main >
     </>
