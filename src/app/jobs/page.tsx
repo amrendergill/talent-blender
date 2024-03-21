@@ -4,6 +4,7 @@ import DefaultInitial from "@/components/DefaultInitials";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Slider } from "@/components/ui/slider";
+import Link from 'next/link'
 
 type SliderProps = React.ComponentProps<typeof Slider>;
 
@@ -26,7 +27,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { appService } from "@/utils/api";
-
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -142,7 +143,7 @@ const mockDataSidebar = [
 export default function Jobs({ className, ...props }: SliderProps) {
   // const [data]:any = await getProps()
   // console.log(data, "data");
-
+const router = useRouter()
   const [data, setData]: any = useState();
   const [filters, setFilters] = useState(defaultFilters);
   const [pagination, setPagination] = useState({
@@ -869,9 +870,11 @@ export default function Jobs({ className, ...props }: SliderProps) {
               />
               AI Matching
             </Button>
+            <Link href={'/job/create-job'}>
             <Button className="text-xs h-[29px] px-5 border-[0.5px] border-[#BEBEBE] bg-white  text-black rounded-[5px] hover:text-[#0472F4]">
               + Create Job
             </Button>
+            </Link>
           </div>
         </div>
         <div className="border-t-[0.5px]  border-gray-200 w-full  flex gap-x-2 mt-4">
@@ -947,9 +950,11 @@ export default function Jobs({ className, ...props }: SliderProps) {
                     <Badge className="bg-[#F5F5F5] text-black text-[10px] rounded-[10px]">
                       Posted 25 Days ago
                     </Badge>
+                    <Link href={'/jobs/view-job'}>
                     <Button className="text-xs h-[31px] px-5 border-[0.5px] border-[#BEBEBE] bg-white  text-black rounded-[5px] hover:text-[#0472F4]">
                       View Job
                     </Button>
+                    </Link>
                   </div>
                 </Card>
               ))}

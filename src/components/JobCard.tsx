@@ -26,13 +26,13 @@ export default function JobCard({
           </div>
           <div className="flex gap-[10px]">
             <Button
-              className="px-5 py-[7px] text-xs bg-[#F9F9F9] border-none rounded-none hover:shadow-sm hover:bg-white hover:border"
+              className="px-5 py-[7px] text-xs h-[31px] bg-[#F9F9F9] border-none rounded-none hover:shadow-sm hover:bg-white hover:border"
               variant={"outline"}
             >
               Save
             </Button>
             <Button
-              className="px-5 py-[7px] text-xs bg-[#F9F9F9] border-none rounded-none hover:shadow-sm hover:bg-white hover:border"
+              className="px-5 py-[7px] text-xs h-[31px] bg-[#F9F9F9] border-none rounded-none hover:shadow-sm hover:bg-white hover:border"
               variant={"outline"}
             >
               View Job
