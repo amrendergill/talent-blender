@@ -73,12 +73,12 @@ export default function Navbar() {
       time: "10 minutes ago",
     },
   ];
-console.log("path",pathname)
+  console.log("path", pathname);
   return (
     <header className="  sticky top-0  w-full z-[100] ">
       <nav className="bg-white border-b-[0.5px] border-gray-200">
-        <div className="container py-3 flex items-center justify-between  bg-white">
-          <div className="flex gap-x-4 items-center ">
+        <div className="container  flex items-center justify-between  bg-white">
+          <div className="flex gap-x-4 my-3 items-center ">
             <div className="w-fit">
               <Image
                 src={"/images/menu.svg"}
@@ -96,73 +96,125 @@ console.log("path",pathname)
               </div>
             </Link>
           </div>
-          <div className="flex gap-x-10 items-center">
-            <div className="w-fit flex flex-col justify-center items-center gap-y-[2px] ">
-              {pathname === "/" ? (
-                <>
-                  <Image
-                    src={"/images/home-blue.png"}
-                    alt="Logo"
-                    width={15}
-                    height={15}
-                    priority
-                    className="z-50 object-fit"
-                  />
-                  <p className="text-[#0472F4] text-[10px] ">Home</p>
-                </>
-              ) : (
-                <>
-                  <Image
-                    src={"/images/home.svg"}
-                    alt="Logo"
-                    width={15}
-                    height={15}
-                    priority
-                    className="z-50 object-fit"
-                  />
-                  <p className="text-[#B7B7B7] text-[10px]">Home</p>
-                </>
-              )}
-            </div>
-            <div className="w-fit flex flex-col justify-center items-center gap-y-[2px]">
-              <Image
-                src={"/images/briefcase.svg"}
-                alt="Logo"
-                width={15}
-                height={15}
-                priority
-                className="z-50 object-fit"
-              />
-              <p className="text-[#B7B7B7] text-[10px]">Jobs</p>
-            </div>
-            <div className="w-fit flex flex-col justify-center items-center gap-y-[2px]">
-              <Image
-                src={"/images/navigation.svg"}
-                alt="Logo"
-                width={15}
-                height={15}
-                priority
-                className="z-50 object-fit"
-              />
-              <p className="text-[#B7B7B7] text-[8px]">Explore</p>
-            </div>
+          <div className="flex gap-x-10 items-center ">
+            <Link href={"/"}>
+              <div
+                className={`w-fit flex flex-col justify-center items-center gap-y-[2px]  py-4 px-3 ${
+                  pathname === "/" && "border-b-[2px] border-[#0472F4]"
+                }  `}
+              >
+                {pathname === "/" ? (
+                  <>
+                    <Image
+                      src={"/images/home-blue.png"}
+                      alt="Logo"
+                      width={15}
+                      height={15}
+                      priority
+                      className="z-50 object-fit"
+                    />
+                    <p className="text-[#0472F4] text-[10px] ">Home</p>
+                  </>
+                ) : (
+                  <>
+                    <Image
+                      src={"/images/home.svg"}
+                      alt="Logo"
+                      width={15}
+                      height={15}
+                      priority
+                      className="z-50 object-fit"
+                    />
+                    <p className="text-[#B7B7B7] text-[10px]">Home</p>
+                  </>
+                )}
+              </div>
+            </Link>
+            <Link href={"/jobs"}>
+              <div
+                className={`w-fit flex flex-col justify-center items-center gap-y-[2px] px-3 py-4 ${
+                  pathname.includes("jobs") &&
+                  "border-b-[2px] border-[#0472F4]  "
+                }  `}
+              >
+                {pathname.includes("jobs") ? (
+                  <>
+                    <Image
+                      src={"/images/briefcase (1).svg"}
+                      alt="Logo"
+                      width={15}
+                      height={15}
+                      priority
+                      className="z-50 object-fit"
+                    />
+                    <p className="text-[#0472F4] text-[10px]">Jobs</p>
+                  </>
+                ) : (
+                  <>
+                    <Image
+                      src={"/images/briefcase.svg"}
+                      alt="Logo"
+                      width={15}
+                      height={15}
+                      priority
+                      className="z-50 object-fit"
+                    />
+                    <p className="text-[#B7B7B7] text-[10px]">Jobs</p>
+                  </>
+                )}
+              </div>
+            </Link>
+            <Link href={"/explore"}>
+              <div
+                className={`w-fit flex flex-col justify-center items-center gap-y-[2px] px-3 py-4 ${
+                  pathname.includes("explore") &&
+                  "border-b-[2px] border-[#0472F4]  "
+                }  `}
+              >
+                {pathname.includes("explore") ? (
+                  <>
+                    <Image
+                      src={"/images/navigation (1).svg"}
+                      alt="Logo"
+                      width={15}
+                      height={15}
+                      priority
+                      className="z-50 object-fit"
+                    />
+                    <p className="text-[#0472F4] text-[10px]">Explore</p>
+                  </>
+                ) : (
+                  <>
+                    <Image
+                      src={"/images/navigation.svg"}
+                      alt="Logo"
+                      width={15}
+                      height={15}
+                      priority
+                      className="z-50 object-fit"
+                    />
+                    <p className="text-[#B7B7B7] text-[10px]">Explore</p>
+                  </>
+                )}
+              </div>
+            </Link>
           </div>
-          <div className="relative ">
-            <Input
-              type="text"
-              placeholder="Search"
-              className=" pl-10 text-sm !outline-none !ring-0 bg-[#F9F9F9] "
-            />
+          <div className="flex items-center gap-x-1 my-3  text-sm px-3  bg-[#F9F9F9] border-[0.5px] border-gray-200 rounded-[5px]">
             <Image
               src={"/images/search.svg"}
               alt="Logo"
               width={15}
               height={15}
               priority
-              className="z-50 object-fit absolute bottom-[11px] left-4"
+              className="z-50 object-fit "
+            />
+            <Input
+              type="text"
+              placeholder="Search"
+              className="  text-sm !outline-none !ring-0 bg-inherit border-none  "
             />
           </div>
-          <div>
+          <div className="my-3">
             <ul className="flex items-center gap-10">
               <Link href={"/chat"}>
                 <li
