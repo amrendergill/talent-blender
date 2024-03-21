@@ -34,6 +34,15 @@ import {
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 
 export default function CreateJob() {
   const [formData, setFormData] = useState({
@@ -49,6 +58,10 @@ export default function CreateJob() {
     minSalary: "",
     fullName: ""
   });
+  const [inputValue, setInputValue] = useState({
+    index: null,
+    value: ''
+  });
 
   const list: any = [
     { title: 'Collaborate with product managers, designers, and other stakeholders to gather and analyze requirements.' },
@@ -61,6 +74,33 @@ export default function CreateJob() {
   ]
 
   const [errors, setErrors]: any = useState({});
+
+  const handleInputChange = (e: any) => {
+    setInputValue({ ...inputValue, value: e.target.value });
+    setQuestion(newState)
+  }
+
+
+  const questions: any = [
+    {
+      title: 'What tools and software do you typically use for UI/UX design?'
+    },
+    {
+      title: 'Can you walk us through your experience in UI/UX design?'
+    },
+    {
+      title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
+    },
+    {
+      title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
+    },
+  ]
+
+  const [question, setQuestion] = useState([{ title: "What tools and software do you typically use for UI/UX design?" }])
+
+  const newState = question.map((obj: any, index: any) =>
+    index === inputValue?.index ? inputValue.value : obj,
+  );
 
 
   const rightside: any = [
@@ -108,7 +148,7 @@ export default function CreateJob() {
                 <div className='flex justify-between border-b pb-[30px] my-[30px]'>
                   <TabsList className="bg-[#F9F9F9] px-[20px] py-[7px]">
                     <TabsTrigger value="details" className="text-xs font-regular text-[#868686]">Job Details</TabsTrigger>
-                    <TabsTrigger value="questions" className="text-xs font-regular text-[#868686]">Screening Questions</TabsTrigger>
+                    <TabsTrigger value="questions" className=" text-xs font-regular text-[#868686] ">Screening Questions</TabsTrigger>
                   </TabsList>
                   <div className="flex gap-3">
                     <Button
@@ -249,14 +289,14 @@ export default function CreateJob() {
                           {list?.map((item: any, index: any) => (
                             <p key={`list${index}`} className='mt-[10px] text-xs text-[#212529] font-regular'>{item?.title}</p>
                           ))}
-                            <p className="text-red-500 text-sm">{errors.description}</p>
+                          <p className="text-red-500 text-sm">{errors.description}</p>
                         </div>
-                      
+
 
                       </div>
                     </CardContent>
                   </Card>
-                  <Card className="bg-[#F9F9F9] mt-[20px] border-0 ">
+                  <Card className="bg-[#F9F9F9] mt-[10px] border-0 ">
                     <CardContent className="space-y-2">
                       <div className="">
                         <h2 className="text-base font-medium text-[#000000]">Location</h2>
@@ -283,7 +323,7 @@ export default function CreateJob() {
                         <div className="mt-4">
                           <RadioGroup
                             defaultValue="option-one"
-                            className="flex items-center gap-10"
+                            className="flex items-center border-[#0472F4] gap-10"
                           >
                             <div className="flex items-center space-x-2">
                               <RadioGroupItem value="option-one" id="option-one" />
@@ -307,59 +347,59 @@ export default function CreateJob() {
                       </div>
                     </CardContent>
                   </Card>
-                  <Card className="bg-[#F9F9F9] mt-[20px] border-0 ">
+                  <Card className="bg-[#F9F9F9] mt-[10px] border-0 ">
                     <CardContent className="space-y-2">
-                      <div className="pt-[30px]">
+                      <div className="">
                         <h2 className="text-base font-medium text-[#000000]">Remote Work Specifications</h2>
                         <p className="mt-[10px] text-xs font-regular text-[#868686]">
                           Pitch N Hire stands out as the premier platform for sourcing remote talent. This section assures you’ll be matched with candidates who perfectly match your criteria.
                         </p>
 
-                        <p className="mt-[50px] text-[#212529] text-sm font-medium">What is the policy regarding remote work for this role?</p>
+                        <p className="mt-[30px] text-[#212529] text-sm font-medium">What is the policy regarding remote work for this role?</p>
                         <div className="mt-4">
                           <RadioGroup
-                            defaultValue="option-one"
+                            defaultValue="office"
                             className="flex items-center gap-10"
                           >
                             <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="option-one" id="option-one" />
-                              <Label htmlFor="option-one">In office</Label>
+                              <RadioGroupItem value="office" id="office" />
+                              <Label htmlFor="office">In office</Label>
                             </div>
                             <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="option-two" id="option-two" />
-                              <Label htmlFor="option-two">Onsite or Remote</Label>
+                              <RadioGroupItem value="remote-office" id="remote-office" />
+                              <Label htmlFor="remote-office">Onsite or Remote</Label>
                             </div>
                             <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="option-three" id="option-three" />
-                              <Label htmlFor="option-three">Remote only</Label>
+                              <RadioGroupItem value="remote" id="remote" />
+                              <Label htmlFor="remote">Remote only</Label>
                             </div>
                           </RadioGroup>
                         </div>
                         <div className="flex items-center mt-[20px] space-x-2">
-                          <Checkbox id="terms" className="border-[#c6c3c3]" />
+                          <Checkbox id="wfh" className="border-[#c6c3c3]" />
                           <label
-                            htmlFor="terms"
-                            className="text-xs font-regular leading-none text-[#868686] peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                            htmlFor="wfh"
+                            className="text-xs font-regular opacity-50 leading-none text-[#868686] peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                           >
                             Work-from-home (WFH) flexibility - Employees have the option to telecommute several days per week.
                           </label>
                         </div>
                         <div className="flex items-center mt-[20px] space-x-2">
-                          <Checkbox id="terms" className="border-[#c6c3c3]" />
+                          <Checkbox id="disregard" className="border-[#c6c3c3]" />
                           <label
-                            htmlFor="terms"
-                            className="text-xs font-regular leading-none text-[#868686] peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                            htmlFor="disregard"
+                            className="text-xs font-regular opacity-50 leading-none text-[#868686] peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                           >
                             Automatically disregard applicants unable to relocate for this position.
                           </label>
                         </div>
                         <div className="mt-[40px]">
-                          <h2 className="text-sm font-medium opacity-50">Geographical regions for hiring remote workers.</h2>
+                          <h2 className="text-sm font-medium text-[#212529] opacity-50">Geographical regions for hiring remote workers.</h2>
                           <p className="mt-[10px] text-xs font-regular text-[#868686] opacity-50">From which locations are you open to hiring?</p>
                           <div className="flex items-center mt-[20px] space-x-2">
-                            <Checkbox id="terms" className="border-[#c6c3c3]" />
+                            <Checkbox id="worldwide" className="border-[#c6c3c3]" />
                             <label
-                              htmlFor="terms"
+                              htmlFor="worldwide"
                               className="text-xs font-regular opacity-50 leading-none text-[#868686] peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                             >
                               We are open to hiring remote workers from any location worldwide.
@@ -369,7 +409,7 @@ export default function CreateJob() {
                             <Input
                               type="text"
                               id="fullName"
-                              className=" text-xs font-regular text-[#868686]"
+                              className=" text-xs font-regular opacity-50 text-[#868686]"
                               placeholder="e.g. New York"
                               value={formData?.fullName}
                               onChange={(e: any) =>
@@ -385,16 +425,16 @@ export default function CreateJob() {
                             <h2 className="text-sm font-medium text-[#868686] opacity-50">How would you describe your remote work environment?</h2>
                             <div className="mt-4">
                               <RadioGroup
-                                defaultValue="option-one"
-                                className="flex items-center gap-5"
+                                defaultValue=""
+                                className="flex items-center gap-5 text-[#868686] opacity-50 "
                               >
                                 <div className="flex items-center space-x-2">
-                                  <RadioGroupItem value="option-one" id="option-one" />
-                                  <Label htmlFor="option-one" className="text-xs font-regular opacity-50">Primarily, we operate with an in-person arrangement.</Label>
+                                  <RadioGroupItem value="in-person" id="in-person" />
+                                  <Label htmlFor="in-person" className="text-xs text-[#000000] font-regular opacity-50">Primarily, we operate with an in-person arrangement.</Label>
                                 </div>
                                 <div className="flex items-center space-x-2">
-                                  <RadioGroupItem value="option-two" id="option-two" />
-                                  <Label className="text-xs font-regular opacity-50" htmlFor="option-two">We’re predominantly remote or decentralized.</Label>
+                                  <RadioGroupItem value="decentralized" id="decentralized" />
+                                  <Label className="text-xs text-[#000000] font-regular opacity-50" htmlFor="decentralized">We’re predominantly remote or decentralized.</Label>
                                 </div>
                               </RadioGroup>
                             </div>
@@ -476,7 +516,7 @@ export default function CreateJob() {
                       </div>
                     </CardContent>
                   </Card>
-                  <Card className="bg-[#F9F9F9] mt-[20px] border-0 ">
+                  <Card className="bg-[#F9F9F9] mt-[10px] border-0 ">
                     <CardContent className="space-y-2">
                       <div className="pt-[60px]">
                         <h2 className="text-base font-medium text-[#000000]">Compensation & Equity</h2>
@@ -597,7 +637,7 @@ export default function CreateJob() {
                       </div>
                     </CardContent>
                   </Card>
-                  <Card className="bg-[#F9F9F9] mt-[20px] border-0 ">
+                  <Card className="bg-[#F9F9F9] mt-[10px] border-0 ">
                     <CardContent className="space-y-2">
                       <div className="pt-[60px]">
                         <h2 className="text-base font-medium text-[#000000]">Recruitment Point of Contact</h2>
@@ -653,7 +693,7 @@ export default function CreateJob() {
                       </div>
                     </CardContent>
                   </Card>
-                  <Card className="bg-[#F9F9F9] mt-[20px] border-0 ">
+                  <Card className="bg-[#F9F9F9] mt-[10px] border-0 ">
                     <CardContent className="space-y-2">
                       <div className="pt-[60px]">
                         <h2 className="text-base font-medium text-[#000000]">Tag Coworkers</h2>
@@ -683,7 +723,7 @@ export default function CreateJob() {
                       </div>
                     </CardContent>
                   </Card>
-                  <Card className="bg-[#F9F9F9] mt-[20px] border-0 ">
+                  <Card className="bg-[#F9F9F9] mt-[10px] border-0 ">
                     <CardContent className="space-y-2">
                       <div className="pt-[60px]">
                         <h2 className="text-base font-medium text-[#000000]">Company Details</h2>
@@ -713,33 +753,91 @@ export default function CreateJob() {
                     </CardContent>
                   </Card>
                 </TabsContent>
-                <TabsContent value="questions">
-                  <Card>
+                <TabsContent value="questions" >
+                  <Card className=" border-0 bg-[#F9F9F9]">
                     <CardHeader>
-                      <CardTitle>Screening Questions</CardTitle>
-                      <CardDescription>
-                        Change your password here. After saving, you'll be logged out.
+                      <CardTitle className="text-base font-medium">Screening Questions</CardTitle>
+                      <CardDescription className="mt-[10px] font-regular text-xs">
+                        Introduce yourself so startups can get to know you.
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-2">
-                      <div className="space-y-1">
-                        <Label htmlFor="current">Current password</Label>
-                        <Input id="current" type="password" />
-                      </div>
-                      <div className="space-y-1">
-                        <Label htmlFor="new">New password</Label>
-                        <Input id="new" type="password" />
+                    <CardContent className="bg-white rounded-[10px] px-[25px] py-[20px] space-y-2 mt-[10px]">
+                      <h2 className="font-medium text-sm">
+                        Templates
+                      </h2>
+                      <div className="mt-[30px]">
+                        <Select>
+                          <SelectTrigger className="w-full text-[#868686] mt-[15px] text-xs font-regular">
+                            <SelectValue placeholder="Select Template" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectGroup>
+                              <SelectItem value="inr">INR</SelectItem>
+                              <SelectItem value="usd">USD</SelectItem>
+                              <SelectItem value="eur">EUR</SelectItem>
+                              <SelectItem value="jyp">JYP</SelectItem>
+                              <SelectItem value="gbp">GBP</SelectItem>
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
                       </div>
                     </CardContent>
-                    <CardFooter>
-                      <Button>Save password</Button>
-                    </CardFooter>
+                    <CardContent className="bg-white rounded-[10px] px-[25px] py-[20px] mt-[10px]">
+                      <div className='flex mb-[40px] justify-between'>
+                        <div className="font-medium text-[#212529] text-sm">Add Question</div>
+                        <div className="flex gap-3">
+                          <Button
+                            onClick={handleSubmit}
+                            className={` text-xs font-regular border-[0.2px] px-[20px] py-[10px] rounded-[5px] bg-white border-[#000000]`}
+                            variant={"outline"}
+                          >
+                            Save as Template
+                          </Button>
+                          <Button
+                            onClick={handleSubmit}
+                            className={` text-xs text-[#0472F4] font-regular border-[0.2px] px-[20px] py-[10px] rounded-[5px] bg-white border-[#0472F4]`}
+                            variant={"outline"}
+                          >
+                            + Add a Question
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* <div className=" px-[20px]  py-[10px] rounded-[5px] border-[0.3px]">
+                        <div className="flex justify-between">
+                          <p className="text-xs font-regular text-[#868686]">Enter your question</p>
+                          <img src='/images/floppy-disks.svg' alt='Questions' />
+                        </div>
+                      </div> */}
+
+                      <div className="grid w-full relative items-center  gap-1.5 ">
+                        <Input
+                          type="text"
+                          id="fullName"
+                          placeholder="Enter your question"
+                          value={inputValue.value}
+                          onChange={handleInputChange}
+                        />
+                        <img src='/images/floppy-disks.svg' alt='Questions' onClick={() => newState} className="image" />
+                      </div>
+                      <div className="border-t mt-[15px] pt-[30px]">
+                        {questions?.map((item: any, index: any) => (
+                          <div key={`questions${item?.title}`} className="border-[0.3px] mt-[15px] px-[20px] py-[20px] justify-between flex items-center rounded-[5px] bg-[#F9FAFB]">
+                            <div className="flex gap-[18px]">
+                              <img src='/images/apps.svg' alt='apps' />
+                              <p className="font-regular text-[#000000] text-sm">{item?.title}</p>
+                            </div>
+                            <div className="flex gap-[15px]">
+                              <img src='/images/pen-circle.svg' onClick={() => { setInputValue({ value: item?.title, index: index }) }} alt='edit' />
+                              <img src='/images/circle-trash.svg' alt='trash' />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
                   </Card>
                 </TabsContent>
               </Tabs>
-
-
-
             </div>
             <div className="border-l pl-5 w-[30%]">
               <h2 className="font-medium text-base mb-[20px] text-[#000000]">Your recent Jobs</h2>
@@ -760,9 +858,7 @@ export default function CreateJob() {
                         <div className='flex items-center justify-between'>
                           <Button
                             onClick={handleSubmit}
-                            className={`px-[20px] border-[#0472F4] hover:bg-[white] h-[25px] text-[#000000] bg-white border-[0.2px] shadow-[0px_3px_6px_ #0000000D] text-xs rounded-[3px]`}
-
-                          >
+                            className={`px-[20px] border-[#0472F4] hover:bg-[white] h-[25px] text-[#000000] bg-white shadow-[0px_3px_6px_#0000000D] border-[0.2px]  text-xs rounded-[3px]`}>
                             Edit Job
                           </Button>
                           <div className="text-[10px] font-regular rounded-full px-[15px] py-[3px] bg-[#F5F5F5]">
@@ -774,6 +870,30 @@ export default function CreateJob() {
                   </div>
                 </TabsContent>
               </Tabs>
+              <Pagination>
+                <PaginationContent>
+                  <PaginationItem>
+                    <PaginationPrevious href="#" />
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink href="#">1</PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink href="#" isActive>
+                      2
+                    </PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink href="#">3</PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationEllipsis />
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationNext href="#" />
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
             </div>
           </div>
         </div >
