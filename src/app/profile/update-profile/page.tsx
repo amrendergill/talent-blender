@@ -38,7 +38,9 @@ export default function UpdateProfile() {
                         Preferences
                       </TabsTrigger>
                     </TabsList>
-                    <TabsContent value="profile"></TabsContent>
+                    <TabsContent value="profile">
+                        
+                    </TabsContent>
                     <TabsContent value="password"></TabsContent>
                   </Tabs>
 
