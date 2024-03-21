@@ -28,16 +28,10 @@ export default function RootLayout({
         <Script src="/tinymce/tinymce.min.js" />
         <Navbar />
         <div className="flex gap-4 container">
-          {/* <aside
-            className={`sticky top-[94px] flex-1 shrink-0 h-full  ${
-              pathname.includes("/auth") ? "hidden" : "block"
-            }`}
-          >
-            <SideNavbar />
-          </aside> */}
-          <main className="w-full">{children}</main>
+        {children}
+         
         </div>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

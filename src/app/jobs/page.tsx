@@ -1,7 +1,13 @@
 "use client";
 import DefaultInitial from "@/components/DefaultInitials";
-import JobCard from "@/components/JobCard";
+// import Sidebar from "@/components/jobs/sidebar";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Slider } from "@/components/ui/slider";
+import Link from 'next/link'
+
+type SliderProps = React.ComponentProps<typeof Slider>;
+
 import {
   Card,
   CardHeader,
@@ -10,6 +16,7 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -20,10 +27,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { appService } from "@/utils/api";
-import Image from "next/image";
-import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
 
 const defaultFilters: any = {
   gender: "",
@@ -37,19 +47,103 @@ const initialValue: any = {
   remote: false,
   sortBy: "",
 };
-export default function Jobs() {
+
+const mockData = [
+  {
+    src: "/images/fb.png",
+    name: "Software Engineer - MLOps - France or Remote EMEA",
+    company: "Facebook",
+  },
+  {
+    src: "/images/dunkin.png",
+    name: "UI/UX Designer",
+    company: "Android",
+  },
+  {
+    src: "/images/android.png",
+    name: "UI/UX Designer",
+    company: "Android",
+  },
+  {
+    src: "/images/fb.png",
+    name: "Software Engineer - MLOps - France or Remote EMEA",
+    company: "Facebook",
+  },
+  {
+    src: "/images/dunkin.png",
+    name: "UI/UX Designer",
+    company: "Android",
+  },
+  {
+    src: "/images/android.png",
+    name: "UI/UX Designer",
+    company: "Android",
+  },
+];
+
+const mockDataSidebar = [
+  {
+    src: "/images/bullseye.svg",
+    name: "Maketing",
+  },
+  {
+    src: "/images/bell-concierge (1).svg",
+    name: "Hospitality",
+  },
+  {
+    src: "/images/tshirt.svg",
+    name: "Fashion",
+  },
+  {
+    src: "/images/dolly.svg",
+    name: "Logistic",
+  },
+  {
+    src: "/images/it.svg",
+    name: "IT",
+  },
+  {
+    src: "/images/user-md.svg",
+    name: "Healthcare",
+  },
+  {
+    src: "/images/laptop-mobile.svg",
+    name: "Engineering (Software)",
+  },
+  {
+    src: "/images/benefit-porcent.svg",
+    name: "Sales",
+  },
+  {
+    src: "/images/piggy-bank.svg",
+    name: "Finance",
+  },
+  {
+    src: "/images/stats.svg",
+    name: "Data & Analytics",
+  },
+  {
+    src: "/images/selling.svg",
+    name: "Product Development",
+  },
+  {
+    src: "/images/man-scientist.svg",
+    name: "Research",
+  },
+  {
+    src: "/images/admin-alt.svg",
+    name: "Office & Admin",
+  },
+  {
+    src: "/images/workshop.svg",
+    name: "Learning & Development",
+  },
+];
+
+export default function Jobs({ className, ...props }: SliderProps) {
   // const [data]:any = await getProps()
   // console.log(data, "data");
-
-  const jobCardDetails = [
-    {
-      companyName: "",
-      workType: "",
-      location: "",
-      jobTitle: "",
-      time: "",
-    },
-  ];
+const router = useRouter()
   const [data, setData]: any = useState();
   const [filters, setFilters] = useState(defaultFilters);
   const [pagination, setPagination] = useState({
@@ -90,55 +184,10 @@ export default function Jobs() {
   }, [filterBy]);
 
   return (
-    <>
-      <main className="bg-white flex">
-        <div className="border-r w-full">
-          <div className="">
-            <div className="pt-[30px]">
-              <div className="flex justify-between border-b pr-3 pb-6">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 border w-fit rounded-[5px]">
-                    <Image
-                      src={"/images/PNH-logo-icon.png"}
-                      alt="logo"
-                      height={80}
-                      width={80}
-                    />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-2xl">Software Developer</p>
-                    <p className="text-base font-regular text-[#0472F4]">
-                      Pitch N Hire
-                    </p>
-                  </div>
-                  <div></div>
-                </div>
-                <div className="flex gap-[29px] items-center">
-                  <div>
-                    <Button className="bg-[#0472F4] rounded-[5px] text-xs text-white">
-                      Apply Now
-                    </Button>
-                  </div>
-                  <div className="border p-2 rounded-full">
-                    <Image
-                      src={"/images/bookmark.png"}
-                      alt="bookmark"
-                      width={17}
-                      height={17}
-                    />
-                  </div>
-                  <div className="border p-2 rounded-full">
-                    <Image
-                      src={"/images/share-square.png"}
-                      alt="share"
-                      width={15}
-                      height={15}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* <div className="font_medium text-[18px] mb-4 lg:mb-[50]  text-nblack ">
+    <div className="mt-4 flex  gap-x-3 w-full">
+      {/* <main className="bg-white">
+        <div className="p-5">
+          <div className="font_medium text-[18px] mb-4 lg:mb-[50]  text-nblack ">
             Explore the <span className="text-blue">Unlimited Jobs with</span>{" "}
             the Best Remote Work Job Sites!
           </div>
@@ -494,226 +543,446 @@ export default function Jobs() {
                 </div>
               )}
             </div>
-          </div> */}
           </div>
-          <div className="my-[25px] pr-3">
-            <div>
-              <p className="font-semibold text-base mb-[10px]">About Us</p>
-              <p className="text-xs">
-                XYZ Tech Solutions is a leading software development company
-                specializing in innovative solutions for businesses worldwide.
-                We are committed to delivering high-quality software products
-                that drive growth and success for our clients.
-              </p>
+        </div>
+      </main> */}
+      <aside className="w-[330px] max-w-[330px] min-w-[321px]">
+        <Card className="!p-0">
+          <div className="flex items-center justify-between py-4  px-5">
+            <p className="text-base font-medium">Filter</p>
+            <p className="text-[#E5042D] text-sm">Clear all</p>
+          </div>
+          <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
+          <div className=" py-4 px-5 space-y-4">
+            <div className="space-y-2">
+              <p className="text-sm">Skills</p>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue
+                    className="!placeholder:text-[#868686]"
+                    placeholder="Skills..."
+                  />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {/* <SelectLabel>Fruits</SelectLabel>
+                  <SelectItem value="apple">Apple</SelectItem>
+                  <SelectItem value="banana">Banana</SelectItem>
+                  <SelectItem value="blueberry">Blueberry</SelectItem>
+                  <SelectItem value="grapes">Grapes</SelectItem>
+                  <SelectItem value="pineapple">Pineapple</SelectItem> */}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
-            <div className="my-10">
-              <p className="font-semibold text-base mb-[10px]">Job Summary</p>
-              <p className="text-xs">
-                As a Software Developer at XYZ Tech Solutions, you will be
-                responsible for designing, developing, and maintaining software
-                applications that meet the needs of our clients. You will work
-                closely with our cross-functional teams to deliver scalable and
-                reliable solutions that drive business value.
-              </p>
-            </div>
-            <div className="my-10">
-              <p className="font-semibold text-base mb-[10px]">
-                Key Responsibilities
-              </p>
-              <ul
-                className="text-xs flex flex-col gap-[10px]"
-                style={{ listStyle: "disc" }}
-              >
-                <li>
-                  Collaborate with product managers, designers, and other
-                  stakeholders to gather and analyze requirements.
-                </li>
-                <li>
-                  Design, develop, and test software solutions using modern
-                  programming languages and frameworks.
-                </li>
-                <li>
-                  Write clean, efficient, and well-documented code following
-                  industry best practices.
-                </li>
-                <li>
-                  Perform code reviews, debugging, and troubleshooting to ensure
-                  the quality and reliability of software products.
-                </li>
-                <li>
-                  Implement and maintain scalable architecture and
-                  infrastructure for software applications.
-                </li>
-                <li>
-                  Stay updated on emerging technologies and trends in software
-                  development, and proactively suggest improvements to existing
-                  systems.
-                </li>
-                <li>
-                  Provide technical guidance and support to team members, and
-                  contribute to a culture of innovation and continuous
-                  improvement.
-                </li>
-              </ul>
-            </div>
-            <div className="my-10">
-              <p className="font-semibold text-base mb-[10px]">
-                Qualifications
-              </p>
-              <ul
-                className="text-xs flex flex-col gap-[10px]"
-                style={{ listStyle: "disc" }}
-              >
-                <li>
-                  Bachelor’s degree in Computer Science, Engineering, or related
-                  field.
-                </li>
-                <li>
-                  3+ years of experience in software development, with expertise
-                  in languages such as Java, Python, or JavaScript.
-                </li>
-                <li>
-                  Strong understanding of object-oriented programming
-                  principles, software design patterns, and data structures.
-                </li>
-                <li>
-                  Experience with web application development, including
-                  frontend and backend technologies, RESTful APIs, and database
-                  management systems (e.g., SQL, MongoDB).
-                </li>
-                <li>
-                  Familiarity with Agile methodologies, continuous
-                  integration/continuous deployment (CI/CD) pipelines, and
-                  version control systems (e.g., Git).
-                </li>
-                <li>
-                  Excellent problem-solving skills, attention to detail, and a
-                  passion for building high-quality software solutions.
-                </li>
-                <li>
-                  Strong communication and collaboration skills, with the
-                  ability to work effectively in a team environment.
-                </li>
-              </ul>
-            </div>
-            <div className="my-10">
-              <p className="font-semibold text-base mb-[10px]">Skills</p>
-              <div>
-                <div className="bg-[#F5F5F5] rounded-[5px] text-xs px-[10px] py-[5px] w-fit">
-                  Java
+
+            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
+            <div className="space-y-2 pt-2">
+              <p className="text-sm">Job type</p>
+              <div className="grid grid-cols-2 gap-y-2">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="Full-time" />
+                  <label
+                    htmlFor="Full-time"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Full-time
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="Internship" />
+                  <label
+                    htmlFor="Internship"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Internship
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="Freelance" />
+                  <label
+                    htmlFor="Freelance"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Freelance
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="Volunteer" />
+                  <label
+                    htmlFor="Volunteer"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Volunteer
+                  </label>
                 </div>
               </div>
             </div>
-            <div className="my-10">
-              <p className="font-semibold text-base mb-[10px]">Benefits</p>
-              <ul
-                className="text-xs flex flex-col gap-[10px]"
-                style={{ listStyle: "disc" }}
-              >
-                <li>Competitive salary and performance-based bonuses.</li>
-                <li>
-                  Comprehensive benefits package, including health insurance,
-                  retirement plans, and paid time off.
-                </li>
-                <li>
-                  Flexible work schedule and opportunities for remote work.
-                </li>
-                <li>
-                  Professional development opportunities, including training
-                  programs and certifications.
-                </li>
-                <li>
-                  Collaborative and inclusive work culture, with opportunities
-                  for mentorship and career growth.
-                </li>
-              </ul>
+            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
+            <div className="space-y-5 pt-2">
+              <p className="text-sm">Salary Range</p>
+              <Slider
+                defaultValue={[25, 75]}
+                max={100}
+                step={1}
+                className={cn("w-[100%]", className)}
+                {...props}
+              />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-x-2">
+                  <p className="text-xs">$</p>
+                  <Input
+                    className="h-[20px] w-[50px] text-[10px]"
+                    type="email"
+                    placeholder="1200"
+                  />
+                </div>
+                <div className="flex items-center gap-x-2">
+                  <p className="text-xs">$</p>
+                  <Input
+                    className="h-[20px] w-[50px] text-[10px]"
+                    type="email"
+                    placeholder="2200"
+                  />
+                </div>
+              </div>
             </div>
-            <div>
-              <Button className="bg-[#0472F4] rounded-[5px] text-xs text-white">
-                Apply Now
-              </Button>
+            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
+            <div className="space-y-5 pt-2">
+              <p className="text-sm">Experience</p>
+              <Slider
+                defaultValue={[25, 75]}
+                max={100}
+                step={1}
+                className={cn("w-[100%]", className)}
+                {...props}
+              />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-x-2">
+                  <p className="text-xs">Yrs</p>
+                  <Input
+                    className="h-[20px] w-[50px] text-[10px]"
+                    type="email"
+                    placeholder="01"
+                  />
+                </div>
+                <div className="flex items-center gap-x-2">
+                  <p className="text-xs">Yrs</p>
+                  <Input
+                    className="h-[20px] w-[50px] text-[10px]"
+                    type="email"
+                    placeholder="10"
+                  />
+                </div>
+              </div>
+            </div>
+            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
+            <div className="space-y-2 pt-2">
+              <p className="text-sm">Date Posted</p>
+
+              <RadioGroup
+                defaultValue="comfortable "
+                className="grid grid-cols-2 gap-y-2"
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="default" id="r1" />
+                  <Label className="text-xs text-[#868686]" htmlFor="r1">
+                    Past 3 days
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="comfortable" id="r2" />
+                  <Label className="text-xs text-[#868686]" htmlFor="r2">
+                    Past week
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="compact" id="r3" />
+                  <Label className="text-xs text-[#868686]" htmlFor="r3">
+                    Past Month
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="all" id="r4" />
+                  <Label className="text-xs text-[#868686]" htmlFor="r4">
+                    All
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+
+            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
+            <div className="space-y-2 pt-2">
+              <p className="text-sm">Commute</p>
+              <div className="grid grid-cols-2 gap-y-2">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="Remote" />
+                  <label
+                    htmlFor="Remote"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Remote
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="Hybrid" />
+                  <label
+                    htmlFor="Hybrid"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Hybrid
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id=" On-Site" />
+                  <label
+                    htmlFor=" On-Site"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    On-Site
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
+            <div className="space-y-2 pt-2">
+              <p className="text-sm">Distance</p>
+              <div className="grid grid-cols-2 gap-y-2">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="5" />
+                  <label
+                    htmlFor="5"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    5 Miles
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="10" />
+                  <label
+                    htmlFor="10"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    10 Miles
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="15" />
+                  <label
+                    htmlFor="15"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    15 Miles
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="25" />
+                  <label
+                    htmlFor="25"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    25 Miles
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="50" />
+                  <label
+                    htmlFor="50"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    50 Miles
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="100" />
+                  <label
+                    htmlFor="100"
+                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    100 Miles
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
-          <hr />
-          <div className="my-[25px] pr-3">
-            <div className="flex items-center justify-between mb-[15px]">
-              <p className="font-semibold text-base">Jobs</p>
-              <Link href={"#"} className="text-xs font-medium text-[#0472F4]">
-                View All
-              </Link>
-            </div>
-            <div className="flex flex-col gap-[15px]">
-              <JobCard
-                jobTitle={"OneHash / ERPNext Developer"}
-                companyName={"Pitch N Hire"}
-                workType={"Full-time"}
-                location={"Delhi, India"}
-                time={"3 weeks ago"}
+        </Card>
+      </aside>
+      <main className="w-full">
+        <div className="flex w-full border-[0.5px] border-gray-200 h-[53px] rounded-[5px] px-2 ">
+          <div className="flex items-center  w-full ml-4  border-r-[0.5px] border-gray-200 ">
+            <Image
+              src={"/images/search.svg"}
+              alt="Logo"
+              width={20}
+              height={20}
+              priority
+              className="  object-fit"
+            />
+            <Input
+              type="text"
+              placeholder="Search Job Title or Keyword"
+              className="text-sm focus:outline-none border-none w-full"
+            />
+          </div>
+          <div className="flex items-center ml-4  w-full">
+            <Image
+              src={"/images/map-pin (2).svg"}
+              alt="Logo"
+              width={20}
+              height={20}
+              priority
+              className="object-fit"
+            />
+            <Input
+              type="text"
+              placeholder="Country or Time Zone"
+              className="  text-sm focus:outline-none border-none w-full"
+            />
+          </div>
+
+          <Button className="text-xs  h-[39px] w-[100px] rounded-[5px] mt-[6px]">
+            Find Jobs
+          </Button>
+        </div>
+        <hr className="border-t-[0.5px]  border-gray-200 w-full my-4"></hr>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-x-2">
+            <Button className="text-xs h-[29px] px-5 border-[0.5px] border-[#BEBEBE] bg-[#F9F9F9]  text-black  rounded-[18px] hover:text-[#0472F4]">
+              Recommended
+            </Button>
+            <Button className="text-xs h-[29px] px-5 border-[0.5px] border-[#BEBEBE] bg-[#F9F9F9]  text-black rounded-[18px] hover:text-[#0472F4]">
+              My Jobs
+            </Button>
+            <Button className="text-xs h-[29px] px-5  border-[0.5px] border-[#BEBEBE] bg-[#F9F9F9]  text-black rounded-[18px] hover:text-[#0472F4]">
+              Saved Jobs
+            </Button>
+          </div>
+          <div className="flex items-center gap-x-2">
+            <Button className="text-xs flex items-center gap-x-1 h-[29px] px-4 border-[0.5px] border-[#BEBEBE] bg-gradient-to-r from-[#22C7FB] to-[#1A9EFC]    rounded-[5px] text-white">
+              <Image
+                src={"/images/sparkles.svg"}
+                alt="Logo"
+                width={25}
+                height={25}
+                priority
+                className=" w-[25px] h-[25px] "
               />
-              <JobCard
-                jobTitle={"OneHash / ERPNext Developer"}
-                companyName={"Pitch N Hire"}
-                workType={"Full-time"}
-                location={"Delhi, India"}
-                time={"3 weeks ago"}
-              />
-            </div>
+              AI Matching
+            </Button>
+            <Link href={'/job/create-job'}>
+            <Button className="text-xs h-[29px] px-5 border-[0.5px] border-[#BEBEBE] bg-white  text-black rounded-[5px] hover:text-[#0472F4]">
+              + Create Job
+            </Button>
+            </Link>
           </div>
         </div>
-        <div className="mt-[30px] w-[370px] max-w-[370px] min-w-[370px] pl-3">
-          <div className="bg-[#F9F9F9] py-[30px] rounded-[10px] px-5">
-            <div className="flex items-center gap-[11px]">
-              <Image src={""} alt="" height={20} width={20} />
-              <p className="font-medium text-base">Noida, Uttar Pradesh</p>
+        <div className="border-t-[0.5px]  border-gray-200 w-full  flex gap-x-2 mt-4">
+          <div className=" border-r-[0.5px] border-gray-200 w-full">
+            <div className="flex items-center  w-full mt-2 pr-2">
+              <p className="text-xs whitespace-nowrap">Latest Jobs</p>
+              <hr className="border-t-[0.5px]  border-gray-200 w-full my-4"></hr>
+              <Select>
+                <SelectTrigger className="w-[71px] h-[27px]">
+                  <SelectValue placeholder="Sort" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Ascending</SelectItem>
+                  <SelectItem value="dark">Descending</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            <p className="text-[#868686] text-xs mt-2">
-              Please send us your detailed CV to apply for this job post
-            </p>
-            <div className="my-[23px]">
-              <p className="font-medium text-xl">$124,65</p>
-              <p className="text-xs text-[#868686]">Avg. Salary</p>
-            </div>
+            <div className="mt-2  pr-2 space-y-3 h-[800px] overflow-y-auto mr-2">
+              {mockData.map((item: any) => (
+                <Card className="space-y-4 p-4">
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-x-3">
+                      <Image
+                        src={item.src}
+                        alt="Logo"
+                        width={61}
+                        height={56}
+                        priority
+                        className="object-fit"
+                      />
+                      <div>
+                        <p className="text-[#0472F4] text-base font-semibold">
+                          {item.name}
+                        </p>
+                        <p className="text-xs">{item.company}</p>
+                        <p className="text-xs mt-1 text-[#868686]">
+                          NOIDA, UTTAR PRADESH
+                        </p>
+                      </div>
+                    </div>
 
-            <div>
-
+                    <Image
+                      src={"/images/bookmark@2x.png"}
+                      alt="Logo"
+                      width={17}
+                      height={17}
+                      priority
+                      className="object-fit mt-2"
+                    />
+                  </div>
+                  <div className="flex items-center gap-x-1 ">
+                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+                      Javascript
+                    </Badge>
+                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+                      Javascript
+                    </Badge>
+                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+                      Javascript
+                    </Badge>
+                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+                      Javascript
+                    </Badge>
+                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+                      Javascript
+                    </Badge>
+                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+                      Javascript
+                    </Badge>
+                  </div>
+                  <hr className="border-t-[0.5px]  border-gray-200 w-full my-4"></hr>
+                  <div className="flex items-center justify-between">
+                    <Badge className="bg-[#F5F5F5] text-black text-[10px] rounded-[10px]">
+                      Posted 25 Days ago
+                    </Badge>
+                    <Link href={'/jobs/view-job'}>
+                    <Button className="text-xs h-[31px] px-5 border-[0.5px] border-[#BEBEBE] bg-white  text-black rounded-[5px] hover:text-[#0472F4]">
+                      View Job
+                    </Button>
+                    </Link>
+                  </div>
+                </Card>
+              ))}
             </div>
+          </div>
+          <div className="w-[330px] max-w-[330px] min-w-[321px] mt-4">
+            <Card className="space-y-2 !p-3 ">
+              <p className="text-base font-medium">Job Categories</p>
+              {mockDataSidebar.map((item) => (
+                <div className="flex justify-between items-center rounded-[5px] px-3 py-2 hover:bg-[#F9F9F9] cursor-pointer">
+                  <div className="flex items-center gap-x-2">
+                    <Image
+                      src={item.src}
+                      alt="Logo"
+                      width={15}
+                      height={15}
+                      priority
+                      className="object-fit"
+                    />
+                    <p className="text-xs">{item.name}</p>
+                  </div>
+                  <p className="text-xs">1234</p>
+                </div>
+              ))}
+            </Card>
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 }
-
-// export async function getProps() {
-//   const page = 1
-//   const pageSize = 6
-//   const location = ''
-//   const city = ''
-//   const department = ''
-//   const remote = false
-//   const sortBy = ''
-//   const response = await appService.getJob(
-//      page ,
-//    pageSize,
-//      location,
-//      location,
-//      department,
-//      city,
-//      remote,
-//      sortBy
-//   );
-//   const jobs = response?.data?.job_data?.data;
-//   console.log(jobs, "jobs");
-
-//   const filters = response?.data?.filters[0];
-//   const pagination = {
-//     hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
-//     page: response?.data?.job_data?.page_info?.page,
-//   };
-
-//   return{
-//     props:{jobs}
-
-//   }
-
-// }
