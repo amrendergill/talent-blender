@@ -77,11 +77,10 @@ export default function CreateJob() {
 
   const handleInputChange = (e: any) => {
     setInputValue({ ...inputValue, value: e.target.value });
-    setQuestion(newState)
   }
 
 
-  const questions: any = [
+  const questionsArr: any = [
     {
       title: 'What tools and software do you typically use for UI/UX design?'
     },
@@ -96,7 +95,19 @@ export default function CreateJob() {
     },
   ]
 
-  const [question, setQuestion] = useState([{ title: "What tools and software do you typically use for UI/UX design?" }])
+  const [question, setQuestion] = useState(
+    [
+      { title: "What tools and software do you typically use for UI/UX design?" },
+      {
+        title: 'Can you walk us through your experience in UI/UX design?'
+      },
+      {
+        title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
+      },
+      {
+        title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
+      },
+    ])
 
   const newState = question.map((obj: any, index: any) =>
     index === inputValue?.index ? inputValue.value : obj,
@@ -139,16 +150,17 @@ export default function CreateJob() {
       <main className="bg-white">
         <div className="p-5">
           <div className="flex gap-5 ">
-            <div className="w-[65%]">
+            <div className="w-[862px] max-w-[862px] min-w-[862px]">
               <h2 className="font-semibold text-2xl text-[#000000]">Post a Job</h2>
               <p className="text-xs font-regular text-[#212529] mt-[13px]">
                 Enhance the caliber of your recruitment.
               </p>
               <Tabs defaultValue="details" className="">
-                <div className='flex justify-between border-b pb-[30px] my-[30px]'>
-                  <TabsList className="bg-[#F9F9F9] px-[20px] py-[7px]">
-                    <TabsTrigger value="details" className="text-xs font-regular text-[#868686]">Job Details</TabsTrigger>
-                    <TabsTrigger value="questions" className=" text-xs font-regular text-[#868686] ">Screening Questions</TabsTrigger>
+                <div className='flex justify-between  border-b pb-[30px] my-[30px]'>
+                  <TabsList className="bg-[#F9F9F9]  rounded-none relative gap-5 flex px-[20px] py-[7px]">
+                    <TabsTrigger value="details" className="text-xs flex justify-start w-[140px] min-w-[140px] max-w-[140px] data-[state=active]:shadow-none data-[state=active]:rounded-none data-[state=active]:bg-[] data-[state=active]:w-[140px] font-regular text-[#868686]">Job Details</TabsTrigger>
+                    <div className="arrow right "></div>
+                    <TabsTrigger value="questions" className=" text-xs w-[166px] min-w-[166px] max-w-[166px]  font-regular text-[#868686] data-[state=active]:shadow-none data-[state=active]:bg-[] data-[state=active]:w-[100%] flex justify-start">Screening Questions</TabsTrigger>
                   </TabsList>
                   <div className="flex gap-3">
                     <Button
@@ -761,7 +773,7 @@ export default function CreateJob() {
                         Introduce yourself so startups can get to know you.
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="bg-white rounded-[10px] px-[25px] py-[20px] space-y-2 mt-[10px]">
+                    <CardContent className="bg-white rounded-[10px] px-[25px] py-[20px] s mt-[10px]">
                       <h2 className="font-medium text-sm">
                         Templates
                       </h2>
@@ -810,7 +822,7 @@ export default function CreateJob() {
                         </div>
                       </div> */}
 
-                      <div className="grid w-full relative items-center  gap-1.5 ">
+                      <div className="grid w-full relative items-center ">
                         <Input
                           type="text"
                           id="fullName"
@@ -818,11 +830,13 @@ export default function CreateJob() {
                           value={inputValue.value}
                           onChange={handleInputChange}
                         />
-                        <img src='/images/floppy-disks.svg' alt='Questions' onClick={() => newState} className="image" />
+                        <img src='/images/floppy-disks.svg' alt='Questions'
+                          onClick={() => newState}
+                          className="image" />
                       </div>
-                      <div className="border-t mt-[15px] pt-[30px]">
-                        {questions?.map((item: any, index: any) => (
-                          <div key={`questions${item?.title}`} className="border-[0.3px] mt-[15px] px-[20px] py-[20px] justify-between flex items-center rounded-[5px] bg-[#F9FAFB]">
+                      <div className="border-t mt-[30px] pt-[15px]">
+                        {questionsArr?.map((item: any, index: any) => (
+                          <div key={`questionsArr${item?.title}`} className="border-[0.3px] mt-[15px] px-[20px] py-[20px] justify-between flex items-center rounded-[5px] bg-[#F9FAFB]">
                             <div className="flex gap-[18px]">
                               <img src='/images/apps.svg' alt='apps' />
                               <p className="font-regular text-[#000000] text-sm">{item?.title}</p>
@@ -839,7 +853,7 @@ export default function CreateJob() {
                 </TabsContent>
               </Tabs>
             </div>
-            <div className="border-l pl-5 w-[30%]">
+            <div className="border-l pl-5 w-[388px] min-w-[388px] max-w-[388px]">
               <h2 className="font-medium text-base mb-[20px] text-[#000000]">Your recent Jobs</h2>
               <Tabs defaultValue="active" className="">
                 <div className="">
@@ -870,30 +884,38 @@ export default function CreateJob() {
                   </div>
                 </TabsContent>
               </Tabs>
-              <Pagination>
-                <PaginationContent>
-                  <PaginationItem>
-                    <PaginationPrevious href="#" />
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationLink href="#">1</PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationLink href="#" isActive>
-                      2
-                    </PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationLink href="#">3</PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationEllipsis />
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationNext href="#" />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
+             
+                  <Pagination >
+                    <PaginationContent>
+                      <PaginationItem>
+                        <PaginationPrevious href="#" />
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">1</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#" isActive>
+                          2
+                        </PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">3</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">4</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationEllipsis />
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">100</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationNext href="#" />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                
             </div>
           </div>
         </div >
