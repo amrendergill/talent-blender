@@ -13,9 +13,9 @@ export default function User() {
   return (
     <>
       
-        <main className=" flex gap-5 ">
-          <div className="w-full flex flex-col gap-4">
-            <Card className="p-0">
+       
+          <main className="w-full flex flex-col gap-4 mt-4">
+       
               <PersonalInfo
                 coverImage={
                   "/images/tembinkosi-sikupela-ZC3iqcOL5T8-unsplash.jpg"
@@ -36,7 +36,7 @@ export default function User() {
                 }
                 collegeLogo={"/images/dhiraj-chouhan-_1c5jIwOFUY-unsplash.jpg"}
               />
-            </Card>
+            
             <Card className="px-7 py-4">
             <h2 className="text-[24px] font-semibold">About</h2>
 
@@ -99,11 +99,8 @@ export default function User() {
                 </div>
               </div>
             </Card>
-          </div>
-          <div className="w-[300px] max-w-[300px] min-w-[300px] flex flex-col gap-4">
-            <RightSidebar />
-          </div>
-        </main>
+          </main>
+
      
     </>
   );
