@@ -69,3 +69,24 @@
 .ul-list-style-none {
     list-style: none;
 }
+
+.arrow {
+    border-left: 0.5px solid #CC0000;
+    width: 16px;
+    height: 16px;
+    border-bottom: 0.5px solid transparent;
+    transform: rotate(135deg);
+}
+
+
+
+.image {
+    position: absolute;
+    right: 15px;
+}
+
+.createJobStyle {
+    background: linear-gradient(to right, #22C7FB,
+            #1A9EFC);
+    -webkit-text-fill-color: #FFF;
+}

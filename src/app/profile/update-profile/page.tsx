@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/RoundedTab";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
