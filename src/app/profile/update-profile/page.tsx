@@ -13,8 +13,10 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import ProfileIntroduction from "@/components/update-profile/ProfileIntroduction";
-import ProfileWorkExperience from "@/components/update-profile/ProfileWorkExperience";
+import Introduction from "@/components/update-profile/Introduction";
+import WorkExperience from "@/components/update-profile/WorkExperience";
+import Education from "@/components/update-profile/Education";
+import Skills from "@/components/update-profile/Skills";
 
 export default function UpdateProfile() {
   return (
@@ -110,30 +112,10 @@ export default function UpdateProfile() {
                   </div>
                 </div>
               </div>
-              <ProfileIntroduction />
-              <ProfileWorkExperience />
-              <Card className="bg-[#F9F9F9] p-[25px] border-0 rounded-[10px]">
-                <div className="flex justify-between">
-                  <div>
-                    <p className="font-medium text-base">Education</p>
-                    <p className="text-[#868686] text-xs">
-                    Which educational institutions have you attended?
-                    </p>
-                  </div>
-                  <Button className="bg-white text-xs h-[31px] text-[#0472F4] border-[0.3px] border-[#0472F4] rounded-[5px]"> + Add</Button>
-                </div>
-              </Card>
-              <Card className="bg-[#F9F9F9] p-[25px] border-0 rounded-[10px]">
-                <div className="flex justify-between">
-                  <div>
-                    <p className="font-medium text-base">Skills</p>
-                    <p className="text-[#868686] text-xs">
-                    Skills
-                    </p>
-                  </div>
-                  <Button className="bg-white text-xs h-[31px] text-[#0472F4] border-[0.3px] border-[#0472F4] rounded-[5px]"> + Add</Button>
-                </div>
-              </Card>
+              <Introduction />
+              <WorkExperience />
+              <Education />
+              <Skills />
             </div>
             <div className="w-[512px] max-w-[512px] min-w-[512px]"></div>
           </div>
