@@ -586,7 +586,7 @@ const router = useRouter()
             </Button>
           </div>
           <div className="flex items-center gap-x-2">
-            <Button className="text-xs flex items-center gap-x-1 h-[29px] px-4 border-[0.5px] border-[#BEBEBE] bg-gradient-to-r from-[#22C7FB] to-[#1A9EFC]    rounded-[5px] text-white">
+            <Button className="text-xs flex items-center gap-x-1 h-[29px] px-4 border-[0.5px] border-[#BEBEBE] bg-gradient-to-r from-[#22C7FB] to-[#1A9EFC] rounded-[5px] text-white">
               <Image
                 src={"/images/sparkles.svg"}
                 alt="Logo"
