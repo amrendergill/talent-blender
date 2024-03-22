@@ -90,62 +90,44 @@ export default function PersonalInfo(props: any) {
             </div>
           </>
         )}
-        <p className="text-base mb-1">{props.bio}</p>
+        <p className="text-base my-1">{props.bio}</p>
 
         <div className="flex items-center gap-2">
           <p
-            className={`text-sm text-gray-500 mb-1 ${
+            className={`text-sm text-gray-500 my-1 ${
               pathname?.includes("/company") ? "block" : "hidden"
             }`}
           >
             IT Services and IT Consulting
           </p>
           <p
-            className={`text-sm text-gray-500 mb-1 ${
+            className={`text-sm text-gray-500 my-1 ${
               pathname?.includes("/company") ? "block" : "hidden"
             }`}
           >
             .
           </p>
-          <p className="text-sm text-gray-500 mb-1">{props.address}</p>
-          <p className="text-sm text-gray-500 mb-1">.</p>
-          {pathname?.includes("/company") ? (
-            <>
-              <p className={`text-sm text-gray-500 mb-1 `}>18K Followers</p>
-              <p className={`text-sm text-gray-500 mb-1 `}>.</p>
-              <p className={`text-sm text-gray-500 mb-1`}>201-500 employees</p>
-            </>
-          ) : (
-            <>
-              <p className="text-sm text-[#0a66c2] font-bold mb-1 hover:text-[#0a66c2] hover:underline hover:cursor-pointer">
-                Contact info
-              </p>
-            </>
-          )}
+          <p className="text-sm text-[#868686] my-1">{props.address}</p>
+          <p className="text-sm text-gray-500 my-1">.</p>
         </div>
         <div>
-          <p
-            className={`text-sm text-[#0a66c2] font-bold mb-1 hover:text-[#0a66c2] hover:underline hover:cursor-pointer ${
+          <span
+            className={`text-sm text-[#0a66c2]  my-1 hover:text-[#0a66c2] hover:underline hover:cursor-pointer flex gap-x-1 ${
               pathname?.includes("/company") ? "hidden" : "block"
             }`}
           >
-            500+ connections
-          </p>
+            <p>www.appsierra.com | www.gigde.com </p>
+            <p className="text-[#212529]">| and 2 more links</p>
+          </span>
         </div>
-        <div className="mt-3 mb-1 flex gap-2 items-center">
-          <div>
-            <Avatar className="h-[24px] w-[24px] rounded-full">
-              <AvatarImage src={props.mutualFollowerProfilePic} alt="@shadcn" />
-              <AvatarFallback>MD</AvatarFallback>
-            </Avatar>
+        <div className="mt-3 my-1 flex gap-2 items-center">
+          <div className="text-sm flex gap-x-1 items-center">
+            <p className="font-medium ">4.3K</p>
+            <p className="text-[#868686]">Followers</p>
           </div>
-          <div>
-            <p className="text-base font-semibold text-gray-600">
-              {props.mutualFollowerName} & {props.mutalFollowerCount} other {""}
-              {pathname?.includes("/company")
-                ? `connections follow this page`
-                : `mutual connections`}
-            </p>
+          <div className="text-sm flex gap-x-1 items-center">
+            <p className="font-medium ">532</p>
+            <p className="text-[#868686]">Following</p>
           </div>
         </div>
 
@@ -174,27 +156,9 @@ export default function PersonalInfo(props: any) {
             </>
           ) : (
             <>
-              <Button className="bg-[#0a66c2] text-sm text-white rounded-full flex items-center gap-1 px-5">
-                <div>
-                  <IoPersonAddSharp size={18} />
-                </div>
-                Connect
-              </Button>
-              <Button
-                variant={"outline"}
-                className="bg-whte text-sm text-[#0a66c2] border-[#0a66c2] rounded-full flex items-center gap-1 px-5"
-              >
-                <div>
-                  <LuSend size={16} />
-                  {/* <IoCheckmarkSharp size={20} /> */}
-                </div>
-                Message
-              </Button>
-              <Button
-                variant={"outline"}
-                className="bg-whte text-sm text-gray-600 border-gray-600 rounded-full flex items-center gap-1 px-5"
-              >
-                More
+              <Button className=" text-sm text-white rounded-full  flex items-center gap-1 px-5">
+              
+                Update Profile
               </Button>
             </>
           )}
