@@ -27,7 +27,7 @@ export default function RootLayout({
       >
         <Script src="/tinymce/tinymce.min.js" />
         <Navbar />
-        <div className="flex gap-4 container">
+        <div className="gap-4 container">
         {children}
          
         </div>

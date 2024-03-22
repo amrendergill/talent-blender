@@ -80,20 +80,20 @@ export default function CreateJob() {
   }
 
 
-  const questionsArr: any = [
-    {
-      title: 'What tools and software do you typically use for UI/UX design?'
-    },
-    {
-      title: 'Can you walk us through your experience in UI/UX design?'
-    },
-    {
-      title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
-    },
-    {
-      title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
-    },
-  ]
+  // const questionsArr: any = [
+  //   {
+  //     title: 'What tools and software do you typically use for UI/UX design?'
+  //   },
+  //   {
+  //     title: 'Can you walk us through your experience in UI/UX design?'
+  //   },
+  //   {
+  //     title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
+  //   },
+  //   {
+  //     title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
+  //   },
+  // ]
 
   const [question, setQuestion] = useState(
     [
@@ -108,6 +108,11 @@ export default function CreateJob() {
         title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
       },
     ])
+
+    const addNewQuestion = () =>{
+
+    }
+
 
   const newState = question.map((obj: any, index: any) =>
     index === inputValue?.index ? inputValue.value : obj,
@@ -148,9 +153,9 @@ export default function CreateJob() {
   return (
     <>
       <main className="bg-white">
-        <div className="p-5">
+        <div className="py-5">
           <div className="flex gap-5 ">
-            <div className="w-[862px] max-w-[862px] min-w-[862px]">
+            <div className="w-[100%]">
               <h2 className="font-semibold text-2xl text-[#000000]">Post a Job</h2>
               <p className="text-xs font-regular text-[#212529] mt-[13px]">
                 Enhance the caliber of your recruitment.
@@ -158,7 +163,7 @@ export default function CreateJob() {
               <Tabs defaultValue="details" className="">
                 <div className='flex justify-between  border-b pb-[30px] my-[30px]'>
                   <TabsList className="bg-[#F9F9F9]  rounded-none relative gap-5 flex px-[20px] py-[7px]">
-                    <TabsTrigger value="details" className="text-xs flex justify-start w-[140px] min-w-[140px] max-w-[140px] data-[state=active]:shadow-none data-[state=active]:rounded-none data-[state=active]:bg-[] data-[state=active]:w-[140px] font-regular text-[#868686]">Job Details</TabsTrigger>
+                    <TabsTrigger value="details" className="text-xs flex justify-start w-[140px] min-w-[140px] max-w-[140px] data-[state=active]:shadow-none data-[state=active]:rounded-none data-[state=active]:bg-[#FFF] data-[state=active]:w-[140px] font-regular text-[#868686]">Job Details</TabsTrigger>
                     <div className="arrow right "></div>
                     <TabsTrigger value="questions" className=" text-xs w-[166px] min-w-[166px] max-w-[166px]  font-regular text-[#868686] data-[state=active]:shadow-none data-[state=active]:bg-[] data-[state=active]:w-[100%] flex justify-start">Screening Questions</TabsTrigger>
                   </TabsList>
@@ -303,8 +308,6 @@ export default function CreateJob() {
                           ))}
                           <p className="text-red-500 text-sm">{errors.description}</p>
                         </div>
-
-
                       </div>
                     </CardContent>
                   </Card>
@@ -765,7 +768,7 @@ export default function CreateJob() {
                     </CardContent>
                   </Card>
                 </TabsContent>
-                <TabsContent value="questions" >
+                <TabsContent value="questions" className="">
                   <Card className=" border-0 bg-[#F9F9F9]">
                     <CardHeader>
                       <CardTitle className="text-base font-medium">Screening Questions</CardTitle>
@@ -773,7 +776,7 @@ export default function CreateJob() {
                         Introduce yourself so startups can get to know you.
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="bg-white rounded-[10px] px-[25px] py-[20px] s mt-[10px]">
+                    <CardContent className="bg-white rounded-[10px] px-[25px] py-[20px] mt-[10px]">
                       <h2 className="font-medium text-sm">
                         Templates
                       </h2>
@@ -831,11 +834,11 @@ export default function CreateJob() {
                           onChange={handleInputChange}
                         />
                         <img src='/images/floppy-disks.svg' alt='Questions'
-                          onClick={() => newState}
+                          onClick={() => {addNewQuestion}}
                           className="image" />
                       </div>
                       <div className="border-t mt-[30px] pt-[15px]">
-                        {questionsArr?.map((item: any, index: any) => (
+                        {question?.map((item: any, index: any) => (
                           <div key={`questionsArr${item?.title}`} className="border-[0.3px] mt-[15px] px-[20px] py-[20px] justify-between flex items-center rounded-[5px] bg-[#F9FAFB]">
                             <div className="flex gap-[18px]">
                               <img src='/images/apps.svg' alt='apps' />
@@ -856,16 +859,15 @@ export default function CreateJob() {
             <div className="border-l pl-5 w-[388px] min-w-[388px] max-w-[388px]">
               <h2 className="font-medium text-base mb-[20px] text-[#000000]">Your recent Jobs</h2>
               <Tabs defaultValue="active" className="">
-                <div className="">
-                  <TabsList className="">
+                
+                  <TabsList className="w-[179px]">
                     <TabsTrigger value="active">Active</TabsTrigger>
                     <TabsTrigger value="draft">Draft</TabsTrigger>
                   </TabsList>
-                </div>
+                
                 <TabsContent value="active">
                   <div className="border-t pt-[20px] mt-[20px]">
                     {rightside?.map((item: any, index: any) => (
-
                       <div key={`rightside${index}`} className="w-[100%] mb-[20px] border p-[20px]">
                         <h2 className="text-base font-medium text-[#000000]">{item?.position}</h2>
                         <p className="text-xs font-regular text-[#868686] mb-[20px] mt-[10px]">{item?.place}</p>
@@ -883,14 +885,17 @@ export default function CreateJob() {
                     ))}
                   </div>
                 </TabsContent>
+                
               </Tabs>
-             
+              <div className="">
+                <div className=""></div>
+                <div className="">
                   <Pagination >
                     <PaginationContent>
-                      <PaginationItem>
+                      <PaginationItem className="">
                         <PaginationPrevious href="#" />
                       </PaginationItem>
-                      <PaginationItem>
+                      <PaginationItem className="">
                         <PaginationLink href="#">1</PaginationLink>
                       </PaginationItem>
                       <PaginationItem>
@@ -904,7 +909,7 @@ export default function CreateJob() {
                       <PaginationItem>
                         <PaginationLink href="#">4</PaginationLink>
                       </PaginationItem>
-                      <PaginationItem>
+                      <PaginationItem className="border-0">
                         <PaginationEllipsis />
                       </PaginationItem>
                       <PaginationItem>
@@ -915,11 +920,12 @@ export default function CreateJob() {
                       </PaginationItem>
                     </PaginationContent>
                   </Pagination>
-                
             </div>
           </div>
-        </div >
-      </main >
+        </div>
+      </div>
+    </div >
+    </main >
     </>
   );
 }
