@@ -163,7 +163,7 @@ export default function CreateJob() {
               <Tabs defaultValue="details" className="">
                 <div className='flex justify-between  border-b pb-[30px] my-[30px]'>
                   <TabsList className="bg-[#F9F9F9]  rounded-none relative gap-5 flex px-[20px] py-[7px]">
-                    <TabsTrigger value="details" className="text-xs flex justify-start w-[140px] min-w-[140px] max-w-[140px] data-[state=active]:shadow-none data-[state=active]:rounded-none data-[state=active]:bg-[#FFF] data-[state=active]:w-[140px] font-regular text-[#868686]">Job Details</TabsTrigger>
+                    <TabsTrigger value="details" className="text-xs flex justify-start w-[140px] min-w-[140px] max-w-[140px] data-[state=active]:shadow-none data-[state=active]:rounded-none data-[state=active]:bg-[] data-[state=active]:w-[140px] font-regular text-[#868686]">Job Details</TabsTrigger>
                     <div className="arrow right "></div>
                     <TabsTrigger value="questions" className=" text-xs w-[166px] min-w-[166px] max-w-[166px]  font-regular text-[#868686] data-[state=active]:shadow-none data-[state=active]:bg-[] data-[state=active]:w-[100%] flex justify-start">Screening Questions</TabsTrigger>
                   </TabsList>
