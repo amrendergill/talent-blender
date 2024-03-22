@@ -95,3 +95,10 @@
             #1A9EFC);
     -webkit-text-fill-color: #FFF;
 }
+
+.clipDetailsTab{
+    clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+}
+.clipQuestionsTab{
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+}
