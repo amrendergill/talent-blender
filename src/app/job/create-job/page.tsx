@@ -175,9 +175,19 @@ export default function CreateJob() {
               </p>
               <Tabs defaultValue="details" className="">
                 <div className="flex justify-between border-b pb-[30px] my-[30px]">
-                    <TabsList className="grid grid-cols-2 w-[300px] min-w-[300px] mx-w-[300px] h-fit rounded-none relative bg-white">
-                    <TabsTrigger value="details" className="clipDetailsTab text-left flex justify-start text-xs w-[155px] min-w-[160px] max-w-[160px]  data-[state=active]:shadow-none data-[state=active]:bg-[#FBE9E7] bg-[#F2E8FE] rounded-none data-[state=active]:rounded-none">Job Details</TabsTrigger>
-                    <TabsTrigger value="questions" className="clipQuestionsTab text-xs flex justify-start absolute pl-10 left-[125px] w-[180px] min-w-[180px] max-w-[180px] bg-[#F2E8FE] rounded-none data-[state=active]:rounded-none data-[state=active]:bg-[#FBE9E7]">Screening Questions</TabsTrigger>
+                  <TabsList className="grid grid-cols-2 w-[300px] min-w-[300px] mx-w-[300px] h-fit rounded-none relative bg-white">
+                    <TabsTrigger
+                      value="details"
+                      className="clipDetailsTab text-left flex justify-start text-xs w-[155px] min-w-[160px] max-w-[160px]  data-[state=active]:shadow-none data-[state=active]:bg-[#FBE9E7] bg-[#F2E8FE] rounded-none data-[state=active]:rounded-none"
+                    >
+                      Job Details
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="questions"
+                      className="clipQuestionsTab text-xs flex justify-start absolute pl-10 left-[125px] w-[180px] min-w-[180px] max-w-[180px] bg-[#F2E8FE] rounded-none data-[state=active]:rounded-none data-[state=active]:bg-[#FBE9E7]"
+                    >
+                      Screening Questions
+                    </TabsTrigger>
                   </TabsList>
                   {/* <TabsList className="bg-[#F9F9F9] rounded-none relative gap-5 flex px-[20px] py-[7px]">
                     <TabsTrigger value="details" className="text-xs flex justify-start w-[140px] min-w-[140px] max-w-[140px] data-[state=active]:shadow-none data-[state=active]:rounded-none data-[state=active]:bg-[#FBE9E7] data-[state=active]:w-[140px] font-regular text-[#868686]">Job Details</TabsTrigger>
@@ -1106,8 +1116,12 @@ export default function CreateJob() {
               </h2>
               <Tabs defaultValue="active" className="">
                 <TabsList className="grid grid-cols-2 w-[179px] h-fit p-[2px]">
-                  <TabsTrigger value="active" className="text-xs">Active</TabsTrigger>
-                  <TabsTrigger value="draft" className="text-xs">Draft</TabsTrigger>
+                  <TabsTrigger value="active" className="text-xs">
+                    Active
+                  </TabsTrigger>
+                  <TabsTrigger value="draft" className="text-xs">
+                    Draft
+                  </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="active">
