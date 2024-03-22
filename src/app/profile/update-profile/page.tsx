@@ -2,16 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/RoundedTab";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import ProfileIntroduction from "@/components/update-profile/ProfileIntroduction";
 import ProfileWorkExperience from "@/components/update-profile/ProfileWorkExperience";

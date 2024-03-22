@@ -112,7 +112,7 @@ export default function PersonalInfo(props: any) {
         </div>
         <div>
           <span
-            className={`text-sm text-[#0a66c2]  my-1 hover:text-[#0a66c2] hover:underline hover:cursor-pointer flex gap-x-1 ${
+            className={`text-sm text-[#0472F4]  my-1 hover:text-[#0472F4] hover:underline hover:cursor-pointer flex gap-x-1 ${
               pathname?.includes("/company") ? "hidden" : "block"
             }`}
           >
@@ -123,11 +123,11 @@ export default function PersonalInfo(props: any) {
         <div className="mt-3 my-1 flex gap-2 items-center">
           <div className="text-sm flex gap-x-1 items-center">
             <p className="font-medium ">4.3K</p>
-            <p className="text-[#868686]">Followers</p>
+            <p className={`text-[#868686] ${props.underlineStyle}`}>Followers</p>
           </div>
           <div className="text-sm flex gap-x-1 items-center">
             <p className="font-medium ">532</p>
-            <p className="text-[#868686]">Following</p>
+            <p className={`text-[#868686] ${props.underlineStyle}`}>Following</p>
           </div>
         </div>
 
