@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import Image from "next/image";
 import { LuSend } from "react-icons/lu";
@@ -9,16 +9,24 @@ import { HiPlus } from "react-icons/hi";
 import { IoPersonAddSharp } from "react-icons/io5";
 // import { headers } from "next/headers";
 import { usePathname } from "next/navigation";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 export default function PersonalInfo(props: any) {
-  const pathname = usePathname()
+  const pathname = usePathname();
   return (
     <>
-      <div className="relative mb-20">
+      <div className="relative ">
         <div>
           <Image
             src={props.coverImage}
-            className="rounded-t-lg"
+            className="rounded-[10px]"
             alt="cover image"
             priority
             width={0}
@@ -27,14 +35,43 @@ export default function PersonalInfo(props: any) {
             style={{ width: "100%", height: "200px" }}
           />
         </div>
+        <div className="flex items-center justify-between mt-6">
+          <p></p>
+          <div className="flex items-center gap-x-2">
+            <Select>
+              <SelectTrigger className="w-full px-6 py-1 text-[#259427] text-sm rounded-[18px] ">
+                <SelectValue placeholder=" Prepared for interviews" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="linkedIn-audio-event">
+                    {" "}
+                    Prepared for interviews
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            <Button className="flex items-center gap-x-2  text-black border-[0.5px] border-[#868686] bg-[#F9F9F9] rounded-[18px]  px-6 py-1">
+              <Image
+                src={"/images/share@2x.png"}
+                alt="Logo"
+                width={17}
+                height={17}
+                priority
+                className="object-fit"
+              />
+              <p className="text-sm">Share</p>
+            </Button>
+          </div>
+        </div>
         <div
-          className={`border-4 border-white w-fit absolute top-32 left-8 ${
-            pathname?.includes('/company') ? " rounded-none " : "rounded-full"
+          className={` w-fit absolute top-32 left-8 ${
+            pathname?.includes("/company") ? " rounded-none " : "rounded-full"
           }`}
         >
           <Avatar
             className={`h-[128px] w-[128px] ${
-              pathname?.includes('/company') ? "rounded-none" : "rounded-full"
+              pathname?.includes("/company") ? "rounded-none" : "rounded-full"
             }`}
           >
             <AvatarImage src={props.avatar} alt="@shadcn" />
@@ -42,88 +79,60 @@ export default function PersonalInfo(props: any) {
           </Avatar>
         </div>
       </div>
-      <div className="px-7">
-        {pathname?.includes('/company') ? (
-          <h1 className="text-[32px] font-bold">{props.name}</h1>
+
+      <div className="">
+        {pathname?.includes("/company") ? (
+          <h1 className="text-[24px] font-medium">{props.name}</h1>
         ) : (
           <>
             <div className="flex items-center justify-between">
-              <h1 className="text-[32px] font-bold">{props.name}</h1>
-              <div className="flex items-center w-fit gap-2">
-                <Avatar className={`h-[48px] w-[48px] rounded-none`}>
-                  <AvatarImage src={props.collegeLogo} alt="@shadcn" />
-                  <AvatarFallback>MD</AvatarFallback>
-                </Avatar>
-                <div className=" flex flex-wrap w-[200px]">
-                  <p className="font-bold text-sm text-gray-600">
-                    {props.collegeName}
-                  </p>
-                </div>
-              </div>
+              <h1 className="text-[24px] font-medium">{props.name}</h1>
             </div>
           </>
         )}
-        <p className="text-base mb-1">{props.bio}</p>
+        <p className="text-base my-1">{props.bio}</p>
 
         <div className="flex items-center gap-2">
           <p
-            className={`text-sm text-gray-500 mb-1 ${
-              pathname?.includes('/company') ? "block" : "hidden"
+            className={`text-sm text-gray-500 my-1 ${
+              pathname?.includes("/company") ? "block" : "hidden"
             }`}
           >
             IT Services and IT Consulting
           </p>
           <p
-            className={`text-sm text-gray-500 mb-1 ${
-              pathname?.includes('/company') ? "block" : "hidden"
+            className={`text-sm text-gray-500 my-1 ${
+              pathname?.includes("/company") ? "block" : "hidden"
             }`}
           >
             .
           </p>
-          <p className="text-sm text-gray-500 mb-1">{props.address}</p>
-          <p className="text-sm text-gray-500 mb-1">.</p>
-          {pathname?.includes('/company') ? (
-            <>
-              <p className={`text-sm text-gray-500 mb-1 `}>18K Followers</p>
-              <p className={`text-sm text-gray-500 mb-1 `}>.</p>
-              <p className={`text-sm text-gray-500 mb-1`}>201-500 employees</p>
-            </>
-          ) : (
-            <>
-              <p className="text-sm text-[#0a66c2] font-bold mb-1 hover:text-[#0a66c2] hover:underline hover:cursor-pointer">
-                Contact info
-              </p>
-            </>
-          )}
+          <p className="text-sm text-[#868686] my-1">{props.address}</p>
+          <p className="text-sm text-gray-500 my-1">.</p>
         </div>
         <div>
-          <p
-            className={`text-sm text-[#0a66c2] font-bold mb-1 hover:text-[#0a66c2] hover:underline hover:cursor-pointer ${
-              pathname?.includes('/company') ? "hidden" : "block"
+          <span
+            className={`text-sm text-[#0a66c2]  my-1 hover:text-[#0a66c2] hover:underline hover:cursor-pointer flex gap-x-1 ${
+              pathname?.includes("/company") ? "hidden" : "block"
             }`}
           >
-            500+ connections
-          </p>
+            <p>www.appsierra.com | www.gigde.com </p>
+            <p className="text-[#212529]">| and 2 more links</p>
+          </span>
         </div>
-        <div className="mt-3 mb-1 flex gap-2 items-center">
-          <div>
-            <Avatar className="h-[24px] w-[24px] rounded-full">
-              <AvatarImage src={props.mutualFollowerProfilePic} alt="@shadcn" />
-              <AvatarFallback>MD</AvatarFallback>
-            </Avatar>
+        <div className="mt-3 my-1 flex gap-2 items-center">
+          <div className="text-sm flex gap-x-1 items-center">
+            <p className="font-medium ">4.3K</p>
+            <p className="text-[#868686]">Followers</p>
           </div>
-          <div>
-            <p className="text-base font-semibold text-gray-600">
-              {props.mutualFollowerName} & {props.mutalFollowerCount} other {""}
-              {pathname?.includes('/company')
-                ? `connections follow this page`
-                : `mutual connections`}
-            </p>
+          <div className="text-sm flex gap-x-1 items-center">
+            <p className="font-medium ">532</p>
+            <p className="text-[#868686]">Following</p>
           </div>
         </div>
 
         <div className="my-4 flex items-center gap-2">
-          {pathname?.includes('/company') ? (
+          {pathname?.includes("/company") ? (
             <>
               <Button className="bg-[#0a66c2] text-sm text-white rounded-full flex items-center gap-1 px-9">
                 <div>
@@ -147,27 +156,9 @@ export default function PersonalInfo(props: any) {
             </>
           ) : (
             <>
-              <Button className="bg-[#0a66c2] text-sm text-white rounded-full flex items-center gap-1 px-5">
-                <div>
-                  <IoPersonAddSharp size={18} />
-                </div>
-                Connect
-              </Button>
-              <Button
-                variant={"outline"}
-                className="bg-whte text-sm text-[#0a66c2] border-[#0a66c2] rounded-full flex items-center gap-1 px-5"
-              >
-                <div>
-                  <LuSend size={16} />
-                  {/* <IoCheckmarkSharp size={20} /> */}
-                </div>
-                Message
-              </Button>
-              <Button
-                variant={"outline"}
-                className="bg-whte text-sm text-gray-600 border-gray-600 rounded-full flex items-center gap-1 px-5"
-              >
-                More
+              <Button className=" text-sm text-white rounded-full  flex items-center gap-1 px-5">
+              
+                Update Profile
               </Button>
             </>
           )}

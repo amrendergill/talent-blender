@@ -1,28 +1,14 @@
 "use client";
 import DefaultInitial from "@/components/DefaultInitials";
-// import Sidebar from "@/components/jobs/sidebar";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Slider } from "@/components/ui/slider";
 import Link from 'next/link'
-
-type SliderProps = React.ComponentProps<typeof Slider>;
-
 import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
+  Card
 } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -30,10 +16,10 @@ import { appService } from "@/utils/api";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
+import Sidebar from "@/components/jobs/Sidebar";
+import JobsList from "@/components/jobs/JobsList";
+import JobCategories from "@/components/jobs/JobCategories";
 
 const defaultFilters: any = {
   gender: "",
@@ -140,7 +126,7 @@ const mockDataSidebar = [
   },
 ];
 
-export default function Jobs({ className, ...props }: SliderProps) {
+export default function Jobs() {
   // const [data]:any = await getProps()
   // console.log(data, "data");
 const router = useRouter()
@@ -152,36 +138,36 @@ const router = useRouter()
     hasNextPage: false,
   });
   const [filterBy, setFilterBy]: any = useState(initialValue);
-  const featuredJobs = async (
-    addOld: any = false,
-    page: any = pagination?.page
-  ) => {
-    const response: any = await appService.getJob(
-      page,
-      pagination?.pageSize,
-      filterBy.location ?? "",
-      filterBy.department ?? "",
-      filterBy.types ?? "",
-      filterBy.city ?? "",
-      filterBy.remote,
-      filterBy.sortBy
-    );
-    if (!addOld) {
-      setData(response?.data?.job_data?.data);
-    } else {
-      setData([...data, ...response?.data?.job_data?.data]);
-    }
-    setFilters({ ...filters, ...response?.data?.filters[0] });
-    setPagination({
-      ...pagination,
-      hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
-      page: response?.data?.job_data?.page_info?.page,
-    });
-  };
+  // const featuredJobs = async (
+  //   addOld: any = false,
+  //   page: any = pagination?.page
+  // ) => {
+  //   const response: any = await appService.getJob(
+  //     page,
+  //     pagination?.pageSize,
+  //     filterBy.location ?? "",
+  //     filterBy.department ?? "",
+  //     filterBy.types ?? "",
+  //     filterBy.city ?? "",
+  //     filterBy.remote,
+  //     filterBy.sortBy
+  //   );
+  //   if (!addOld) {
+  //     setData(response?.data?.job_data?.data);
+  //   } else {
+  //     setData([...data, ...response?.data?.job_data?.data]);
+  //   }
+  //   setFilters({ ...filters, ...response?.data?.filters[0] });
+  //   setPagination({
+  //     ...pagination,
+  //     hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
+  //     page: response?.data?.job_data?.page_info?.page,
+  //   });
+  // };
 
-  useEffect(() => {
-    featuredJobs();
-  }, [filterBy]);
+  // useEffect(() => {
+  //   featuredJobs();
+  // }, [filterBy]);
 
   return (
     <div className="mt-4 flex  gap-x-3 w-full">
@@ -547,266 +533,7 @@ const router = useRouter()
         </div>
       </main> */}
       <aside className="w-[330px] max-w-[330px] min-w-[321px]">
-        <Card className="!p-0">
-          <div className="flex items-center justify-between py-4  px-5">
-            <p className="text-base font-medium">Filter</p>
-            <p className="text-[#E5042D] text-sm">Clear all</p>
-          </div>
-          <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
-          <div className=" py-4 px-5 space-y-4">
-            <div className="space-y-2">
-              <p className="text-sm">Skills</p>
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue
-                    className="!placeholder:text-[#868686]"
-                    placeholder="Skills..."
-                  />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    {/* <SelectLabel>Fruits</SelectLabel>
-                  <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                  <SelectItem value="grapes">Grapes</SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem> */}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
-            <div className="space-y-2 pt-2">
-              <p className="text-sm">Job type</p>
-              <div className="grid grid-cols-2 gap-y-2">
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="Full-time" />
-                  <label
-                    htmlFor="Full-time"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Full-time
-                  </label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="Internship" />
-                  <label
-                    htmlFor="Internship"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Internship
-                  </label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="Freelance" />
-                  <label
-                    htmlFor="Freelance"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Freelance
-                  </label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="Volunteer" />
-                  <label
-                    htmlFor="Volunteer"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Volunteer
-                  </label>
-                </div>
-              </div>
-            </div>
-            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
-            <div className="space-y-5 pt-2">
-              <p className="text-sm">Salary Range</p>
-              <Slider
-                defaultValue={[25, 75]}
-                max={100}
-                step={1}
-                className={cn("w-[100%]", className)}
-                {...props}
-              />
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-x-2">
-                  <p className="text-xs">$</p>
-                  <Input
-                    className="h-[20px] w-[50px] text-[10px]"
-                    type="email"
-                    placeholder="1200"
-                  />
-                </div>
-                <div className="flex items-center gap-x-2">
-                  <p className="text-xs">$</p>
-                  <Input
-                    className="h-[20px] w-[50px] text-[10px]"
-                    type="email"
-                    placeholder="2200"
-                  />
-                </div>
-              </div>
-            </div>
-            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
-            <div className="space-y-5 pt-2">
-              <p className="text-sm">Experience</p>
-              <Slider
-                defaultValue={[25, 75]}
-                max={100}
-                step={1}
-                className={cn("w-[100%]", className)}
-                {...props}
-              />
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-x-2">
-                  <p className="text-xs">Yrs</p>
-                  <Input
-                    className="h-[20px] w-[50px] text-[10px]"
-                    type="email"
-                    placeholder="01"
-                  />
-                </div>
-                <div className="flex items-center gap-x-2">
-                  <p className="text-xs">Yrs</p>
-                  <Input
-                    className="h-[20px] w-[50px] text-[10px]"
-                    type="email"
-                    placeholder="10"
-                  />
-                </div>
-              </div>
-            </div>
-            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
-            <div className="space-y-2 pt-2">
-              <p className="text-sm">Date Posted</p>
-
-              <RadioGroup
-                defaultValue="comfortable "
-                className="grid grid-cols-2 gap-y-2"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="default" id="r1" />
-                  <Label className="text-xs text-[#868686]" htmlFor="r1">
-                    Past 3 days
-                  </Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="comfortable" id="r2" />
-                  <Label className="text-xs text-[#868686]" htmlFor="r2">
-                    Past week
-                  </Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="compact" id="r3" />
-                  <Label className="text-xs text-[#868686]" htmlFor="r3">
-                    Past Month
-                  </Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="all" id="r4" />
-                  <Label className="text-xs text-[#868686]" htmlFor="r4">
-                    All
-                  </Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
-            <div className="space-y-2 pt-2">
-              <p className="text-sm">Commute</p>
-              <div className="grid grid-cols-2 gap-y-2">
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="Remote" />
-                  <label
-                    htmlFor="Remote"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Remote
-                  </label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="Hybrid" />
-                  <label
-                    htmlFor="Hybrid"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Hybrid
-                  </label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id=" On-Site" />
-                  <label
-                    htmlFor=" On-Site"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    On-Site
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <hr className=" border-t-[0.5px]  border-gray-200 w-full " />
-            <div className="space-y-2 pt-2">
-              <p className="text-sm">Distance</p>
-              <div className="grid grid-cols-2 gap-y-2">
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="5" />
-                  <label
-                    htmlFor="5"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    5 Miles
-                  </label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="10" />
-                  <label
-                    htmlFor="10"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    10 Miles
-                  </label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="15" />
-                  <label
-                    htmlFor="15"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    15 Miles
-                  </label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="25" />
-                  <label
-                    htmlFor="25"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    25 Miles
-                  </label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="50" />
-                  <label
-                    htmlFor="50"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    50 Miles
-                  </label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="100" />
-                  <label
-                    htmlFor="100"
-                    className="text-xs text-[#868686] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    100 Miles
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Card>
+       <Sidebar />
       </aside>
       <main className="w-full">
         <div className="flex w-full border-[0.5px] border-gray-200 h-[53px] rounded-[5px] px-2 ">
@@ -894,69 +621,7 @@ const router = useRouter()
             </div>
             <div className="mt-2  pr-2 space-y-3 h-[800px] overflow-y-auto mr-2">
               {mockData.map((item: any) => (
-                <Card className="space-y-4 p-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-x-3">
-                      <Image
-                        src={item.src}
-                        alt="Logo"
-                        width={61}
-                        height={56}
-                        priority
-                        className="object-fit"
-                      />
-                      <div>
-                        <p className="text-[#0472F4] text-base font-semibold">
-                          {item.name}
-                        </p>
-                        <p className="text-xs">{item.company}</p>
-                        <p className="text-xs mt-1 text-[#868686]">
-                          NOIDA, UTTAR PRADESH
-                        </p>
-                      </div>
-                    </div>
-
-                    <Image
-                      src={"/images/bookmark@2x.png"}
-                      alt="Logo"
-                      width={17}
-                      height={17}
-                      priority
-                      className="object-fit mt-2"
-                    />
-                  </div>
-                  <div className="flex items-center gap-x-1 ">
-                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
-                      Javascript
-                    </Badge>
-                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
-                      Javascript
-                    </Badge>
-                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
-                      Javascript
-                    </Badge>
-                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
-                      Javascript
-                    </Badge>
-                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
-                      Javascript
-                    </Badge>
-                    <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
-                      Javascript
-                    </Badge>
-                  </div>
-                  <hr className="border-t-[0.5px]  border-gray-200 w-full my-4"></hr>
-                  <div className="flex items-center justify-between">
-                    <Badge className="bg-[#F5F5F5] text-black text-[10px] rounded-[10px]">
-                      Posted 25 Days ago
-                    </Badge>
-                    <Link href={'/jobs/view-job'}>
-                    <Button className="text-xs h-[31px] px-5 border-[0.5px] border-[#BEBEBE] bg-white  text-black rounded-[5px] hover:text-[#0472F4]">
-                      View Job
-                    </Button>
-                    </Link>
-                  </div>
-                </Card>
+                <JobsList src={item?.src} name={item?.name} company={item?.company} />
               ))}
             </div>
           </div>
@@ -964,20 +629,7 @@ const router = useRouter()
             <Card className="space-y-2 !p-3 ">
               <p className="text-base font-medium">Job Categories</p>
               {mockDataSidebar.map((item) => (
-                <div className="flex justify-between items-center rounded-[5px] px-3 py-2 hover:bg-[#F9F9F9] cursor-pointer">
-                  <div className="flex items-center gap-x-2">
-                    <Image
-                      src={item.src}
-                      alt="Logo"
-                      width={15}
-                      height={15}
-                      priority
-                      className="object-fit"
-                    />
-                    <p className="text-xs">{item.name}</p>
-                  </div>
-                  <p className="text-xs">1234</p>
-                </div>
+                <JobCategories src={item?.src} name={item?.name} />
               ))}
             </Card>
           </div>
