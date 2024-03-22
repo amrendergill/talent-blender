@@ -69,3 +69,10 @@
 .ul-list-style-none {
     list-style: none;
 }
+
+.createJobStyle{
+        background: linear-gradient(to right, #22C7FB,
+        #1A9EFC);
+        -webkit-text-fill-color: #FFF;
+     
+}
