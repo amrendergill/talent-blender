@@ -2,9 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/RoundedTab";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
-import { Card } from "@/components/ui/card";
-import ProfileIntroduction from "@/components/update-profile/ProfileIntroduction";
-import ProfileWorkExperience from "@/components/update-profile/ProfileWorkExperience";
+import Introduction from "@/components/update-profile/Introduction";
+import WorkExperience from "@/components/update-profile/WorkExperience";
+import Education from "@/components/update-profile/Education";
+import Skills from "@/components/update-profile/Skills";
 
 export default function UpdateProfile() {
   return (
@@ -21,7 +22,7 @@ export default function UpdateProfile() {
                   Please revise the information in your profile.
                 </div>
                 <div className="mt-[30px] mb-5 flex items-center justify-between">
-                  <Tabs defaultValue="account" className="w-[240px]">
+                  <Tabs defaultValue="profile" className="w-[240px]">
                     <TabsList className="grid w-full grid-cols-2">
                       <TabsTrigger value="profile" className="text-xs">
                         Profile
@@ -100,30 +101,10 @@ export default function UpdateProfile() {
                   </div>
                 </div>
               </div>
-              <ProfileIntroduction />
-              <ProfileWorkExperience />
-              <Card className="bg-[#F9F9F9] p-[25px] border-0 rounded-[10px]">
-                <div className="flex justify-between">
-                  <div>
-                    <p className="font-medium text-base">Education</p>
-                    <p className="text-[#868686] text-xs">
-                    Which educational institutions have you attended?
-                    </p>
-                  </div>
-                  <Button className="bg-white text-xs h-[31px] text-[#0472F4] border-[0.3px] border-[#0472F4] rounded-[5px]"> + Add</Button>
-                </div>
-              </Card>
-              <Card className="bg-[#F9F9F9] p-[25px] border-0 rounded-[10px]">
-                <div className="flex justify-between">
-                  <div>
-                    <p className="font-medium text-base">Skills</p>
-                    <p className="text-[#868686] text-xs">
-                    Skills
-                    </p>
-                  </div>
-                  <Button className="bg-white text-xs h-[31px] text-[#0472F4] border-[0.3px] border-[#0472F4] rounded-[5px]"> + Add</Button>
-                </div>
-              </Card>
+              <Introduction />
+              <WorkExperience />
+              <Education />
+              <Skills />
             </div>
             <div className="w-[512px] max-w-[512px] min-w-[512px]"></div>
           </div>
