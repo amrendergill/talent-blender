@@ -138,36 +138,36 @@ const router = useRouter()
     hasNextPage: false,
   });
   const [filterBy, setFilterBy]: any = useState(initialValue);
-  const featuredJobs = async (
-    addOld: any = false,
-    page: any = pagination?.page
-  ) => {
-    const response: any = await appService.getJob(
-      page,
-      pagination?.pageSize,
-      filterBy.location ?? "",
-      filterBy.department ?? "",
-      filterBy.types ?? "",
-      filterBy.city ?? "",
-      filterBy.remote,
-      filterBy.sortBy
-    );
-    if (!addOld) {
-      setData(response?.data?.job_data?.data);
-    } else {
-      setData([...data, ...response?.data?.job_data?.data]);
-    }
-    setFilters({ ...filters, ...response?.data?.filters[0] });
-    setPagination({
-      ...pagination,
-      hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
-      page: response?.data?.job_data?.page_info?.page,
-    });
-  };
+  // const featuredJobs = async (
+  //   addOld: any = false,
+  //   page: any = pagination?.page
+  // ) => {
+  //   const response: any = await appService.getJob(
+  //     page,
+  //     pagination?.pageSize,
+  //     filterBy.location ?? "",
+  //     filterBy.department ?? "",
+  //     filterBy.types ?? "",
+  //     filterBy.city ?? "",
+  //     filterBy.remote,
+  //     filterBy.sortBy
+  //   );
+  //   if (!addOld) {
+  //     setData(response?.data?.job_data?.data);
+  //   } else {
+  //     setData([...data, ...response?.data?.job_data?.data]);
+  //   }
+  //   setFilters({ ...filters, ...response?.data?.filters[0] });
+  //   setPagination({
+  //     ...pagination,
+  //     hasNextPage: response?.data?.job_data?.page_info?.has_next_page,
+  //     page: response?.data?.job_data?.page_info?.page,
+  //   });
+  // };
 
-  useEffect(() => {
-    featuredJobs();
-  }, [filterBy]);
+  // useEffect(() => {
+  //   featuredJobs();
+  // }, [filterBy]);
 
   return (
     <div className="mt-4 flex  gap-x-3 w-full">
