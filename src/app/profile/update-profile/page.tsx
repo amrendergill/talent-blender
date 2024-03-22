@@ -2,17 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/RoundedTab";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { Card } from "@/components/ui/card";
 import Introduction from "@/components/update-profile/Introduction";
 import WorkExperience from "@/components/update-profile/WorkExperience";
 import Education from "@/components/update-profile/Education";
@@ -33,7 +22,7 @@ export default function UpdateProfile() {
                   Please revise the information in your profile.
                 </div>
                 <div className="mt-[30px] mb-5 flex items-center justify-between">
-                  <Tabs defaultValue="account" className="w-[240px]">
+                  <Tabs defaultValue="profile" className="w-[240px]">
                     <TabsList className="grid w-full grid-cols-2">
                       <TabsTrigger value="profile" className="text-xs">
                         Profile
