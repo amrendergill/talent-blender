@@ -1042,22 +1042,20 @@ export default function CreateJob() {
                         <img
                           src="/images/floppy-disks.svg"
                           alt="Questions"
-                          onClick={() => {
-                            addNewQuestion;
-                          }}
+                          onClick={addNewQuestion}
                           className="image"
                         />
                       </div>
                       <div className="border-t mt-[30px] pt-[15px]">
                         {question?.title?.map((item: any, index: any) => (
                           <div
-                            key={`questionsArr${item?.title}`}
+                            key={`questionsArr${index}`}
                             className="border-[0.3px] mt-[15px] px-[20px] py-[20px] justify-between flex items-center rounded-[5px] bg-[#F9FAFB]"
                           >
                             <div className="flex gap-[18px]">
                               <img src="/images/apps.svg" alt="apps" />
                               <p className="font-regular text-[#000000] text-sm">
-                                {item?.title}
+                                {item}
                               </p>
                             </div>
                             <div className="flex gap-[15px]">
