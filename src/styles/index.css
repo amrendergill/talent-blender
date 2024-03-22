@@ -71,12 +71,17 @@
 }
 
 .arrow {
-    border-left: 0.5px solid #CC0000;
-    width: 16px;
-    height: 16px;
-    border-bottom: 0.5px solid transparent;
-    transform: rotate(135deg);
-}
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 14px;
+    
+  }
+  
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
 
 
 
