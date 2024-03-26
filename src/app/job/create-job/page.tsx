@@ -29,15 +29,8 @@ import {
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import CreateJobRightBar from "@/components/CreateJobRightBar";
+
 
 export default function CreateJob() {
   const [formData, setFormData] = useState({
@@ -89,33 +82,39 @@ export default function CreateJob() {
   const [errors, setErrors]: any = useState({});
 
   const handleInputChange = (e: any) => {
-    setInputValue(e.target.value );
+    setInputValue(e.target.value);
   }
 
   const [question, setQuestion] = useState(
-    { title: ["What tools and software do you typically use for UI/UX design?", "Can you walk us through your experience in UI/UX design?", "Can you provide examples of user interfaces or experiences you’ve designed in the past?", "Can you provide examples of user interfaces or experiences you’ve designed in the past?"] })
+    [
+      { 
+        index: 0,
+        title: 'What tools and software do you typically use for UI/UX design?' },
+      { 
+        index: 1,
+        title: 'Can you walk us through your experience in UI/UX design?' },
+      { 
+        index: 2,
+        title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?' },
+      { 
+        index: 3,
+        title: "Can you provide examples of user interfaces or experiences you’ve designed in the past?" }])
 
-  const addNewQuestion = () =>{
-    setQuestion((existingCartList) => ({
-      title: [...existingCartList.title, inputValue]
-    }));
+  const addNewQuestion = () => {
+    setQuestion((existingList) => (
+      [...existingList, { index: existingList?.index, title: inputValue }]
+    ));
     setInputValue("");
-  }  
+  }
 
-  const rightside: any = [
-    {
-      position: "UI/UX Designer",
-      place: "Noida, Uttar Pradesh",
-    },
-    {
-      position: "Software Engineer - MLOps - France or …",
-      place: "Noida, Uttar Pradesh",
-    },
-    {
-      position: "Front - end Developer",
-      place: "Noida, Uttar Pradesh",
-    },
-  ];
+
+  const deleteQuestion = (index:any) => {
+    console.log('question')
+      let deleteTodos = question.filter((item:any) => item?.index !== index);
+      setQuestion([...deleteTodos])
+  }
+
+
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -131,6 +130,9 @@ export default function CreateJob() {
       setErrors(newErrors);
     }
   };
+
+
+
 
   return (
     <>
@@ -160,11 +162,6 @@ export default function CreateJob() {
                       Screening Questions
                     </TabsTrigger>
                   </TabsList>
-                  {/* <TabsList className="bg-[#F9F9F9] rounded-none relative gap-5 flex px-[20px] py-[7px]">
-                    <TabsTrigger value="details" className="text-xs flex justify-start w-[140px] min-w-[140px] max-w-[140px] data-[state=active]:shadow-none data-[state=active]:rounded-none data-[state=active]:bg-[#FBE9E7] data-[state=active]:w-[140px] font-regular text-[#868686]">Job Details</TabsTrigger>
-                    <div className="arrow right "></div>
-                    <TabsTrigger value="questions" className=" text-xs w-[166px] min-w-[166px] max-w-[166px] font-regular text-[#868686] data-[state=active]:shadow-none data-[state=active]:bg-[#FBE9E7] data-[state=active]:w-[100%] flex justify-start">Screening Questions</TabsTrigger>
-                  </TabsList> */}
                   <div className="flex gap-3">
                     <Button
                       onClick={handleSubmit}
@@ -193,8 +190,8 @@ export default function CreateJob() {
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="mt-[30px]">
-                      <div className="flex flex-wrap gap-5">
-                        <div className="grid w-[48.6%] max-w-sm gap-[10px] ">
+                      <div className="flex w-[100%] flex-wrap gap-5 justify-between">
+                        <div className="grid w-[48%]  gap-[10px] ">
                           <Label
                             htmlFor="jobTitle"
                             className="text-sm font-medium text-[#212529]"
@@ -218,7 +215,7 @@ export default function CreateJob() {
                             {errors.jobTitle}
                           </p>
                         </div>
-                        <div className="grid w-[48.6%] max-w-sm gap-[10px]">
+                        <div className="grid w-[48%] gap-[10px]">
                           <Label
                             htmlFor="position"
                             className="text-sm font-medium text-[#212529]"
@@ -243,7 +240,7 @@ export default function CreateJob() {
                             {errors.position}
                           </p>
                         </div>
-                        <div className="grid w-[48.6%] max-w-sm  gap-[10px] ">
+                        <div className="grid w-[48%]   gap-[10px] ">
                           <div className="flex items-center gap-1">
                             <Label htmlFor="role">Role *</Label>
                           </div>
@@ -266,7 +263,7 @@ export default function CreateJob() {
                           </Select>
                           <p className="text-red-500 text-sm">{errors.role}</p>
                         </div>
-                        <div className="grid w-[48.6%] max-w-sm  gap-[10px]">
+                        <div className="grid w-[48%]   gap-[10px]">
                           <div className="flex items-center gap-1">
                             <Label htmlFor="experience">Work Experience</Label>
                           </div>
@@ -288,14 +285,15 @@ export default function CreateJob() {
                             {errors.experience}
                           </p>
                         </div>
-                        <div className=" grid w-full  gap-[10px]">
+                        <div className=" grid relative  w-full  gap-[10px]">
                           <div className="flex items-center gap-1">
                             <Label htmlFor="Skills">Skills</Label>
                           </div>
+                          <img src="/images/search.svg" className='h-[20px] w-[20px] absolute left-5 top-9' alt="skills" />
                           <Input
                             type="text"
                             id="Skills"
-                            className="text-xs font-regular text-[#868686]"
+                            className="text-xs pl-[50px] font-regular text-[#868686]"
                             placeholder="e.g. Python, react, etc."
                             onChange={(e: any) =>
                               setFormData((prevData: any) => ({
@@ -318,7 +316,7 @@ export default function CreateJob() {
                             <img
                               src="/images/sparkles.svg"
                               alt="Generate with AI"
-                            />{" "}
+                            />
                             Generate with AI
                           </Button>
                         </div>
@@ -361,18 +359,19 @@ export default function CreateJob() {
                         <p className="mt-[10px] text-xs font-regular text-[#868686]">
                           Introduce yourself so startups can get to know you.{" "}
                         </p>
-                        <div className="mt-[30px] grid w-full ">
+                        <div className="mt-[30px] relative grid w-full ">
                           <Label
                             htmlFor="location"
                             className="text-sm font-medium text-[#212529]"
                           >
                             Add Location
                           </Label>
+                          <img src="/images/search.svg" className='h-[20px] w-[20px] absolute left-5 top-[42px]' alt="skills" />
                           <Input
                             type="text"
                             id="location"
                             placeholder="e.g. New York"
-                            className="mt-[10px] text-xs font-regular text-[#868686]"
+                            className="mt-[10px] pl-[50px] text-xs font-regular text-[#868686]"
                             value={formData?.location}
                             onChange={(e: any) =>
                               setFormData((prevData: any) => ({
@@ -509,11 +508,12 @@ export default function CreateJob() {
                               location worldwide.
                             </label>
                           </div>
-                          <div className="mt-[20px] grid w-full  gap-1.5 ">
+                          <div className="mt-[20px] grid w-full relative gap-1.5 ">
+                          <img src="/images/search.svg" className='h-[20px] w-[20px] absolute left-5 top-3' alt="skills" />
                             <Input
                               type="text"
                               id="fullName"
-                              className=" text-xs font-regular opacity-50 text-[#868686]"
+                              className=" text-xs  pl-[50px] font-regular opacity-50 text-[#868686]"
                               placeholder="e.g. New York"
                               value={formData?.fullName}
                               onChange={(e: any) =>
@@ -612,8 +612,7 @@ export default function CreateJob() {
                                     </p>
                                   </div>
                                   <div className="text-[#868686] opacity-50">
-                                    {" "}
-                                    -{" "}
+                                    -
                                   </div>
                                   <div className="grid w-[13%] max-w-sm gap-1.5">
                                     <Input
@@ -671,7 +670,7 @@ export default function CreateJob() {
                   </Card>
                   <Card className="bg-[#F9F9F9] mt-[10px] border-0 ">
                     <CardContent className="space-y-2">
-                      <div className="pt-[60px]">
+                      <div className="">
                         <h2 className="text-base font-medium text-[#000000]">
                           Compensation & Equity
                         </h2>
@@ -822,7 +821,7 @@ export default function CreateJob() {
                   </Card>
                   <Card className="bg-[#F9F9F9] mt-[10px] border-0 ">
                     <CardContent className="space-y-2">
-                      <div className="pt-[60px]">
+                      <div className="">
                         <h2 className="text-base font-medium text-[#000000]">
                           Recruitment Point of Contact
                         </h2>
@@ -891,7 +890,7 @@ export default function CreateJob() {
                   </Card>
                   <Card className="bg-[#F9F9F9] mt-[10px] border-0 ">
                     <CardContent className="space-y-2">
-                      <div className="pt-[60px]">
+                      <div className="">
                         <h2 className="text-base font-medium text-[#000000]">
                           Tag Coworkers
                         </h2>
@@ -936,7 +935,7 @@ export default function CreateJob() {
                   </Card>
                   <Card className="bg-[#F9F9F9] mt-[10px] border-0 ">
                     <CardContent className="space-y-2">
-                      <div className="pt-[60px]">
+                      <div className="">
                         <h2 className="text-base font-medium text-[#000000]">
                           Company Details
                         </h2>
@@ -1023,14 +1022,6 @@ export default function CreateJob() {
                           </Button>
                         </div>
                       </div>
-
-                      {/* <div className=" px-[20px]  py-[10px] rounded-[5px] border-[0.3px]">
-                        <div className="flex justify-between">
-                          <p className="text-xs font-regular text-[#868686]">Enter your question</p>
-                          <img src='/images/floppy-disks.svg' alt='Questions' />
-                        </div>
-                      </div> */}
-
                       <div className="grid w-full relative items-center ">
                         <Input
                           type="text"
@@ -1047,25 +1038,35 @@ export default function CreateJob() {
                         />
                       </div>
                       <div className="border-t mt-[30px] pt-[15px]">
-                        {question?.title?.map((item: any, index: any) => (
-                          <div
-                            key={`questionsArr${index}`}
-                            className="border-[0.3px] mt-[15px] px-[20px] py-[20px] justify-between flex items-center rounded-[5px] bg-[#F9FAFB]"
-                          >
-                            <div className="flex gap-[18px]">
-                              <img src="/images/apps.svg" alt="apps" />
-                              <p className="font-regular text-[#000000] text-sm">
-                                {item}
-                              </p>
-                            </div>
-                            <div className="flex gap-[15px]">
-                              <img
-                                src="/images/pen-circle.svg"
-                                alt="edit"
+                        {question?.map((item: any, index: any) => (
+
+                          // <div
+                          //   key={`questionsArr${index}`}
+                          //   className="border-[0.3px] mt-[15px] px-[20px] py-[20px] justify-between flex items-center rounded-[5px] bg-[#F9FAFB]"
+                          // >
+                          <>
+                            <div key={`question${index}`} className="flex relative ">
+                              <img src="/images/apps.svg" className='absolute left-5 top-8 ' alt="apps" />
+                              <Input
+                                type="text"
+                                value={item?.title}
+                                className="border-[0.3px] outline-none  mt-[15px] px-[40px] py-[20px] justify-between  flex items-center rounded-[5px] bg-[#F9FAFB] font-regular text-[#000000] text-sm"
+                              // onChange={handleInputChange}
                               />
-                              <img src="/images/circle-trash.svg" alt="trash" />
+                              <div className="flex gap-[15px]">
+                                <img
+                                  src="/images/pen-circle.svg"
+                                  alt="edit"
+                                  className="absolute right-[50px] top-7"
+                                />
+                                <img src="/images/circle-trash.svg"
+                                  className="absolute right-[20px] top-7"
+                                  alt="trash"
+                                  onClick={()=>{deleteQuestion(index)}}
+                                />
+                              </div>
                             </div>
-                          </div>
+                          </>
                         ))}
                       </div>
                     </CardContent>
@@ -1073,85 +1074,7 @@ export default function CreateJob() {
                 </TabsContent>
               </Tabs>
             </div>
-            <div className="border-l pl-5 w-[388px] min-w-[388px] max-w-[388px]">
-              <h2 className="font-medium text-base mb-[20px] text-[#000000]">
-                Your recent Jobs
-              </h2>
-              <Tabs defaultValue="active" className="">
-                <TabsList className="grid grid-cols-2 w-[179px] h-fit p-[2px]">
-                  <TabsTrigger value="active" className="text-xs">
-                    Active
-                  </TabsTrigger>
-                  <TabsTrigger value="draft" className="text-xs">
-                    Draft
-                  </TabsTrigger>
-                </TabsList>
-
-                <TabsContent value="active">
-                  <div className="border-t pt-[20px] mt-[20px]">
-                    {rightside?.map((item: any, index: any) => (
-                      <div
-                        key={`rightside${index}`}
-                        className="w-[100%] mb-[20px] border p-[20px]"
-                      >
-                        <h2 className="text-base font-medium text-[#000000]">
-                          {item?.position}
-                        </h2>
-                        <p className="text-xs font-regular text-[#868686] mb-[20px] mt-[10px]">
-                          {item?.place}
-                        </p>
-                        <div className="flex items-center justify-between">
-                          <Button
-                            onClick={handleSubmit}
-                            className={`px-[20px] border-[#bed4ee] hover:bg-[white] h-[25px] text-[#000000] bg-white shadow-[0px_3px_6px_#0000000D] border-[0.2px]  text-xs rounded-[3px]`}
-                          >
-                            Edit Job
-                          </Button>
-                          <div className="text-[10px] font-regular rounded-full px-[15px] py-[3px] bg-[#F5F5F5]">
-                            <p>Last edit : 5 days ago</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </TabsContent>
-              </Tabs>
-              <div className="">
-                <div className=""></div>
-                <div className="">
-                  <Pagination>
-                    <PaginationContent>
-                      <PaginationItem className="">
-                        <PaginationPrevious href="#" />
-                      </PaginationItem>
-                      <PaginationItem className="">
-                        <PaginationLink href="#">1</PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink href="#" isActive>
-                          2
-                        </PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink href="#">3</PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink href="#">4</PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem className="border-0">
-                        <PaginationEllipsis />
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink href="#">100</PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationNext href="#" />
-                      </PaginationItem>
-                    </PaginationContent>
-                  </Pagination>
-                </div>
-              </div>
-            </div>
+            <CreateJobRightBar/>
           </div>
         </div>
       </main>

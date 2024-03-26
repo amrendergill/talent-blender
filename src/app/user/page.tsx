@@ -65,8 +65,13 @@ export default function User() {
             <Card className="mt-[15px] bg-[#F9F9F9] border-0">
               <h2 className="text-[20px] text-[#212529] font-semibold">Work Experience</h2>
               <div className='mt-[20px] bg-[#FFF] px-[20px] py-[15px] rounded-[5px]'>
+              <div className="flex items-center gap-[11px]">
+                <img src='/images/Rectangle 443.svg' alt='intern'/>
+                <div>
                 <h3 className="text-lg font-semibold">Marketing Coordinator Assistant Intern</h3>
                 <h4 className="text-base font-regular text-[#0472F4]">Pitch N Hire</h4>
+                </div>
+                </div>
                 <div className="mt-[10px] items-center gap-[13px] flex">
                   <div className="text-xs font-regular text-[#000000] bg-[#F5F5F5] rounded-full py-[4px] px-[15px]">
                     June 2021 - August 2024
@@ -90,8 +95,13 @@ export default function User() {
                 </ul>
               </div>
               <div className='mt-[15px] bg-[#FFF] px-[20px] py-[15px] rounded-[5px]'>
+                <div className="flex items-center gap-[11px]">
+                <img src='/images/Rectangle 443.svg' alt='intern'/>
+                <div>
                 <h3 className="text-lg font-semibold">Marketing Coordinator Assistant Intern</h3>
-                <h4 className="text-base font-regular text-[#0472F4]">Pitch N Hire</h4>
+                <h4 className="text-base font-regular text-[#0472F4]">Appsierra</h4>
+                </div>
+                </div>
                 <div className="mt-[10px] items-center gap-[13px] flex">
                   <div className="text-xs font-regular text-[#000000] bg-[#F5F5F5] rounded-full py-[4px] px-[15px]">
                     June 2021 - August 2024
@@ -181,7 +191,6 @@ export default function User() {
                   </div>
                 </div>
               ))}
-
             </Card>
           </div>
           <div className="w-[395px] min-w-[395px] max-w-[395px]">

@@ -9,6 +9,7 @@ import Image from "next/image";
 import Certificates from "./Certificates";
 import Awards from "./Awards";
 import VoluntaryServices from "./VoluntaryServices";
+import SocialProfiles from "./SocialProfiles";
 const skillTags = [
     {
       tag: "Java",
@@ -125,6 +126,7 @@ export default function Skills() {
          <Awards />
           <Separator />
           <VoluntaryServices />
+          <SocialProfiles/>
         </div>
       </Card>
     </>

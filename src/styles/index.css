@@ -97,8 +97,8 @@
 }
 
 .clipDetailsTab{
-    clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+    clip-path: polygon(0% 0%, 75% 0%, 90% 50%, 75% 100%, 0% 100%);
 }
 .clipQuestionsTab{
-    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+    clip-path: polygon(100% 0, 100% 50%, 100% 99%, 0% 100%, 12% 51%, 0% 0%);
 }
