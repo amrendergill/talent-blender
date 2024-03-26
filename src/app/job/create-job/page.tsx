@@ -53,10 +53,7 @@ export default function CreateJob() {
     minSalary: "",
     fullName: "",
   });
-  const [inputValue, setInputValue] = useState({
-    index: null,
-    value: "",
-  });
+  const [inputValue, setInputValue] = useState('');
 
   const list: any = [
     {
@@ -92,44 +89,18 @@ export default function CreateJob() {
   const [errors, setErrors]: any = useState({});
 
   const handleInputChange = (e: any) => {
-    setInputValue({ ...inputValue, value: e.target.value });
-  };
+    setInputValue(e.target.value );
+  }
 
-  // const questionsArr: any = [
-  //   {
-  //     title: 'What tools and software do you typically use for UI/UX design?'
-  //   },
-  //   {
-  //     title: 'Can you walk us through your experience in UI/UX design?'
-  //   },
-  //   {
-  //     title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
-  //   },
-  //   {
-  //     title: 'Can you provide examples of user interfaces or experiences you’ve designed in the past?'
-  //   },
-  // ]
+  const [question, setQuestion] = useState(
+    { title: ["What tools and software do you typically use for UI/UX design?", "Can you walk us through your experience in UI/UX design?", "Can you provide examples of user interfaces or experiences you’ve designed in the past?", "Can you provide examples of user interfaces or experiences you’ve designed in the past?"] })
 
-  const [question, setQuestion] = useState([
-    { title: "What tools and software do you typically use for UI/UX design?" },
-    {
-      title: "Can you walk us through your experience in UI/UX design?",
-    },
-    {
-      title:
-        "Can you provide examples of user interfaces or experiences you’ve designed in the past?",
-    },
-    {
-      title:
-        "Can you provide examples of user interfaces or experiences you’ve designed in the past?",
-    },
-  ]);
-
-  const addNewQuestion = () => {};
-
-  const newState = question.map((obj: any, index: any) =>
-    index === inputValue?.index ? inputValue.value : obj
-  );
+  const addNewQuestion = () =>{
+    setQuestion((existingCartList) => ({
+      title: [...existingCartList.title, inputValue]
+    }));
+    setInputValue("");
+  }  
 
   const rightside: any = [
     {
@@ -1065,39 +1036,31 @@ export default function CreateJob() {
                           type="text"
                           id="fullName"
                           placeholder="Enter your question"
-                          value={inputValue.value}
+                          value={inputValue}
                           onChange={handleInputChange}
                         />
                         <img
                           src="/images/floppy-disks.svg"
                           alt="Questions"
-                          onClick={() => {
-                            addNewQuestion;
-                          }}
+                          onClick={addNewQuestion}
                           className="image"
                         />
                       </div>
                       <div className="border-t mt-[30px] pt-[15px]">
-                        {question?.map((item: any, index: any) => (
+                        {question?.title?.map((item: any, index: any) => (
                           <div
-                            key={`questionsArr${item?.title}`}
+                            key={`questionsArr${index}`}
                             className="border-[0.3px] mt-[15px] px-[20px] py-[20px] justify-between flex items-center rounded-[5px] bg-[#F9FAFB]"
                           >
                             <div className="flex gap-[18px]">
                               <img src="/images/apps.svg" alt="apps" />
                               <p className="font-regular text-[#000000] text-sm">
-                                {item?.title}
+                                {item}
                               </p>
                             </div>
                             <div className="flex gap-[15px]">
                               <img
                                 src="/images/pen-circle.svg"
-                                onClick={() => {
-                                  setInputValue({
-                                    value: item?.title,
-                                    index: index,
-                                  });
-                                }}
                                 alt="edit"
                               />
                               <img src="/images/circle-trash.svg" alt="trash" />
