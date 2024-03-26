@@ -7,6 +7,8 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import Image from "next/image";
 import Certificates from "./Certificates";
+import Awards from "./Awards";
+import VoluntaryServices from "./VoluntaryServices";
 const skillTags = [
     {
       tag: "Java",
@@ -120,33 +122,9 @@ export default function Skills() {
           <Separator />
           <Certificates />
           <Separator />
-          <div className="flex justify-between">
-            <div>
-              <p className="font-medium text-base">Awards</p>
-              <p className="text-[#868686] text-xs">
-                This section highlights any accolades or recognitions received
-                by the individual.
-              </p>
-            </div>
-            <Button className="bg-white text-xs h-[31px] text-[#0472F4] border-[0.3px] border-[#0472F4] rounded-[5px]">
-              {" "}
-              + Add
-            </Button>
-          </div>
+         <Awards />
           <Separator />
-          <div className="flex justify-between">
-            <div>
-              <p className="font-medium text-base">Voluntary Services</p>
-              <p className="text-[#868686] text-xs">
-                This section outlines any unpaid work or community service
-                initiatives undertaken by the individual.
-              </p>
-            </div>
-            <Button className="bg-white text-xs h-[31px] text-[#0472F4] border-[0.3px] border-[#0472F4] rounded-[5px]">
-              {" "}
-              + Add
-            </Button>
-          </div>
+          <VoluntaryServices />
         </div>
       </Card>
     </>
