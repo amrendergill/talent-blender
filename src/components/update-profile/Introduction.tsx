@@ -16,8 +16,8 @@ export default function Introduction() {
     <>
       <Card className="bg-[#F9F9F9] p-[25px] rounded-[10px] border-0">
         <div>
-          <p className="font-medium text-base">Introduction</p>
-          <p className="text-xs text-[#868686]">
+          <p className="font-medium text-base">About</p>
+          <p className="text-xs mt-[10px] text-[#868686]">
             Introduce yourself so startups can get to know you.
           </p>
 

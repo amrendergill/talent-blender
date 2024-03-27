@@ -6,8 +6,6 @@ import { Button } from "./ui/button";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { PiDotsThreeCircleThin } from "react-icons/pi";
 import { HiPlus } from "react-icons/hi";
-import { IoPersonAddSharp } from "react-icons/io5";
-// import { headers } from "next/headers";
 import { usePathname } from "next/navigation";
 import {
   Select,
@@ -45,7 +43,6 @@ export default function PersonalInfo(props: any) {
               <SelectContent>
                 <SelectGroup>
                   <SelectItem value="linkedIn-audio-event">
-                    {" "}
                     Prepared for interviews
                   </SelectItem>
                 </SelectGroup>
@@ -65,14 +62,12 @@ export default function PersonalInfo(props: any) {
           </div>
         </div>
         <div
-          className={` w-fit absolute top-32 left-8 ${
-            pathname?.includes("/company") ? " rounded-none " : "rounded-full"
-          }`}
+          className={` w-fit absolute top-32 left-8 ${pathname?.includes("/company") ? " rounded-none " : "rounded-full"
+            }`}
         >
           <Avatar
-            className={`h-[128px] w-[128px] ${
-              pathname?.includes("/company") ? "rounded-none" : "rounded-full"
-            }`}
+            className={`h-[128px] w-[128px] ${pathname?.includes("/company") ? "rounded-none" : "rounded-full"
+              }`}
           >
             <AvatarImage src={props.avatar} alt="@shadcn" />
             <AvatarFallback>MD</AvatarFallback>
@@ -94,30 +89,50 @@ export default function PersonalInfo(props: any) {
 
         <div className="flex items-center gap-2">
           <p
-            className={`text-sm text-gray-500 my-1 ${
-              pathname?.includes("/company") ? "block" : "hidden"
-            }`}
+            className={`text-sm text-gray-500 my-1 ${pathname?.includes("/company") ? "block" : "hidden"
+              }`}
           >
             IT Services and IT Consulting
           </p>
           <p
-            className={`text-sm text-gray-500 my-1 ${
-              pathname?.includes("/company") ? "block" : "hidden"
-            }`}
+            className={`text-sm text-gray-500 my-1 ${pathname?.includes("/company") ? "block" : "hidden"
+              }`}
           >
             .
           </p>
-          <p className="text-sm text-[#868686] my-1">{props.address}</p>
+          <div className="flex gap-[4px]">
+            <Image
+              src={"/images/map-pin.svg"}
+              alt="Logo"
+              width={15}
+              height={15}
+              priority
+              className="object-fit"
+            />
+            <p className="text-sm text-[#868686] my-1">
+              {props.address}
+            </p>
+          </div>
+          {/* <p className="text-sm text-[#868686] my-1">{props.address}</p> */}
           <p className="text-sm text-gray-500 my-1">.</p>
         </div>
         <div>
           <span
-            className={`text-sm text-[#0472F4]  my-1 hover:text-[#0472F4] hover:underline hover:cursor-pointer flex gap-x-1 ${
-              pathname?.includes("/company") ? "hidden" : "block"
-            }`}
+            className={`text-sm text-[#0472F4]  my-1 hover:text-[#0472F4] hover:underline hover:cursor-pointer flex gap-x-1 ${pathname?.includes("/company") ? "hidden" : "block"
+              }`}
           >
-            <p>www.appsierra.com | www.gigde.com </p>
-            <p className="text-[#212529]">| and 2 more links</p>
+            <div className='flex gap-[19px] items-center'>
+              <div>
+                <p>www.appsierra.com | www.gigde.com |
+                <span className="text-[#212529]"> and 2 more links</span></p>
+              </div>
+              <div>
+                <img src='/images/linkedin.svg' alt='linked' className="h-[15px] w-[15px]"/>
+              </div>
+              <div>
+              <img src='/images/twitter-alt (1).svg' alt='twitter' className="h-[13px] w-[15px]"/>
+              </div>
+            </div>
           </span>
         </div>
         <div className="mt-3 my-1 flex gap-2 items-center">
@@ -157,7 +172,6 @@ export default function PersonalInfo(props: any) {
           ) : (
             <>
               <Button className=" text-sm text-white rounded-full  flex items-center gap-1 px-5">
-              
                 Update Profile
               </Button>
             </>
