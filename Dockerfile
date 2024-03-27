@@ -5,8 +5,7 @@ FROM base AS builder
 WORKDIR /app
 
 COPY package.json  package-lock.json* ./
-# Omit --production flag for TypeScript devDependencies
-RUN npm i
+RUN NODE_ENV=development npm i
 
 COPY src ./src
 COPY public ./public
