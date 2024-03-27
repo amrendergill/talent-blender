@@ -29,7 +29,7 @@ stages:
             displayName: Build
             inputs:
               containerRegistry: "DOCKER_HUB"
-              repository: "pitchnhire/talentBlendr"
+              repository: "pitchnhire/talentblendr"
               command: "build"
               Dockerfile: "Dockerfile"
               arguments: --no-cache --build-arg BUILD=$(Build.BuildNumber).$(Build.BuildId)
@@ -40,7 +40,7 @@ stages:
             displayName: Push
             inputs:
               containerRegistry: "DOCKER_HUB"
-              repository: "pitchnhire/talentBlendr"
+              repository: "pitchnhire/talentblendr"
               command: "push"
               tags: |
                 develop

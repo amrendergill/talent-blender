@@ -5,8 +5,10 @@ networks:
 
 services:
   talentBlendr:
-    image: pitchnhire/talentBlendr:develop
-    container_name: talentBlendr
+    image: pitchnhire/talentblendr:develop
+    container_name: talentblendr
     restart: unless-stopped
     networks:
       - globalnet
+    ports:
+      - 7474:80
