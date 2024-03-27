@@ -1,0 +1,12 @@
+version: "3.9"
+networks:
+  globalnet:
+    external: true
+
+services:
+  talentBlendr:
+    image: pitchnhire/talentBlendr:develop
+    container_name: talentBlendr
+    restart: unless-stopped
+    networks:
+      - globalnet
