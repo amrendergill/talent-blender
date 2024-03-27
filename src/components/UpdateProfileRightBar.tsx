@@ -27,19 +27,7 @@ const profileStatus: any = [
 
 export default function CreateJobRightBar() {
     return (
-        <div className="w-[512px] max-w-[512px] min-w-[512px] ">
-            {/* <div className="bg-[#F9F9F9]  rounded-[10px] px-5 py-[15px] h-[120px]">
-                <p className="font-medium text-base">Complete your Profile</p>
-                <p className="text-[#868686] text-xs mt-3 mb-[22px]">
-                    By completing all the details you have a higher chance of
-                    being seen by recruiters.
-                </p>
-                <div className="flex items-center gap-[10px]">
-                    <p className="text-xs font-medium">33%</p>
-                    <Progress value={33} className="w-[255px] h-[7px]" />
-                </div>
-            </div>
-            <div className="border-t mt-[20px] pb-[20px]"></div> */}
+            <>
             <div className="border  p-[20px] mt-[20px] rounded-[10px]">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-[25px]">
@@ -105,7 +93,7 @@ export default function CreateJobRightBar() {
                 <h2 className='font-medium text-base text-[#000000]'>Community Badges</h2>
 
             </div>
-        </div>
-
+       
+            </>
     )
 }
