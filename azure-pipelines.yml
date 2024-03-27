@@ -1,0 +1,47 @@
+trigger:
+  branches:
+    include:
+      - develop
+
+pool: PNH-Devops
+variables:
+  - group: PNH-VariableGroup
+
+stages:
+  - stage: build_and_push
+    displayName: Build and Push
+    jobs:
+      - job: docker_login
+        displayName: Docker Login
+        steps:
+          - task: Docker@2
+            displayName: Docker Login
+            inputs:
+              containerRegistry: 'DOCKER_HUB'
+              command: 'login'
+
+      - job: build_dev_image
+        displayName: Build Dev Image
+        dependsOn: docker_login
+        condition: eq(variables['Build.SourceBranchName'], 'develop')
+        steps:
+          - task: Docker@2
+            displayName: Build
+            inputs:
+              containerRegistry: 'DOCKER_HUB'
+              repository: 'pitchnhire/Candidate-Hub'
+              command: 'build'
+              Dockerfile: 'Dockerfile'
+              arguments: --no-cache --build-arg BUILD=$(Build.BuildNumber).$(Build.BuildId)
+              tags: |
+                develop
+                $(Build.BuildNumber).$(Build.BuildId)
+          - task: Docker@2
+            displayName: Push
+            inputs:
+              containerRegistry: 'DOCKER_HUB'
+              repository: 'pitchnhire/Candidate-Hub'
+              command: 'push'
+              tags: |
+                develop
+                $(Build.BuildNumber).$(Build.BuildId)
