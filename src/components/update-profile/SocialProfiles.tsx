@@ -6,28 +6,10 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
 export default function SocialProfiles() {
-    const [open, setOpen] = useState(false);
 
     return (
-        <>
-            <div className={`flex justify-between border-t pt-[30px]  ${open && "hidden"}`}>
-                <div>
-                    <p className="font-medium text-base">Social Profiles</p>
-                    <p className="text-[#868686] text-xs">
-                        Where can individuals locate you on the internet?
-                    </p>
-                </div>
-                <Button
-                    className="bg-white text-xs h-[31px] text-[#0472F4] border-[0.3px] border-[#0472F4] rounded-[5px]"
-                    onClick={() => setOpen(true)}
-                >
-                    + Add
-                </Button>
-            </div>
-            {open && (
-                <>
                     <div >
-                        <div className="border-t pt-[30px] ">
+                        <div className="">
                             <p className="font-medium text-base">Social Profiles</p>
                             <p className="text-[#868686] text-xs">
                             Where can individuals locate you on the internet?
@@ -73,9 +55,6 @@ export default function SocialProfiles() {
                                 />
                             </div>
                         </div>
-                    </div>
-                </>
-            )}
-        </>
+                    </div>   
     )
 }

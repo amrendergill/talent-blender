@@ -122,7 +122,8 @@ export default function PersonalInfo(props: any) {
               }`}
           >
             <div className='flex gap-[19px] items-center'>
-              <div>
+            <div className="flex gap-2 items-center">
+                <img src='/images/globe.png' alt='globe' className="h-[10px] w-[10px]"/>
                 <p>www.appsierra.com | www.gigde.com |
                 <span className="text-[#212529]"> and 2 more links</span></p>
               </div>

@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "../ui/label";
 import Image from "next/image";
 import { Textarea } from "../ui/textarea";
@@ -18,14 +19,13 @@ export default function WorkExperience() {
   return (
     <>
       <Card
-        className={`bg-[#F9F9F9] p-[25px] border-0 rounded-[10px] ${
-          workExperience && "hidden"
-        }`}
+        className={`bg-[#F9F9F9] p-[25px] border-0 rounded-[10px] ${workExperience && "hidden"
+          }`}
       >
         <div className="flex justify-between">
           <div>
             <p className="font-medium text-base">Work Experience</p>
-            <p className="text-[#868686] text-xs">
+            <p className="text-[#868686] mt-[10px] text-xs">
               What previous roles have you occupied?
             </p>
           </div>
@@ -41,20 +41,19 @@ export default function WorkExperience() {
       {workExperience && (
         <>
           <Card
-            className={`bg-[#F9F9F9] p-[25px] border-0 rounded-[10px] ${
-              workExperience && "block"
-            }`}
+            className={`bg-[#F9F9F9] p-[25px] border-0 rounded-[10px] ${workExperience && "block"
+              }`}
           >
             <div>
               <p className="font-medium text-base">Work Experience</p>
-              <p className="text-[#868686] text-xs">
+              <p className="text-[#868686] mt-[10px] text-xs">
                 What previous roles have you occupied?
               </p>
             </div>
             <div className="flex flex-col gap-10 mt-[30px]">
               <div className="grid w-full max-w-full items-center gap-1.5">
                 <Label htmlFor="role" className="text-sm">
-                  Choose your main role
+                  Job Title
                 </Label>
                 <Select
                 //   onValueChange={}
@@ -62,8 +61,8 @@ export default function WorkExperience() {
                 >
                   <SelectTrigger>
                     <SelectValue
-                      placeholder="Select a role"
-                      className="text-xs text-[#868686]"
+                      placeholder="UI/UX Designer"
+                      className="text-xs text-[#000000] font-normal"
                     />
                   </SelectTrigger>
                   <SelectContent>
@@ -83,17 +82,26 @@ export default function WorkExperience() {
                 </Select>
               </div>
               <div className="grid w-full max-w-full items-center gap-1.5">
-                <Label htmlFor="role" className="text-sm">
-                  Choose your main role
-                </Label>
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="role" className="text-sm">
+                    Company
+                  </Label>
+                  <div className="flex  gap-[11px]">
+                    <Checkbox
+                      id="relocation"
+                      className="border-[#c6c3c3]"
+                    />
+                    <p className="text-[#000000] text-xs font-normal">Currently work here </p>
+                  </div>
+                </div>
                 <Select
                 //   onValueChange={}
                 //   defaultValue={}
                 >
                   <SelectTrigger>
                     <SelectValue
-                      placeholder="Select a role"
-                      className="text-xs text-[#868686]"
+                      placeholder="Appsierra"
+                      className="text-xs font-normal text-[#000000]"
                     />
                   </SelectTrigger>
                   <SelectContent>
@@ -113,8 +121,8 @@ export default function WorkExperience() {
                 </Select>
               </div>
               <div className="grid w-full max-w-full items-center gap-1.5">
-                <Label htmlFor="role" className="text-sm">
-                  Choose your main role
+                <Label htmlFor="role" className="text-sm font-medium text-[#212529]">
+                City
                 </Label>
                 <Select
                 //   onValueChange={}
@@ -122,8 +130,8 @@ export default function WorkExperience() {
                 >
                   <SelectTrigger>
                     <SelectValue
-                      placeholder="Select a role"
-                      className="text-xs text-[#868686]"
+                      placeholder="Noida"
+                      className="text-xs font-normal text-[#212529]"
                     />
                   </SelectTrigger>
                   <SelectContent>

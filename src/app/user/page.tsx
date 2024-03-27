@@ -29,14 +29,23 @@ export default function User() {
 
   const links = [
     {
+      src:'/images/site-alt.svg',
+      alt:'site',
+      style:'h-[20px] w-[20px]',
       text: "Website",
       name: "www.appsierra.com",
     },
     {
+      src:'/images/linkedin.svg',
+      alt:'LinkedIn',
+      style:'h-[20px] w-[19px]',
       text: "LinkedIn",
       name: "linkedin.com/in/arpit-singhal-",
     },
     {
+      src:'/images/twitter-alt (1).svg',
+      alt:'twitter',
+      style:'h-[20px] w-[22px]',
       text: "Twitter",
       name: "www.appsierra.com",
     },
@@ -113,12 +122,19 @@ export default function User() {
                         Work Experience
                       </h2>
                       <div className="mt-[20px] bg-[#FFF] px-[20px] py-[15px] rounded-[5px]">
-                        <h3 className="text-lg font-semibold">
-                          Marketing Coordinator Assistant Intern
-                        </h3>
-                        <h4 className="text-base font-regular text-[#0472F4]">
-                          Pitch N Hire
-                        </h4>
+                        <div className="flex items-center gap-[11px]">
+                          <div className="p-[10px] bg-[#EBF3FD] rounded-[5px]">
+                            <img src='/images/business-and-trade.png' alt='business' className="h-[32px] w-[32px]"/>
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold">
+                              Marketing Coordinator Assistant Intern
+                            </h3>
+                            <h4 className="text-base font-regular text-[#0472F4]">
+                              Pitch N Hire
+                            </h4>
+                          </div>
+                        </div>
                         <div className="mt-[10px] items-center gap-[13px] flex">
                           <div className="text-xs font-regular text-[#000000] bg-[#F5F5F5] rounded-full py-[4px] px-[15px]">
                             June 2021 - August 2024
@@ -149,12 +165,19 @@ export default function User() {
                         </ul>
                       </div>
                       <div className="mt-[15px] bg-[#FFF] px-[20px] py-[15px] rounded-[5px]">
-                        <h3 className="text-lg font-semibold">
-                          Marketing Coordinator Assistant Intern
-                        </h3>
-                        <h4 className="text-base font-regular text-[#0472F4]">
-                          Pitch N Hire
-                        </h4>
+                      <div className="flex items-center gap-[11px]">
+                          <div className="p-[10px] bg-[#EBF3FD] rounded-[5px]">
+                            <img src='/images/business-and-trade.png' alt='business' className="h-[32px] w-[32px]"/>
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold">
+                              Marketing Coordinator Assistant Intern
+                            </h3>
+                            <h4 className="text-base font-regular text-[#0472F4]">
+                            Appsierra
+                            </h4>
+                          </div>
+                        </div>
                         <div className="mt-[10px] items-center gap-[13px] flex">
                           <div className="text-xs font-regular text-[#000000] bg-[#F5F5F5] rounded-full py-[4px] px-[15px]">
                             June 2021 - August 2024
@@ -268,7 +291,9 @@ export default function User() {
                           key={`links${index}`}
                           className="mt-[20px] flex gap-5"
                         >
-                          <div></div>
+                          <div>
+                            <img src={item?.src} alt={item?.alt} className={item?.style}/>
+                          </div>
                           <div>
                             <p className="text-xs font-medium text-[#212529]">
                               {item?.text}

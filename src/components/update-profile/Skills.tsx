@@ -126,8 +126,10 @@ export default function Skills() {
          <Awards />
           <Separator />
           <VoluntaryServices />
-          <SocialProfiles/>
         </div>
+      </Card>
+      <Card className="bg-[#F9F9F9] p-[25px] border-0 rounded-[10px]">
+          <SocialProfiles/>
       </Card>
     </>
   );
