@@ -16,22 +16,22 @@ export default function Introduction() {
     <>
       <Card className="bg-[#F9F9F9] p-[25px] rounded-[10px] border-0">
         <div>
-          <p className="font-medium text-base">About</p>
-          <p className="text-xs mt-[10px] text-[#868686]">
+          <p className="font-medium text-[#000000] text-base">About</p>
+          <p className="text-xs mt-[10px] font-normal text-[#868686]">
             Introduce yourself so startups can get to know you.
           </p>
 
           <div className="mt-[30px] flex flex-col gap-[51px]">
             <div className="flex justify-between gap-[31px]">
               <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label htmlFor="name" className="text-sm">
+                <Label htmlFor="name" className="text-sm font-medium text-[#212529]">
                   Name
                 </Label>
                 <Input
-                  className="text-xs text-[#868686]"
+                  className="text-xs font-normal text-[#868686]"
                   type="name"
                   id="name"
-                  placeholder="Enter your Name"
+                  placeholder="Umang Sharma"
                 />
               </div>
               <div className="grid w-full max-w-sm items-center gap-1.5">

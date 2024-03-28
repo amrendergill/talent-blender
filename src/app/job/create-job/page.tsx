@@ -147,17 +147,17 @@ export default function CreateJob() {
                 Enhance the caliber of your recruitment.
               </p>
               <Tabs defaultValue="details" className="">
-                <div className="flex justify-between border-b pb-[30px] my-[30px]">
-                  <TabsList className="grid grid-cols-2 w-[300px] min-w-[300px] mx-w-[300px] h-fit rounded-none relative bg-white">
+                <div className="flex justify-between items-center border-b pb-[30px] my-[30px]">
+                  <TabsList className="grid grid-cols-2  w-[300px] min-w-[300px] mx-w-[300px]  rounded-none relative bg-white">
                     <TabsTrigger
                       value="details"
-                      className="clipDetailsTab text-left flex justify-start text-xs w-[155px] min-w-[160px] max-w-[160px]  data-[state=active]:shadow-none data-[state=active]:bg-[#FBE9E7] bg-[#F2E8FE] rounded-none data-[state=active]:rounded-none"
+                      className="clipDetailsTab pl-[20px] h-[33px] flex justify-start text-xs w-[155px] min-w-[160px] max-w-[160px]  data-[state=active]:shadow-none data-[state=active]:bg-[#FBE9E7] bg-[#F2E8FE] rounded-none data-[state=active]:rounded-none"
                     >
                       Job Details
                     </TabsTrigger>
                     <TabsTrigger
                       value="questions"
-                      className="clipQuestionsTab text-xs flex justify-start absolute pl-10 left-[125px] w-[180px] min-w-[180px] max-w-[180px] bg-[#F2E8FE] rounded-none data-[state=active]:rounded-none data-[state=active]:bg-[#FBE9E7]"
+                      className="clipQuestionsTab h-[33px] text-xs flex justify-start absolute pl-10 left-[125px] w-[180px] min-w-[180px] max-w-[180px] bg-[#F2E8FE] rounded-none data-[state=active]:rounded-none data-[state=active]:bg-[#FBE9E7]"
                     >
                       Screening Questions
                     </TabsTrigger>
