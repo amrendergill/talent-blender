@@ -101,7 +101,7 @@ export default function CreateJob() {
         title: "Can you provide examples of user interfaces or experiences you’ve designed in the past?" }])
 
   const addNewQuestion = () => {
-    setQuestion((existingList) => (
+    setQuestion((existingList:any) => (
       [...existingList, { index: existingList?.index, title: inputValue }]
     ));
     setInputValue("");
