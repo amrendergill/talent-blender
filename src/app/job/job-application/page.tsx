@@ -118,7 +118,7 @@ export default function JobApplication() {
                               alt={"upload profile"}
                               height={17}
                               width={17}
-                              className=" border-[0.3px] border-gray-200 rounded-[5px]"
+                              className=" "
                               priority
                             />
                           </TooltipTrigger>
@@ -135,7 +135,7 @@ export default function JobApplication() {
                               alt={"upload profile"}
                               height={17}
                               width={17}
-                              className=" border-[0.3px] border-gray-200 rounded-[5px]"
+                              className=" "
                               priority
                             />
                           </TooltipTrigger>
@@ -152,7 +152,7 @@ export default function JobApplication() {
                               alt={"upload profile"}
                               height={17}
                               width={17}
-                              className=" border-[0.3px] border-gray-200 rounded-[5px]"
+                              className=""
                               priority
                             />
                           </TooltipTrigger>
