@@ -34,6 +34,10 @@ import { usePathname } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Input } from "./ui/input";
 
+import { Button } from "./ui/button";
+import MenuBar from "./MenuBar";
+
+
 export default function Navbar() {
   const pathname = usePathname();
   const notifications = [
@@ -73,22 +77,33 @@ export default function Navbar() {
       time: "10 minutes ago",
     },
   ];
+
   console.log("path", pathname);
   return (
     <header className="  sticky top-0  w-full z-[100] ">
-      <nav className="bg-white border-b-[0.5px] border-gray-200">
-        <div className="container  flex items-center justify-between  bg-white">
-          <div className="flex gap-x-4 my-3 items-center ">
-            <div className="w-fit">
-              <Image
-                src={"/images/menu.svg"}
-                alt="Logo"
-                width={24}
-                height={24}
-                priority
-                className="z-50 object-fit"
-              />
+      <nav className="bg-white border-b-[0.5px] border-gray-200 ">
+        <div className="container   flex items-center justify-between  bg-white ">
+          <div className="flex gap-x-4 my-3  ">
+            <div className="">
+              <DropdownMenu >
+                <DropdownMenuTrigger asChild>
+                  <div className="w-fit">
+                    <Image
+                      src={"/images/menu.svg"}
+                      alt="Logo"
+                      width={24}
+                      height={24}
+                      priority
+                      className="z-50 object-fit"
+                    />
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="sm:max-w-[600px] px-4 absolute top-[18px]  !-left-3 z-[1200] pb-6    w-[225px] !rounded-none ">
+                  <MenuBar />
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
+
             <Link href={"/"}>
               <div className="text-xl font-semibold">
                 <span>Talent </span>
