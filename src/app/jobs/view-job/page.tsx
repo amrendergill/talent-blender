@@ -7,8 +7,30 @@ import { Button } from "@/components/ui/button";
 import { appService } from "@/utils/api";
 import Image from "next/image";
 import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 import { useEffect, useMemo, useState } from "react";
+import { Progress } from "@/components/ui/progress";
+import { DialogClose } from "@radix-ui/react-dialog";
+import { X } from "lucide-react";
 
 const defaultFilters: any = {
   gender: "",
@@ -69,12 +91,116 @@ export default function Jobs() {
                   </div>
                   <div></div>
                 </div>
-                <div className="flex gap-[29px] items-center">
-                  <div>
-                    <Button className="bg-[#0472F4] h-[39px] rounded-[5px] text-xs text-white">
-                      Apply Now
-                    </Button>
-                  </div>
+                <div className="flex  gap-[29px] items-center">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="bg-[#0472F4] h-[39px] rounded-[5px] text-xs text-white">
+                        Apply Now
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="mt-14  ml-[70px] overflow-y-scroll max-h-screen  max-w-[1150px] pr-[326px]">
+                      <DialogHeader>
+                        <div className="flex gap-3  border-b pb-[20px]  items-center">
+                          <div>
+                            <DialogTitle className="text-2xl font-medium text-[#000000]">Apply Now</DialogTitle>
+                            <DialogDescription>
+                              <p className="mt-[10px] text-sm font-normal text-[#868686]">Welcome to our job application portal!</p>
+                            </DialogDescription>
+                          </div>
+                        </div>
+                      </DialogHeader>
+                      <Card className="mt-[10px] bg-[#F9F9F9] border-0 ">
+                        <CardHeader>
+                          <CardTitle className="text-base font-medium text-[#000000]">
+                            Complete your Profile
+                          </CardTitle>
+                          <CardDescription className="text-xs font-regular text-[#868686]">
+                            By completing all the details you have a higher chance of being seen by recruiters. You’re unable to apply for this job as your profile lacks critical information required to apply to this job
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent className="">
+
+                          <div className="flex items-center gap-[10px]">
+                            <p className="text-xs font-medium">40%</p>
+                            <Progress value={40} className="w-[255px] h-[7px]" />
+                          </div>
+                          <Button className="text-xs mt-[30px] px-[20px] py-[7px] rounded-[5px] ">
+                            Update Profile
+                          </Button>
+                        </CardContent>
+                      </Card>
+                      <Card className="mt-[30px] bg-[#F9F9F9] border-0 ">
+                        <CardHeader>
+                          <CardTitle className="text-base font-medium text-[#000000]">
+                            Screening Questions
+                          </CardTitle>
+                          <CardDescription className="text-xs font-regular text-[#868686]">
+                            Answer a few screening questions to help us better understand your qualifications and suitability for the role.
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent className="">
+                          <div className="mt-[20px]  grid w-full ">
+                            <Label
+                              htmlFor=""
+                              className="text-sm font-medium text-[#212529]"
+                            >
+                              What tools and software do you typically use for UI/UX design?
+                            </Label>
+                            <Input
+                              type="text"
+                              id=""
+                              placeholder=""
+                              className="mt-[10px] pl-[50px] text-xs font-regular text-[#868686]"
+                            />
+                          </div>
+                          <div className="mt-[20px]  grid w-full ">
+                            <Label
+                              htmlFor=""
+                              className="text-sm font-medium text-[#212529]"
+                            >
+                              What tools and software do you typically use for UI/UX design?
+                            </Label>
+                            <Input
+                              type="text"
+                              id=""
+                              placeholder=""
+                              className="mt-[10px] pl-[50px] text-xs font-regular text-[#868686]"
+                            />
+                          </div>
+                          <div className="mt-[20px]  grid w-full ">
+                            <Label
+                              htmlFor=""
+                              className="text-sm font-medium text-[#212529]"
+                            >
+                              What tools and software do you typically use for UI/UX design?
+                            </Label>
+                            <Input
+                              type="text"
+                              id=""
+                              placeholder=""
+                              className="mt-[10px] pl-[50px] text-xs font-regular text-[#868686]"
+                            />
+                          </div>
+                          <div className="mt-[20px]  grid w-full ">
+                            <Label
+                              htmlFor=""
+                              className="text-sm font-medium text-[#212529]"
+                            >
+                              What tools and software do you typically use for UI/UX design?
+                            </Label>
+                            <Input
+                              type="text"
+                              id=""
+                              placeholder=""
+                              className="mt-[10px] pl-[50px] text-xs font-regular text-[#868686]"
+                            />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </DialogContent>
+                  </Dialog>
+
+
                   <div className="border p-2 rounded-full">
                     <Image
                       src={"/images/bookmark.png"}
