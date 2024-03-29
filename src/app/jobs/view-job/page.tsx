@@ -98,7 +98,7 @@ export default function Jobs() {
                         Apply Now
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="mt-14  ml-[70px] overflow-y-scroll max-h-screen  max-w-[1150px] pr-[326px]">
+                    <DialogContent className="mt-14   ml-[200px] overflow-y-scroll max-h-screen  max-w-[900px] ">
                       <DialogHeader>
                         <div className="flex gap-3  border-b pb-[20px]  items-center">
                           <div>
@@ -129,7 +129,7 @@ export default function Jobs() {
                           </Button>
                         </CardContent>
                       </Card>
-                      <Card className="mt-[30px] bg-[#F9F9F9] border-0 ">
+                      <Card className="mt-[10px] mb-20 bg-[#F9F9F9] border-0 ">
                         <CardHeader>
                           <CardTitle className="text-base font-medium text-[#000000]">
                             Screening Questions
