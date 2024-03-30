@@ -20,7 +20,7 @@ const PaginationContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ul
     ref={ref}
-    className={cn("flex flex-row items-center gap-1", className)}
+    className={cn("flex flex-row  items-center gap-1", className)}
     {...props}
   />
 ))
@@ -52,7 +52,7 @@ const PaginationLink = ({
         variant: isActive ? "outline" : "ghost",
         size,
       }),
-      className = 'border-[0.2px] rounded-[3px] h-[]'
+      className = 'border-[0.2px]  rounded-[3px]'
     )}
     {...props}
   />
@@ -97,7 +97,7 @@ const PaginationEllipsis = ({
 }: React.ComponentProps<"span">) => (
   <span
     aria-hidden
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    className={cn("flex h-9 w-9  items-center justify-center", className)}
     {...props}
   >
     <MoreHorizontal className="h-4 w-4" />
