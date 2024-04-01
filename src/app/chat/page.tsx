@@ -11,8 +11,7 @@ export default function CHat() {
 
   return (
     <main className="flex h-[calc(100dvh)] flex-col items-center justify-center gap-4">
-
-      <div className="z-10 border rounded-lg  w-full h-full text-sm lg:flex bg-white">
+      <div className="z-10 border   w-full h-full text-sm lg:flex bg-white">
         <ChatLayout defaultLayout={defaultLayout} navCollapsedSize={8} />
       </div>
     </main>
