@@ -4,12 +4,16 @@ import React, { useRef } from "react";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import ChatBottombar from "./chat-bottombar";
 import { AnimatePresence, motion } from "framer-motion";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
 
 interface ChatListProps {
   messages?: Message[];
   selectedUser: UserData;
   sendMessage: (newMessage: Message) => void;
   isMobile: boolean;
+  userData: any;
 }
 
 export function ChatList({
@@ -17,6 +21,7 @@ export function ChatList({
   selectedUser,
   sendMessage,
   isMobile,
+  userData,
 }: ChatListProps) {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
@@ -33,6 +38,7 @@ export function ChatList({
         ref={messagesContainerRef}
         className="w-full overflow-y-auto overflow-x-hidden h-full flex flex-col"
       >
+        {userData.length > 0   ? (
         <AnimatePresence>
           {messages?.map((message, index) => (
             <motion.div
@@ -55,11 +61,11 @@ export function ChatList({
               }}
               className={cn(
                 "flex flex-col gap-2 p-4 whitespace-pre-wrap",
-                message.name !== selectedUser.name ? "items-end" : "items-start"
+                message.name !== selectedUser?.name ? "items-end" : "items-start"
               )}
             >
               <div className="flex gap-3 items-center">
-                {message.name === selectedUser.name && (
+                {message.name === selectedUser?.name && (
                   <Avatar className="flex justify-center items-center">
                     <AvatarImage
                       src={message.avatar}
@@ -72,7 +78,7 @@ export function ChatList({
                 <span className=" bg-accent p-3 rounded-md max-w-xs">
                   {message.message}
                 </span>
-                {message.name !== selectedUser.name && (
+                {message.name !== selectedUser?.name && (
                   <Avatar className="flex justify-center items-center">
                     <AvatarImage
                       src={message.avatar}
@@ -86,6 +92,28 @@ export function ChatList({
             </motion.div>
           ))}
         </AnimatePresence>
+        ) 
+        : 
+        (
+          <>
+          <div className="">
+            <div className="grid w-[312px] pl-4 gap-[10px]  ">
+              <Input
+                type="text"
+                id="jobTitle"
+                className="text-xs font-regular text-[#868686]"
+                placeholder="Enter name, email, group…"         
+              />
+            </div>
+            <div className="flex flex-col justify-center items-center border-t pt-[50px] mt-4">
+              <img src='/images/chat.svg' alt='chat'/>
+              <p className="text-2xl mt-[30px] font-medium text-[#000000]">You’re initiating a new conversation</p>
+              <p className="text-base  mt-[15px] font-regular text-[#868686]">Please enter your initial message below.</p>
+            </div>
+          </div>
+          </>
+        )
+         } 
       </div>
       <ChatBottombar sendMessage={sendMessage} isMobile={isMobile} />
     </div>
