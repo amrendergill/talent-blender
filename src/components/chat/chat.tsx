@@ -23,10 +23,10 @@ export function Chat({ messages, selectedUser, isMobile, userData }: ChatProps) 
 
   return (
     <div className="flex flex-col justify-between w-full h-full" >
-      {userData .length > 0 ? (<ChatTopbar selectedUser={selectedUser} />) : (<div className="mt-5"></div>)
+      {userData.length > 0 ? (<ChatTopbar selectedUser={selectedUser} />) : (<div className="mt-5"></div>)
       }
       <ChatList
-       userData = {userData}
+        userData={userData}
         messages={messagesState}
         selectedUser={selectedUser}
         sendMessage={sendMessage}
