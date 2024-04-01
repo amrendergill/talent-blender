@@ -80,10 +80,12 @@ export default function CreateJob() {
   ];
 
   const [errors, setErrors]: any = useState({});
-
+  const [editIndex, setEditIndex] = useState(null);
+ 
   const handleInputChange = (e: any) => {
     setInputValue(e.target.value);
   }
+
 
   const [question, setQuestion] = useState(
     [
@@ -100,19 +102,39 @@ export default function CreateJob() {
         index: 3,
         title: "Can you provide examples of user interfaces or experiences you’ve designed in the past?" }])
 
+
   const addNewQuestion = () => {
-    setQuestion((existingList:any) => (
-      [...existingList, { index: existingList?.index, title: inputValue }]
-    ));
-    setInputValue("");
+    if (inputValue.trim() !== '') {
+      if (editIndex !== null) {
+        // Edit existing item
+        const updatedItems = [...question];
+        updatedItems[editIndex] = {index:editIndex , title: inputValue };
+        setQuestion(updatedItems);
+        setInputValue('');
+        setEditIndex(null);
+      } else {
+        // Add new item
+        setQuestion([...question, {index: 0, title: inputValue }]);
+        setInputValue('');
+      }
+    }
+    // setQuestion((existingList:any) => (
+    //   [...existingList, { index: existingList?.index, title: inputValue }]
+    // ));
+    // setInputValue("");
   }
 
+  const handleEditItem = (index:any) => {
+    setInputValue(question[index].title);
+    setEditIndex(index);
+  };
 
-  const deleteQuestion = (index:any) => {
-    console.log('question')
-      let deleteTodos = question.filter((item:any) => item?.index !== index);
-      setQuestion([...deleteTodos])
-  }
+
+  const handleDeleteItem = (index:any) => {
+    const updatedItems = [...question];
+    updatedItems.splice(index, 1);
+    setQuestion(updatedItems);
+  };
 
 
 
@@ -130,8 +152,6 @@ export default function CreateJob() {
       setErrors(newErrors);
     }
   };
-
-
 
 
   return (
@@ -1051,20 +1071,32 @@ export default function CreateJob() {
                                 type="text"
                                 value={item?.title}
                                 className="border-[0.3px] outline-none  mt-[15px] px-[40px] py-[20px] justify-between  flex items-center rounded-[5px] bg-[#F9FAFB] font-regular text-[#000000] text-sm"
-                              // onChange={handleInputChange}
+                             
                               />
-                              <div className="flex gap-[15px]">
+                              {editIndex ? (
+                                <img
+                          src="/images/floppy-disks.svg"
+                          alt="Questions"
+                          onClick={addNewQuestion}
+                          className="image"
+                        />
+                              ):
+                              (
+                                <div className="flex gap-[15px]">
                                 <img
                                   src="/images/pen-circle.svg"
                                   alt="edit"
                                   className="absolute right-[50px] top-7"
+                                  onClick={() => handleEditItem(index)}
                                 />
                                 <img src="/images/circle-trash.svg"
                                   className="absolute right-[20px] top-7"
                                   alt="trash"
-                                  onClick={()=>{deleteQuestion(index)}}
+                                  onClick={() => handleDeleteItem(index)}
                                 />
                               </div>
+                              )}
+                             
                             </div>
                           </>
                         ))}
