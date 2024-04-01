@@ -78,7 +78,7 @@ export default function ChatBottombar({
   return (
     <div className="p-2 flex justify-between w-full items-center gap-2">
       <div className="flex">
-        <Popover>
+        {/* <Popover>
           <PopoverTrigger asChild>
             <Link
               href="#"
@@ -131,8 +131,8 @@ export default function ChatBottombar({
               </Link>
             )}
           </PopoverContent>
-        </Popover>
-        {!message.trim() && !isMobile && (
+        </Popover> */}
+        {/* {!message.trim() && !isMobile && (
           <div className="flex">
             {BottombarIcons.map((icon, index) => (
               <Link
@@ -142,13 +142,12 @@ export default function ChatBottombar({
                   buttonVariants({ variant: "ghost", size: "icon" }),
                   "h-9 w-9",
                   "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                )}
-              >
+                )}>
                 <icon.icon size={20} className="text-muted-foreground" />
               </Link>
             ))}
           </div>
-        )}
+        )} */}
       </div>
 
       <AnimatePresence initial={false}>
@@ -167,6 +166,15 @@ export default function ChatBottombar({
             },
           }}
         >
+           <Link
+                href="#"
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" }),
+                  "h-9 w-9",
+                  "dark:bg-muted absolute top-3 left-5 dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
+                )}>
+                <Paperclip size={20} className="text-muted-foreground" />
+              </Link>
           <Textarea
             autoComplete="off"
             value={message}
@@ -174,18 +182,19 @@ export default function ChatBottombar({
             onKeyDown={handleKeyPress}
             onChange={handleInputChange}
             name="message"
-            placeholder="Aa"
-            className=" w-full border rounded-full flex items-center justify-center pl-4 pr-9 py-2 overflow-hidden resize-none bg-background !min-h-[10px]"
+            placeholder=""
+            className=" w-full border rounded-[5px] flex items-center justify-center px-[20px] py-2 overflow-hidden resize-none bg-background !min-h-[10px]"
           ></Textarea>
-          <div className="absolute right-3 bottom-3  ">
-            <EmojiPicker
+          <div className="absolute right-3 bottom-4 ">
+            {/* <EmojiPicker
               onChange={(value) => {
                 setMessage(message + value);
                 if (inputRef.current) {
                   inputRef.current.focus();
                 }
               }}
-            />
+            /> */}
+            <img src='/images/paper-plane-top.svg' alt='paper-plane'/>
           </div>
         </motion.div>
 
