@@ -5,7 +5,7 @@ import { Switch } from "@/components/ui/switch";
 
 const page = () => {
   return (
-    <div className="mt-4  mb-64">
+    <div className="my-4  ">
     <Card className="bg-[#F9F9F9] border-0  rounded-[10px] space-y-3 ">
       <div className="flex justify-between  items-center">
         <div className="space-y-1">
