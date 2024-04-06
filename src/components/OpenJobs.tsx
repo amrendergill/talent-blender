@@ -8,48 +8,38 @@ import Link from 'next/link';
 const OpenJobs = () => {
   return (
     <div className="w-full">
-      <Card className="space-y-4 p-4 w-full">
+      <Card className="space-y-4 p-4 w-full shadow-card">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-x-3">
-            <div>
-              <p className=" text-base font-semibold">
-                UI/UX Designer
-              </p>
-              <div className="flex gap-x-2 items-center">
-                <p className="text-xs text-[#0472F4]">Pitch N Hire</p>
-                <p>.</p>
-                <p className="text-xs  text-[#868686]">NOIDA, UTTAR PRADESH</p>
-              </div>
+            <div className="space-y-1">
+              <p className=" text-base font-semibold">UI/UX Designer</p>
+
+              <p className="text-xs  text-[#868686]">NOIDA, UTTAR PRADESH</p>
             </div>
           </div>
 
-          <Image
-            src={"/images/bookmark@2x.png"}
-            alt="Logo"
-            width={17}
-            height={17}
-            priority
-            className="object-fit mt-2"
-          />
+          <Badge className="text-[10px] font-normal bg-[#F5F5F5] rounded-[13px] text-black">
+            Posted 25 Days ago
+          </Badge>
         </div>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-x-1 ">
-            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[5px]">
               Javascript
             </Badge>
-            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[5px]">
               Javascript
             </Badge>
-            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[5px]">
               Javascript
             </Badge>
-            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[5px]">
               Javascript
             </Badge>
-            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[5px]">
               Javascript
             </Badge>
-            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[10px]">
+            <Badge className="bg-[#F2E8FE] text-[#8938E4] text-[10px] rounded-[5px]">
               Javascript
             </Badge>
           </div>

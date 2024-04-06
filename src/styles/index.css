@@ -102,3 +102,6 @@
 .clipQuestionsTab{
     clip-path: polygon(100% 0, 100% 50%, 100% 99%, 0% 100%, 12% 51%, 0% 0%);
 }
+.shadow-card{
+    box-shadow: 0px 3px 30px #3838380D;
+}
